@@ -30,7 +30,6 @@ const validateSignup = [
     handleValidationErrors
   ];
 
-
 //ROUTES
 // Sign up
 router.post(
