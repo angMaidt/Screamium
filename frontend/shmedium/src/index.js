@@ -7,10 +7,14 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import { restoreCSRF, csrfFetch } from './store/csrf';
 
 //for to test store functionality on window
 const store = configureStore();
 if (process.env.NODE_ENV !== 'production') {
+  restoreCSRF();
+
+  window.csrfFetch = csrfFetch;
   window.store = store;
 }
 
