@@ -45,7 +45,7 @@ app.use(
 //ROUTES - connect all the routes
 app.use(routes);
 
-//ERROR HANDLERS
+//ERROR HANDLERS = note, _req means that these are positional args, they won't be used
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
     err.title = "Resource Not Found";
