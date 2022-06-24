@@ -1,0 +1,38 @@
+#nav-container {
+    display: flex;
+    color: white;
+    background-color: darkslateblue;
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid black;
+}
+
+.nav * {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.active {
+    color:white;
+    /* text-decoration: none; */
+}
+
+#nav-container *:visited {
+    color: white;
+}
+
+.fa-regular {
+    color: white;
+    font-size: 24px;
+}
+
+#user-dropdown {
+    border: none;
+    background-color: transparent;
+}
+
+#user-dropdown:hover {
+    background-color: transparent;
+}
+
