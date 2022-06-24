@@ -7,15 +7,8 @@
     border-bottom: 1px solid black;
 }
 
-.nav * {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
 .active {
     color:white;
-    /* text-decoration: none; */
 }
 
 #nav-container *:visited {
@@ -35,4 +28,3 @@
 #user-dropdown:hover {
     background-color: transparent;
 }
-
