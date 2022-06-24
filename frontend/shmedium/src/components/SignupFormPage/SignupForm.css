@@ -1,0 +1,36 @@
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 0 12px gray;
+    padding: 25px;
+    align-items: center;
+}
+
+.errors {
+    color: rgb(207, 11, 11);
+}
+
+.form-field * {
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+    color: darkblue;
+    border-width: 1px;
+    border-color: darkblue;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: darkblue;
+}
