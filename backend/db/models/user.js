@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Story, { foreignKey: 'authorId' })
-    User.hasMany(models.Comments, { foreignKey: 'userId' })
+    User.hasMany(models.Comment, { foreignKey: 'userId' })
   };
   //returns ony non-sensitive info to jwt
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
