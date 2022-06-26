@@ -42,7 +42,6 @@ router.post(
     validateLogin,
     asyncHandler(async (req, res, next) => {
       const { credential, password } = req.body;
-
       const user = await User.login({ credential, password });
 
       if (!user) {
@@ -69,5 +68,6 @@ router.delete(
       return res.json({ message: 'success' });
     }
   );
+
 
 module.exports = router;

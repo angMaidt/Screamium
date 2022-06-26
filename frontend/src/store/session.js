@@ -32,6 +32,20 @@ export const login = (user) => async (dispatch) => {
   dispatch(setUser(data.user));
   return response;
 };
+//demo-login
+export const demoLogin = () => async (dispatch) => {
+  // const { credential, password } = user;
+  const response = await csrfFetch('/api/session', {
+    method: 'POST',
+    body: JSON.stringify({
+      credential: 'Demo-lition',
+      password: 'password',
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
 //persists csrf across pages
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');

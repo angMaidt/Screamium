@@ -19,6 +19,17 @@ function LoginForm() {
     );
   };
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.demoLogin()).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -45,6 +56,9 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <Link to='/api/session/demo-login'>
+        <button onClick={handleDemoLogin}>Demo-Login</button>
+      </Link>
     </form>
   );
 }
