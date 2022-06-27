@@ -18,7 +18,6 @@ function Navigation({ isLoaded }){
       <>
         <LoginFormModal />
         <NavLink to="/signup" style={{textDecoration: 'none'}}>Sign Up</NavLink>
-        <NavLink to='/stories' style={{textDecoration: 'none'}}>Stories</NavLink>
       </>
     );
   }
@@ -28,6 +27,7 @@ function Navigation({ isLoaded }){
       <ul>
         <li>
           <NavLink exact to="/" style={{textDecoration: 'none'}}>Home</NavLink>
+          <NavLink to='/stories' style={{textDecoration: 'none'}}>Stories</NavLink>
           {isLoaded && sessionLinks}
         </li>
       </ul>
