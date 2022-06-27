@@ -5,7 +5,8 @@ const CREATE_STORY = 'story/createStory';
 
 const READ_STORIES = 'story/readStories';
 
-//todo: read a single story
+//read a single story
+const READ_A_STORY = 'story/readAStory'
 
 //todo: edit a story
 
@@ -28,7 +29,13 @@ const readAllStories = (stories) => {
     }
 };
 
-//todo: read a single story
+//read a single story
+const readAStory = (story) => {
+    return {
+        type: READ_A_STORY,
+        story
+    }
+}
 
 //todo: edit a story
 
@@ -67,7 +74,17 @@ export const getAllStories = () => async dispatch => {
 };
 
 //todo: read a single story
-// export const
+export const getAStory = (storyId) => async dispatch => {
+    console.log(storyId)
+    const res = await fetch(`/stories/${storyId}`)
+    if (res.ok) {
+        const story = await res.json()
+        dispatch(createStory(story))
+        return res
+    }
+    //todo: if res not ok, render an error message
+
+}
 
 //todo: edit a story
 

@@ -23,6 +23,17 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
         return res.json('Missing stories? Spooky...')
     }
 }))
+//get a single story
+router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const story = await Story.findOne({
+            where: { id: req.params.storyId}
+        })
+        return res.json(story)
+    } catch (e) {
+        return res.json({message: 'that story has mysteriously disappeared'})
+    }
+}))
 
 //Post new story
 router.post('/', restoreUser, asyncHandler(async(req, res) => {

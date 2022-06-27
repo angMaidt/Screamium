@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { getAllStories } from '../../store/story'
+import { createNewStory, getAStory } from '../../store/story'
 
 function Story() {
     const dispatch = useDispatch();
     const { storyId } = useParams();
     const story = useSelector(state => state.story[storyId])
-    // console.log(story)
+    // // console.log(story)
     // useEffect(() => {
-    //     dispatch(getAllStories())
-    // }, [dispatch])
+    //     dispatch(createNewStory(storyId))
+    // }, [storyId])
 
     return (
         story ?
