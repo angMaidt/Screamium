@@ -33,10 +33,11 @@ router.post('/', restoreUser, asyncHandler(async(req, res) => {
             title,
             body
         })
-        console.log(newStory)
+        // console.log(newStory)
         return res.json(newStory)
     } catch (e) {
         return res.json({message: 'no story for you'})
+        //todo: better err handling
     }
 }))
 

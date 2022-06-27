@@ -19,7 +19,6 @@ function StoryForm() {
             title,
             body
         }
-
         await dispatch(createNewStory(story))
     }
 

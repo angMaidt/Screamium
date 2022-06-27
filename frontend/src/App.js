@@ -6,7 +6,8 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
-import Story from './components/Story';
+import AllStories from './components/Story/AllStories.js';
+import Story from './components/Story'
 import StoryForm from "./components/Story/StoryForm.js";
 
 function App() {
@@ -26,10 +27,13 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/stories'>
-            <Story />
+            <AllStories />
           </Route>
           <Route path='/stories/new'>
             <StoryForm />
+          </Route>
+          <Route path='/stories/:storyId'>
+            <Story />
           </Route>
           <Route>uh-oh, looks like you got lost in the woods again...</Route>
         </Switch>
