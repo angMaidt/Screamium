@@ -11,7 +11,7 @@ import { ModalProvider } from './context/Modal';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
-import { getAllStories, createNewStory } from './store/story';
+import { getAllStories, createNewStory, editAStory } from './store/story';
 
 //for to test store functionality on window
 const store = configureStore();
@@ -24,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions;
   window.getAllStories = getAllStories;
   window.createNewStory = createNewStory;
+  window.editAStory = editAStory;
 }
 
 //root

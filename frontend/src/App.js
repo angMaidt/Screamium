@@ -9,6 +9,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import AllStories from './components/Story/AllStories.js';
 import Story from './components/Story'
 import StoryForm from "./components/Story/StoryForm.js";
+import EditStoryForm from "./components/Story/EditStoryForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,8 +33,11 @@ function App() {
           <Route path='/stories/new'>
             <StoryForm />
           </Route>
-          <Route path='/stories/:storyId'>
+          <Route exact path='/stories/:storyId'>
             <Story />
+          </Route>
+          <Route path='/stories/:storyId/edit'>
+            <EditStoryForm/>
           </Route>
           <Route>uh-oh, looks like you got lost in the woods again...</Route>
         </Switch>

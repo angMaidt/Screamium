@@ -6,9 +6,10 @@ const CREATE_STORY = 'story/createStory';
 const READ_STORIES = 'story/readStories';
 
 //read a single story
-const READ_A_STORY = 'story/readAStory'
+const READ_A_STORY = 'story/readAStory';
 
-//todo: edit a story
+//edit a story
+const EDIT_STORY = 'story/editStory';
 
 //todo: delete a story
 
@@ -37,7 +38,13 @@ const readAStory = (story) => {
     }
 }
 
-//todo: edit a story
+//edit a story
+const editStory = (story) => {
+    return {
+        type: EDIT_STORY,
+        story
+    }
+}
 
 //todo: delete a story
 
@@ -73,7 +80,7 @@ export const getAllStories = () => async dispatch => {
     //todo: if res not ok, render an error message
 };
 
-//todo: read a single story
+//read a single story
 export const getAStory = (storyId) => async dispatch => {
     console.log(storyId)
     const res = await fetch(`/stories/${storyId}`)
@@ -86,7 +93,24 @@ export const getAStory = (storyId) => async dispatch => {
 
 }
 
-//todo: edit a story
+//edit a story
+export const editAStory = (story) => async dispatch => {
+    console.log(story)
+
+    const res = await csrfFetch(`/stories/${story.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: story.title, body: story.body })
+    })
+
+    if (res.ok) {
+        const editedStory = res.json()
+        // console.log(editedStory)
+        dispatch(editStory(editedStory))
+        return res.json()
+    }
+    //todo: if res not ok, render an error message
+}
 
 //todo: delete a story
 
@@ -106,6 +130,12 @@ const storyReducer = (state = {}, action) => {
                     ...state,
                     [action.story.id]: action.story
                 }
+            }
+            return newState
+        case EDIT_STORY:
+            newState = {
+                ...state,
+                [action.story.id]: action.story
             }
             return newState
         default:
