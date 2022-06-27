@@ -8,7 +8,6 @@ import Story from './index'
 function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
-    // console.log(typeof stories); =obj
     useEffect(() => {
         dispatch(getAllStories())
     }, [dispatch])

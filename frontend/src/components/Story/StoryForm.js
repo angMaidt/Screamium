@@ -5,6 +5,7 @@ import { createNewStory } from '../../store/story';
 
 function StoryForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector(state => state.session.user);
 
     const [title, setTitle] = useState('');
@@ -20,6 +21,7 @@ function StoryForm() {
             body
         }
         await dispatch(createNewStory(story))
+        history.push(`/stories`)
     }
 
     return (

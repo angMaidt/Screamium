@@ -8,9 +8,9 @@ function Story() {
     const dispatch = useDispatch();
     const { storyId } = useParams();
     const story = useSelector(state => state.story[storyId])
-    // // console.log(story)
+    // console.log({story})
     // useEffect(() => {
-    //     dispatch(createNewStory(storyId))
+    //     dispatch(getAStory(storyId))
     // }, [storyId])
 
     return (
