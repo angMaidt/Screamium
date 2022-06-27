@@ -56,9 +56,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
-      <Link to='/api/session/demo-login'>
-        <button onClick={handleDemoLogin}>Demo-Login</button>
-      </Link>
+      <button onClick={handleDemoLogin}>Demo-Login</button>
     </form>
   );
 }
