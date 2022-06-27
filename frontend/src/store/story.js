@@ -1,5 +1,7 @@
+import { csrfFetch } from "./csrf";
+
 //ACTION TYPES
-// const CREATE_STORY = 'story/createStory';
+const CREATE_STORY = 'story/createStory';
 
 const READ_STORIES = 'story/readStories';
 
@@ -10,8 +12,15 @@ const READ_STORIES = 'story/readStories';
 //todo: delete a story
 
 //ACTION CREATORS
-//Todo: Create a story
+//Create a story
+const createStory = (story) => {
+    return {
+        type: CREATE_STORY,
+        story
+    }
+}
 
+//read all stories
 const readAllStories = (stories) => {
     return {
         type: READ_STORIES,
@@ -26,9 +35,26 @@ const readAllStories = (stories) => {
 //todo: delete a story
 
 //THUNKS
-//Todo: Create a story
+//Create a story
+export const createNewStory = (newStory) => async dispatch => {
 
-//todo: read all stories
+    const res = await csrfFetch('/api/stories', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newStory)
+    })
+
+    if (res.ok) {
+        const newStory = await res.json()
+        dispatch(createStory(newStory))
+        return newStory
+    }
+    //todo: if res not okay, render error message
+}
+
+//read all stories
 export const getAllStories = () => async dispatch => {
     const res = await fetch('/api/stories')
 
@@ -41,6 +67,7 @@ export const getAllStories = () => async dispatch => {
 };
 
 //todo: read a single story
+// export const
 
 //todo: edit a story
 
@@ -55,6 +82,14 @@ const storyReducer = (state = {}, action) => {
             action.stories.forEach(story => {
                 return newState[story.id] = story;
             })
+            return newState
+        case CREATE_STORY:
+            if (!state[action.story.id]) {
+                newState = {
+                    ...state,
+                    [action.story.id]: action.story
+                }
+            }
             return newState
         default:
             return state

@@ -24,7 +24,21 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
     }
 }))
 
-//TODO: Post new story
+//Post new story
+router.post('/', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const { authorId, title, body } = req.body
+        const newStory = await Story.create({
+            authorId,
+            title,
+            body
+        })
+        console.log(newStory)
+        return res.json(newStory)
+    } catch (e) {
+        return res.json({message: 'no story for you'})
+    }
+}))
 
 //Todo: Edit an existing story
 

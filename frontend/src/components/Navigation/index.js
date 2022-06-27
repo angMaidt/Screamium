@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import StoryForm from '../Story/StoryForm';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
@@ -11,7 +12,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+        <NavLink to='/stories/new'>Publish Story</NavLink>
+      </>
     );
   } else {
     sessionLinks = (
