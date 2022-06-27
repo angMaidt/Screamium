@@ -52,7 +52,21 @@ router.post('/', restoreUser, asyncHandler(async(req, res) => {
     }
 }))
 
-//Todo: Edit an existing story
+//Edit an existing story
+router.put('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const storyId = req.params.storyId
+        const story = await Story.findByPk(storyId)
+        // console.log(story)
+        const { authorId, title, body } = req.body
+        await story.update({ authorId, title, body })
+        return res.json(story)
+    } catch (e) {
+        //todo: better err handling
+        return res.json({message: 'could not find that story'})
+    }
+
+}))
 
 //Todo: Delete an existing story
 
