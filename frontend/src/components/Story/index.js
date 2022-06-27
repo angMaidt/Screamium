@@ -14,8 +14,8 @@ function Story() {
     return (
         Object.values(stories).map(story => (
             <div key={story.id} className='story-container'>
-                <h2 class='story-title'>{story.title}</h2>
-                <p class='story-body'>{story.body}</p>
+                <h2 className='story-title'>{story.title}</h2>
+                <p className='story-body'>{story.body}</p>
             </div>
         ))
     )
