@@ -27,7 +27,6 @@ function EditStoryForm() {
         }
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
-        // history.push(`/stories`)
     }
 
     return (

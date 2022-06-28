@@ -19,11 +19,8 @@ function Story() {
     }, [dispatch])
 
     useEffect(() => {
-        // dispatch(getAllStories())
-        if(!showEditForm) setShowEditForm(false)
-
-    },[showEditForm])
-
+        if(showEditForm) setShowEditForm(false)
+    },[])
 
     const handleDelete = async (e) => {
         e.preventDefault()
