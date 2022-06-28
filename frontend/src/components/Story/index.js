@@ -9,7 +9,8 @@ function Story() {
     const history = useHistory();
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
-    const story = useSelector(state => state.story[storyId])
+    const story = useSelector(state => state.story[storyId]);
+    // const [storyExists, setStoryExists] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -41,15 +42,20 @@ function Story() {
     }
 
     return (
-        (story &&
+        story ?
             <div key={story.id} className='story-container'>
                 <h2 className='story-title'>{story.title}</h2>
                 <p className='story-body'>{story.body}</p>
                 {editButton}
                 {deleteButton}
             </div>
-            )
-
+        :
+            <div>
+                Uh-oh, no story here! Go back to
+                    <Link to='/stories' id='stories-link'>
+                        Stories
+                    </Link>
+            </div>
     )
 }
 

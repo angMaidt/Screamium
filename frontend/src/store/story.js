@@ -104,7 +104,7 @@ export const editAStory = (story) => async dispatch => {
 //delete a story
 export const destroyAStory = (storyId) => async dispatch => {
     // const history = useHistory();
-    const res = await fetch(`/api/stories/${storyId}`, {
+    const res = await csrfFetch(`/api/stories/${storyId}`, {
         method: 'DELETE'
     })
 
