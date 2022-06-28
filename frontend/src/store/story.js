@@ -39,10 +39,10 @@ const readAStory = (story) => {
 }
 
 //edit a story
-const editStory = (story) => {
+const editStory = (editedStory) => {
     return {
         type: EDIT_STORY,
-        story
+        editedStory
     }
 }
 
@@ -95,9 +95,9 @@ export const getAStory = (storyId) => async dispatch => {
 
 //edit a story
 export const editAStory = (story) => async dispatch => {
-    console.log(story)
+    // console.log(story.id)
 
-    const res = await csrfFetch(`/stories/${story.id}`, {
+    const res = await csrfFetch(`/api/stories/${story.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: story.title, body: story.body })
@@ -107,7 +107,7 @@ export const editAStory = (story) => async dispatch => {
         const editedStory = res.json()
         // console.log(editedStory)
         dispatch(editStory(editedStory))
-        return res.json()
+        return res
     }
     //todo: if res not ok, render an error message
 }
@@ -133,11 +133,11 @@ const storyReducer = (state = {}, action) => {
             }
             return newState
         case EDIT_STORY:
-            newState = {
+            console.log(action.editedStory)
+            return {
                 ...state,
-                [action.story.id]: action.story
+                [action.editedStory.id]: action.editedStory
             }
-            return newState
         default:
             return state
     }
