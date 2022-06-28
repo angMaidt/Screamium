@@ -1,4 +1,7 @@
 import { csrfFetch } from "./csrf";
+import { useHistory } from "react-router-dom";
+
+
 
 //ACTION TYPES
 //create a story
@@ -100,12 +103,14 @@ export const editAStory = (story) => async dispatch => {
 
 //delete a story
 export const destroyAStory = (storyId) => async dispatch => {
+    // const history = useHistory();
     const res = await fetch(`/api/stories/${storyId}`, {
         method: 'DELETE'
     })
 
     if (res.ok) {
         dispatch(deleteStory(storyId))
+        // history.push('/stories')
     }
     //todo: if res not okay, render err message
 }
