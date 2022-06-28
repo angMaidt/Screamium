@@ -11,6 +11,11 @@ function EditStoryForm() {
     const story = useSelector(state => state.story[storyId])
     const [title, setTitle] = useState(story.title)
     const [body, setBody] = useState(story.body)
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+
+    useEffect(() => {
+
+    },[hasSubmitted])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,14 +26,16 @@ function EditStoryForm() {
             body
         }
         await dispatch(editAStory(editedStory))
-        history.push(`/stories/${storyId}`)
+        setHasSubmitted(true)
+        history.push(`/stories`)
     }
 
     return (
+        !hasSubmitted ?
         <div className='form-container' id='edit-story-form-container'>
             <form className='form'
                 id='edit-story'
-                onSubmit={handleSubmit}>
+                onSubmit={(e) => handleSubmit(e)}>
                 <div id='edit-story-title'>
                     <label htmlFor='title'>Title</label>
                     <input
@@ -49,6 +56,8 @@ function EditStoryForm() {
                 <button>Submit</button>
             </form>
         </div>
+        :
+        <div></div>
     )
 }
 
