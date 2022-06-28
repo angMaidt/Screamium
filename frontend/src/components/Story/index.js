@@ -7,12 +7,12 @@ import EditStoryForm from './EditStoryForm';
 
 function Story() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
     const [showEditForm, setShowEditForm] = useState(false);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -33,7 +33,7 @@ function Story() {
     if (showEditForm) {
         editForm = (
             <div>
-                <EditStoryForm />
+                <EditStoryForm setShowEditForm={setShowEditForm}/>
             </div>
         )
     }

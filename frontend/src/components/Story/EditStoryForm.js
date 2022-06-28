@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editAStory, getAllStories } from '../../store/story';
 
-function EditStoryForm() {
+function EditStoryForm({ setShowEditForm }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -27,6 +27,7 @@ function EditStoryForm() {
         }
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
+        setShowEditForm(false)
     }
 
     return (
