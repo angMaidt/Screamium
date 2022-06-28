@@ -3,7 +3,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 //file imports
-const { Story, User } = require('../../db/models');
+const { Story, User, Comment } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -16,7 +16,12 @@ const router = express.Router();
 router.get('/', restoreUser, asyncHandler(async(req, res) => {
     //query for the stories and send them back as json
     try {
-        const stories = await Story.findAll();
+        const stories = await Story.findAll({
+            include: [User, Comment],
+            order: [
+                [Comment, 'createdAt', 'DESC'],
+            ]
+        });
         // console.log(stories)
         return res.json(stories)
     } catch (e) {
@@ -24,16 +29,16 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
     }
 }))
 //get a single story
-router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
-    try {
-        const story = await Story.findOne({
-            where: { id: req.params.storyId}
-        })
-        return res.json(story)
-    } catch (e) {
-        return res.json({message: 'that story has mysteriously disappeared'})
-    }
-}))
+// router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+//     try {
+//         const story = await Story.findOne({
+//             where: { id: req.params.storyId}
+//         })
+//         return res.json(story)
+//     } catch (e) {
+//         return res.json({message: 'that story has mysteriously disappeared'})
+//     }
+// }))
 
 //Post new story
 router.post('/', restoreUser, asyncHandler(async(req, res) => {
