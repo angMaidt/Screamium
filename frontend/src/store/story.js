@@ -1,12 +1,11 @@
 import { csrfFetch } from "./csrf";
 
 //ACTION TYPES
+//create a story
 const CREATE_STORY = 'story/createStory';
 
+//read all stories
 const READ_STORIES = 'story/readStories';
-
-//read a single story
-const READ_A_STORY = 'story/readAStory';
 
 //edit a story
 const EDIT_STORY = 'story/editStory';
@@ -30,14 +29,6 @@ const readAllStories = (stories) => {
         stories
     }
 };
-
-//read a single story
-const readAStory = (story) => {
-    return {
-        type: READ_A_STORY,
-        story
-    }
-}
 
 //edit a story
 const editStory = (editedStory) => {
@@ -144,11 +135,11 @@ const storyReducer = (state = {}, action) => {
                 ...state,
                 [action.editedStory.id]: action.editedStory
             }
-            console.log(newState)
+            // console.log(newState)
             return newState
         case DESTROY_STORY:
             newState = { ...state }
-            console.log(newState)
+            // console.log(newState)
             delete newState[action.storyId]
             return newState
         default:
