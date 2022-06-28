@@ -21,7 +21,7 @@ function EditStoryForm() {
             body
         }
         await dispatch(editAStory(editedStory))
-        history.push('/stories')
+        history.push(`/stories/${storyId}`)
     }
 
     return (

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
-import { createNewStory, getAStory } from '../../store/story'
+import { getAllStories } from '../../store/story'
 
 function Story() {
     const dispatch = useDispatch();
@@ -10,9 +10,10 @@ function Story() {
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId])
     // console.log({story})
-    // useEffect(() => {
-    //     dispatch(getAStory(storyId))
-    // }, [storyId])
+    useEffect(() => {
+        dispatch(getAllStories())
+    }, [dispatch])
+
     let editButton
     if (sessionUser.id === story.authorId) {
         editButton = (

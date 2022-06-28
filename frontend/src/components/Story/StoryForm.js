@@ -21,7 +21,7 @@ function StoryForm() {
             body
         }
         await dispatch(createNewStory(story))
-        history.push(`/stories`)
+        history.push('/stories')
     }
 
     return (
