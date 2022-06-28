@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { editAStory } from '../../store/story';
+import { editAStory, getAllStories } from '../../store/story';
 
 function EditStoryForm() {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ function EditStoryForm() {
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
     useEffect(() => {
-
+        dispatch(getAllStories())
     },[hasSubmitted])
 
     const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ function EditStoryForm() {
         }
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
-        history.push(`/stories`)
+        // history.push(`/stories`)
     }
 
     return (

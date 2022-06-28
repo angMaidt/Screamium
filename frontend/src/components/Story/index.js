@@ -18,6 +18,12 @@ function Story() {
         dispatch(getAllStories())
     }, [dispatch])
 
+    useEffect(() => {
+        // dispatch(getAllStories())
+        if(!showEditForm) setShowEditForm(false)
+
+    },[showEditForm])
+
 
     const handleDelete = async (e) => {
         e.preventDefault()
@@ -68,7 +74,7 @@ function Story() {
             </div>
         :
             <div>
-                Uh-oh, looks like this story doesn't exist! Go back to
+                "Uh-oh, looks like this story doesn't exist! Go back to"
                     <Link to='/stories' id='stories-link'>
                         Stories
                     </Link>
