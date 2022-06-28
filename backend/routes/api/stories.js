@@ -16,13 +16,21 @@ const router = express.Router();
 router.get('/', restoreUser, asyncHandler(async(req, res) => {
     //query for the stories and send them back as json
     try {
+
         const stories = await Story.findAll({
             include: [User, Comment],
             order: [
-                [Comment, 'createdAt', 'DESC'],
+                ['createdAt', 'DESC'],
             ]
         });
-        // console.log(stories)
+
+        // const comments = await Comment.findAll({
+        //     order: [
+        //         ['createdAt', 'DESC']
+        //     ]
+        // })
+
+        // return res.json({stories, comments})
         return res.json(stories)
     } catch (e) {
         return res.json('Missing stories? Spooky...')

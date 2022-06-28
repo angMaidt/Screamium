@@ -1,7 +1,4 @@
 import { csrfFetch } from "./csrf";
-import { useHistory } from "react-router-dom";
-
-
 
 //ACTION TYPES
 //create a story
@@ -75,7 +72,8 @@ export const getAllStories = () => async dispatch => {
 
     if (res.ok) {
         const stories = await res.json()
-        console.log(stories)
+        // console.log(stories)
+        // console.log({stories})
         dispatch(readAllStories(stories))
         return res
     }
@@ -121,9 +119,19 @@ const storyReducer = (state = {}, action) => {
     switch(action.type) {
         case READ_STORIES:
             // console.log(action.stories)
+            // const dStories = {stories}
+            // const newStories = []
+            // dStories.forEach(story => {
+            //     newStories.push({story.id: story})
+            // })
+            let comments = {}
             newState = {...state}
             action.stories.forEach(story => {
-                return newState[story.id] = story;
+                newState[story.id] = story;
+                story.Comments.forEach(comment => {
+                    comments[comment.id] = comment
+                })
+                story.Comments = comments
             })
             return newState
         case CREATE_STORY:
