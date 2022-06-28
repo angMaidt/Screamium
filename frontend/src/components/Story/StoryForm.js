@@ -10,7 +10,7 @@ function StoryForm() {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    console.log(user.id)
+    // console.log(user.id)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +21,7 @@ function StoryForm() {
             body
         }
         await dispatch(createNewStory(story))
-        history.push(`/stories`)
+        history.push('/stories')
     }
 
     return (

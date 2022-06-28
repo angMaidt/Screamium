@@ -1,17 +1,17 @@
 import { csrfFetch } from "./csrf";
 
 //ACTION TYPES
+//create a story
 const CREATE_STORY = 'story/createStory';
 
+//read all stories
 const READ_STORIES = 'story/readStories';
-
-//read a single story
-const READ_A_STORY = 'story/readAStory';
 
 //edit a story
 const EDIT_STORY = 'story/editStory';
 
-//todo: delete a story
+//delete a story
+const DESTROY_STORY = 'story/deleteStory';
 
 //ACTION CREATORS
 //Create a story
@@ -30,14 +30,6 @@ const readAllStories = (stories) => {
     }
 };
 
-//read a single story
-const readAStory = (story) => {
-    return {
-        type: READ_A_STORY,
-        story
-    }
-}
-
 //edit a story
 const editStory = (editedStory) => {
     return {
@@ -46,7 +38,13 @@ const editStory = (editedStory) => {
     }
 }
 
-//todo: delete a story
+//delete a story
+const deleteStory = (storyId) => {
+    return {
+        type: DESTROY_STORY,
+        storyId
+    }
+}
 
 //THUNKS
 //Create a story
@@ -74,26 +72,13 @@ export const getAllStories = () => async dispatch => {
 
     if (res.ok) {
         const stories = await res.json()
-        console.log(stories)
+        // console.log(stories)
+        // console.log({stories})
         dispatch(readAllStories(stories))
         return res
     }
     //todo: if res not ok, render an error message
 };
-
-//read a single story
-// export const getAStory = (storyId) => async dispatch => {
-//     console.log(storyId)
-//     const res = await fetch(`/stories/${storyId}`)
-//     if (res.ok) {
-//         const story = await res.json()
-//         console.log(story)
-//         dispatch(createStory(story))
-//         return res
-//     }
-//     //todo: if res not ok, render an error message
-
-// }
 
 //edit a story
 export const editAStory = (story) => async dispatch => {
@@ -114,7 +99,19 @@ export const editAStory = (story) => async dispatch => {
     //todo: if res not ok, render an error message
 }
 
-//todo: delete a story
+//delete a story
+export const destroyAStory = (storyId) => async dispatch => {
+    // const history = useHistory();
+    const res = await csrfFetch(`/api/stories/${storyId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        dispatch(deleteStory(storyId))
+        // history.push('/stories')
+    }
+    //todo: if res not okay, render err message
+}
 
 //REDUCER
 const storyReducer = (state = {}, action) => {
@@ -122,9 +119,19 @@ const storyReducer = (state = {}, action) => {
     switch(action.type) {
         case READ_STORIES:
             // console.log(action.stories)
+            // const dStories = {stories}
+            // const newStories = []
+            // dStories.forEach(story => {
+            //     newStories.push({story.id: story})
+            // })
+            let comments = {}
             newState = {...state}
             action.stories.forEach(story => {
-                return newState[story.id] = story;
+                newState[story.id] = story;
+                story.Comments.forEach(comment => {
+                    comments[comment.id] = comment
+                })
+                story.Comments = comments
             })
             return newState
         case CREATE_STORY:
@@ -141,7 +148,12 @@ const storyReducer = (state = {}, action) => {
                 ...state,
                 [action.editedStory.id]: action.editedStory
             }
-            console.log(newState)
+            // console.log(newState)
+            return newState
+        case DESTROY_STORY:
+            newState = { ...state }
+            // console.log(newState)
+            delete newState[action.storyId]
             return newState
         default:
             return state

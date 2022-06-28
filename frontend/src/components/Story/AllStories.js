@@ -13,14 +13,21 @@ function AllStories() {
         dispatch(getAllStories())
     }, [dispatch])
 
+    // const handleStoryClick = (e) => {
+    //     e.preventDefault()
+    // }
+
     return (
         Object.values(stories).map(story => (
             <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
-                <div className='story-container'>
+                <div className='story-container' key={story.id}>
                     <h2>{story.title}</h2>
                     <p>{story.body}</p>
                 </div>
             </Link>
+            // <div onClick={(e) => handleStoryClick(e)}>
+            //     <Story story={story}/>
+            // </div>
         ))
     )
 }

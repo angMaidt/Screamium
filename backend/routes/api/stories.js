@@ -3,7 +3,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 //file imports
-const { Story, User } = require('../../db/models');
+const { Story, User, Comment } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -16,24 +16,37 @@ const router = express.Router();
 router.get('/', restoreUser, asyncHandler(async(req, res) => {
     //query for the stories and send them back as json
     try {
-        const stories = await Story.findAll();
-        // console.log(stories)
+
+        const stories = await Story.findAll({
+            include: [User, Comment],
+            order: [
+                ['createdAt', 'DESC'],
+            ]
+        });
+
+        // const comments = await Comment.findAll({
+        //     order: [
+        //         ['createdAt', 'DESC']
+        //     ]
+        // })
+
+        // return res.json({stories, comments})
         return res.json(stories)
     } catch (e) {
         return res.json('Missing stories? Spooky...')
     }
 }))
 //get a single story
-router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
-    try {
-        const story = await Story.findOne({
-            where: { id: req.params.storyId}
-        })
-        return res.json(story)
-    } catch (e) {
-        return res.json({message: 'that story has mysteriously disappeared'})
-    }
-}))
+// router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+//     try {
+//         const story = await Story.findOne({
+//             where: { id: req.params.storyId}
+//         })
+//         return res.json(story)
+//     } catch (e) {
+//         return res.json({message: 'that story has mysteriously disappeared'})
+//     }
+// }))
 
 //Post new story
 router.post('/', restoreUser, asyncHandler(async(req, res) => {
@@ -69,5 +82,17 @@ router.put('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //Todo: Delete an existing story
+router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const storyId = req.params.storyId
+        const story = await Story.findByPk(storyId)
+        if (story) {
+            await story.destroy();
+            return res.json({ message: 'story destroyed' })
+        }
+    } catch (e) {
+        return res.json({ message: 'could not destroy' })
+    }
+}))
 
 module.exports = router;
