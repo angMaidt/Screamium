@@ -11,7 +11,8 @@ const READ_A_STORY = 'story/readAStory';
 //edit a story
 const EDIT_STORY = 'story/editStory';
 
-//todo: delete a story
+//delete a story
+const DESTROY_STORY = 'story/deleteStory';
 
 //ACTION CREATORS
 //Create a story
@@ -46,7 +47,13 @@ const editStory = (editedStory) => {
     }
 }
 
-//todo: delete a story
+//delete a story
+const deleteStory = (storyId) => {
+    return {
+        type: DESTROY_STORY,
+        storyId
+    }
+}
 
 //THUNKS
 //Create a story
@@ -81,20 +88,6 @@ export const getAllStories = () => async dispatch => {
     //todo: if res not ok, render an error message
 };
 
-//read a single story
-// export const getAStory = (storyId) => async dispatch => {
-//     console.log(storyId)
-//     const res = await fetch(`/stories/${storyId}`)
-//     if (res.ok) {
-//         const story = await res.json()
-//         console.log(story)
-//         dispatch(createStory(story))
-//         return res
-//     }
-//     //todo: if res not ok, render an error message
-
-// }
-
 //edit a story
 export const editAStory = (story) => async dispatch => {
     // console.log(story.id)
@@ -114,7 +107,17 @@ export const editAStory = (story) => async dispatch => {
     //todo: if res not ok, render an error message
 }
 
-//todo: delete a story
+//delete a story
+export const destroyAStory = (storyId) => async dispatch => {
+    const res = await fetch(`/api/stories/${storyId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        dispatch(deleteStory(storyId))
+    }
+    //todo: if res not okay, render err message
+}
 
 //REDUCER
 const storyReducer = (state = {}, action) => {
@@ -142,6 +145,11 @@ const storyReducer = (state = {}, action) => {
                 [action.editedStory.id]: action.editedStory
             }
             console.log(newState)
+            return newState
+        case DESTROY_STORY:
+            newState = { ...state }
+            console.log(newState)
+            delete newState[action.storyId]
             return newState
         default:
             return state

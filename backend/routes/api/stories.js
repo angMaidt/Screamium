@@ -69,5 +69,17 @@ router.put('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //Todo: Delete an existing story
+router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const storyId = req.params.storyId
+        const story = await Story.findByPk(storyId)
+        if (story) {
+            await story.destroy();
+            return res.json({ message: 'story destroyed' })
+        }
+    } catch (e) {
+        return res.json({ message: 'could not destroy' })
+    }
+}))
 
 module.exports = router;
