@@ -59,8 +59,9 @@ router.put('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
         const story = await Story.findByPk(storyId)
         // console.log(story)
         const { title, body } = req.body
-        await story.update({ title, body })
-        return res.json(story)
+        const editedStory = await story.update({ title, body })
+        // console.log(editedStory.json())
+        return res.json(editedStory)
     } catch (e) {
         //todo: better err handling
         return res.json({message: 'could not find that story'})

@@ -74,6 +74,7 @@ export const getAllStories = () => async dispatch => {
 
     if (res.ok) {
         const stories = await res.json()
+        console.log(stories)
         dispatch(readAllStories(stories))
         return res
     }
@@ -81,17 +82,18 @@ export const getAllStories = () => async dispatch => {
 };
 
 //read a single story
-export const getAStory = (storyId) => async dispatch => {
-    console.log(storyId)
-    const res = await fetch(`/stories/${storyId}`)
-    if (res.ok) {
-        const story = await res.json()
-        dispatch(createStory(story))
-        return res
-    }
-    //todo: if res not ok, render an error message
+// export const getAStory = (storyId) => async dispatch => {
+//     console.log(storyId)
+//     const res = await fetch(`/stories/${storyId}`)
+//     if (res.ok) {
+//         const story = await res.json()
+//         console.log(story)
+//         dispatch(createStory(story))
+//         return res
+//     }
+//     //todo: if res not ok, render an error message
 
-}
+// }
 
 //edit a story
 export const editAStory = (story) => async dispatch => {
@@ -119,12 +121,14 @@ const storyReducer = (state = {}, action) => {
     let newState;
     switch(action.type) {
         case READ_STORIES:
+            // console.log(action.stories)
             newState = {...state}
             action.stories.forEach(story => {
                 return newState[story.id] = story;
             })
             return newState
         case CREATE_STORY:
+            // console.log(action.story.id)
             if (!state[action.story.id]) {
                 newState = {
                     ...state,
@@ -133,11 +137,12 @@ const storyReducer = (state = {}, action) => {
             }
             return newState
         case EDIT_STORY:
-            console.log(action.editedStory)
-            return {
+            newState =  {
                 ...state,
                 [action.editedStory.id]: action.editedStory
             }
+            console.log(newState)
+            return newState
         default:
             return state
     }
