@@ -117,19 +117,9 @@ const storyReducer = (state = {}, action) => {
     let newState;
     switch(action.type) {
         case READ_STORIES:
-            let comments = {}
-            // console.log(action.stories[6].Comments)
-            newState = {...state}
+            newState = { ...state }
             action.stories.forEach(story => {
                 newState[story.id] = story;
-                // story.Comments.forEach(comment => {
-                //     comments = comment
-                // })
-                // newState[story.id]['comments'] = comments
-                // newState[story.id].Comments.forEach(comment => {
-                //     comments[comment.id] = comment
-                //     newState[story.id].Comments = comments
-                // })
             })
             return newState
         case CREATE_STORY:
