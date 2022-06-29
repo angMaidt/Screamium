@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editAStory, getAllStories } from '../../store/story';
 
-function EditStoryForm() {
+function EditStoryForm({ setShowEditForm }) {
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const { storyId } = useParams()
     const story = useSelector(state => state.story[storyId])
     const [title, setTitle] = useState(story.title)
     const [body, setBody] = useState(story.body)
+    const [imageUrl, setImageUrl] = useState(story.imageUrl)
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
     useEffect(() => {
@@ -23,10 +23,12 @@ function EditStoryForm() {
         const editedStory = {
             id: storyId,
             title,
-            body
+            body,
+            imageUrl
         }
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
+        setShowEditForm(false)
     }
 
     return (
@@ -51,6 +53,14 @@ function EditStoryForm() {
                         value={body}
                         onChange={e => setBody(e.target.value)}
                     ></textarea>
+                </div>
+                <div id='edit-story-image-url'>
+                    <label htmlFor='image'>Image URL</label>
+                    <input
+                        type='text'
+                        value={imageUrl}
+                        onChange={e => setImageUrl(e.target.value)}
+                    ></input>
                 </div>
                 <button>Submit</button>
             </form>

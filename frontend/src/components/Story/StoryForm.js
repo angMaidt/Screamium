@@ -10,6 +10,7 @@ function StoryForm() {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [imageUrl, setImageUrl] = useState('')
     // console.log(user.id)
 
     const handleSubmit = async (e) => {
@@ -18,7 +19,8 @@ function StoryForm() {
         const story = {
             authorId: user.id,
             title,
-            body
+            body,
+            imageUrl
         }
         await dispatch(createNewStory(story))
         history.push('/stories')
@@ -45,6 +47,15 @@ function StoryForm() {
                         value={body}
                         onChange={e => setBody(e.target.value)}
                     ></textarea>
+                </div>
+                <div id='new-story-image-url'>
+                    <label htmlFor='image-url'>Image URL</label>
+                    <input
+                        type='text'
+                        placeholder='example.jpg'
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                    ></input>
                 </div>
                 <button>Submit</button>
             </form>

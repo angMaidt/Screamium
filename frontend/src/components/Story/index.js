@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link, Redirect } from 'react-router-dom';
+import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
 import EditStoryForm from './EditStoryForm';
 
 function Story() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
     const [showEditForm, setShowEditForm] = useState(false);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -33,13 +32,13 @@ function Story() {
     if (showEditForm) {
         editForm = (
             <div>
-                <EditStoryForm />
+                <EditStoryForm setShowEditForm={setShowEditForm}/>
             </div>
         )
     }
 
     let editButton, deleteButton, cancelEditButton
-    if (story) {
+    if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
                 // <Link to={`/stories/${storyId}/edit`}>
@@ -61,8 +60,14 @@ function Story() {
 
     return (
         story ?
-            <div key={story.id} className='story-container'>
+            <div className='story-container individual'>
+                {story.User && <h3 className='story-author'>{story.User.username}</h3>}
                 <h2 className='story-title'>{story.title}</h2>
+                {story.imageUrl &&
+                    <div className='story-image-container'
+                    style={{backgroundImage: `url(${story.imageUrl})`}}>
+                    </div>
+                }
                 <p className='story-body'>{story.body}</p>
                 {editButton}
                 {showEditForm && cancelEditButton}

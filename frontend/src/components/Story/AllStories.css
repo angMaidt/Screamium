@@ -1,0 +1,36 @@
+.story-container.stories {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.story-body-container {
+    height: 100px;
+    width: 500px;
+    overflow: hidden;
+}
+
+.story-body.stories {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.story-image-container {
+    width: 112px;
+    height: 112px;
+    background-size: cover;
+    background-position: center;
+    margin: 20px;
+}
+
+.story-footer-elements-container {
+    display: flex;
+}
+
+.story-footer-elements-container *{
+    padding-left: 5px;
+}

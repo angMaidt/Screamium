@@ -87,7 +87,7 @@ export const editAStory = (story) => async dispatch => {
     const res = await csrfFetch(`/api/stories/${story.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: story.title, body: story.body })
+        body: JSON.stringify({ title: story.title, body: story.body, imageUrl: story.imageUrl})
     })
 
     if (res.ok) {
@@ -118,20 +118,19 @@ const storyReducer = (state = {}, action) => {
     let newState;
     switch(action.type) {
         case READ_STORIES:
-            // console.log(action.stories)
-            // const dStories = {stories}
-            // const newStories = []
-            // dStories.forEach(story => {
-            //     newStories.push({story.id: story})
-            // })
             let comments = {}
+            // console.log(action.stories[6].Comments)
             newState = {...state}
             action.stories.forEach(story => {
                 newState[story.id] = story;
-                story.Comments.forEach(comment => {
-                    comments[comment.id] = comment
-                })
-                story.Comments = comments
+                // story.Comments.forEach(comment => {
+                //     comments = comment
+                // })
+                // newState[story.id]['comments'] = comments
+                // newState[story.id].Comments.forEach(comment => {
+                //     comments[comment.id] = comment
+                //     newState[story.id].Comments = comments
+                // })
             })
             return newState
         case CREATE_STORY:
