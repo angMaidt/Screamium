@@ -12,7 +12,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import * as storyActions from './store/story';
-import { getAllComments } from './store/comment';
+import * as commentActions from './store/comment';
 
 //for to test store functionality on window
 const store = configureStore();
@@ -23,8 +23,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
-  window.storyActions = storyActions
-  window.getAllComments = getAllComments
+  window.storyActions = storyActions;
+  window.commentActions = commentActions;
 }
 
 //root
