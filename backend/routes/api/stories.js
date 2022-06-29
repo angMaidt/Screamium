@@ -60,8 +60,7 @@ router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(r
             return res.json(newStory)
         } else {
             const errors = validatorErrors.array().map(err => err.msg)
-
-            return res.json({title: 'Validation Failed', errors })
+            return res.json({ error: 'Validation Failed', errors })
         }
     } catch (e) {
         return res.json({ message: 'no story for you' })

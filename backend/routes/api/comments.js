@@ -35,6 +35,28 @@ router.get('/:storyId', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //create a comment
+router.post('/:storyId', restoreUser, commentValidators, asyncHandler(async(req, res) => {
+    try {
+        const { userId, storyId, body } = req.body
+
+        const validatorErrors = validationResult(req)
+
+        if (validatorErrors.isEmpty()) {
+            const newComment = await Comment.create({
+                userId,
+                storyId,
+                body
+            })
+            return res.json(newComment)
+        } else {
+            const errors = validatorErrors.array().map(err => err.msg)
+            return res.json({ error: 'Validation Failed', errors })
+        }
+
+    } catch (e) {
+        return res.json({ message: 'unable to make comment at this time' })
+    }
+}))
 
 //edit a comment
 
