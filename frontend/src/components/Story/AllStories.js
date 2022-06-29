@@ -17,7 +17,7 @@ function AllStories() {
         (stories &&
             Object.values(stories).map(story => (
                 <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
-                    <div className='story-container'
+                    <div className='story-container stories'
                     key={story.id}
                     style={{borderBottom: '1px solid black'}}>
                         {story.imageUrl &&

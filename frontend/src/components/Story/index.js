@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link, Redirect } from 'react-router-dom';
+import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
 import EditStoryForm from './EditStoryForm';
@@ -61,7 +62,7 @@ function Story() {
 
     return (
         story ?
-            <div key={story.id} className='story-container'>
+            <div className='story-container individual'>
                 <h2 className='story-title'>{story.title}</h2>
                 {story.User && <h3 className='story-author'>by {story.User.username}</h3>}
                 <p className='story-body'>{story.body}</p>
