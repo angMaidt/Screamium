@@ -10,6 +10,13 @@ const router = express.Router();
 
 //VALIDATORS
 //userId, storyId, body
+const commentValidators = [
+    check('body')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a body for your comment')
+      .isLength({ max: 500 })
+      .withMessage('Comment cannot be more than 500 characters')
+]
 
 //ROUTES
 //get all comments for a story
@@ -18,12 +25,10 @@ router.get('/:storyId', restoreUser, asyncHandler(async(req, res) => {
         const storyId = req.params.storyId
         console.log(storyId)
         const comments = await Comment.findAll({
-            where: { storyId }
+            where: { storyId },
+            include: User
         })
-
         res.json(comments)
-
-
     } catch (e) {
         return res.json({ message: 'Could not fetch comments' })
     }
