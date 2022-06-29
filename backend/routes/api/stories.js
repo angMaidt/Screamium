@@ -100,7 +100,7 @@ router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
             return res.json({ message: 'story destroyed' })
         }
     } catch (e) {
-        return res.json({ message: 'could not destroy' })
+        return res.json({ message: 'could not destroy story' })
     }
 }))
 

@@ -20,7 +20,7 @@ const commentValidators = [
 
 //ROUTES
 //get all comments for a story
-router.get('/:storyId', restoreUser, asyncHandler(async(req, res) => {
+router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
     try {
         const storyId = req.params.storyId
         console.log(storyId)
@@ -35,7 +35,7 @@ router.get('/:storyId', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //create a comment
-router.post('/:storyId', restoreUser, requireAuth, commentValidators, asyncHandler(async(req, res) => {
+router.post('/:storyId(\\d+)', restoreUser, requireAuth, commentValidators, asyncHandler(async(req, res) => {
     try {
         const { userId, storyId, body } = req.body
 
@@ -58,7 +58,7 @@ router.post('/:storyId', restoreUser, requireAuth, commentValidators, asyncHandl
 }))
 
 //edit a comment
-router.put('/:commentId', restoreUser, commentValidators, asyncHandler(async(req, res) => {
+router.put('/:commentId(\\d+)', restoreUser, requireAuth, commentValidators, asyncHandler(async(req, res) => {
     try {
         const commentId = req.params.commentId
         const comment = await Comment.findByPk(commentId)
@@ -80,6 +80,18 @@ router.put('/:commentId', restoreUser, commentValidators, asyncHandler(async(req
 }))
 
 //delete a comment
+router.delete('/:commentId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+    try {
+        const commentId = req.params.commentId
+        const comment = await Comment.findByPk(commentId)
 
+        if (comment) {
+            await comment.destroy();
+            return res.json(comment.id)
+        }
+    } catch (e) {
+        return res.json({ message: 'could not destroy comment' })
+    }
+}))
 
 module.exports = router;
