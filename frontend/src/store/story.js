@@ -87,7 +87,7 @@ export const editAStory = (story) => async dispatch => {
     const res = await csrfFetch(`/api/stories/${story.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: story.title, body: story.body })
+        body: JSON.stringify({ title: story.title, body: story.body, imageUrl: story.imageUrl})
     })
 
     if (res.ok) {
