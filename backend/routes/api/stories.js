@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator');
 //file imports
 const { Story, User, Comment } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { handleValidationErrors } = require('../../utils/validation');
+// const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
@@ -37,7 +37,6 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
                 ['createdAt', 'DESC'],
             ]
         });
-
         return res.json(stories)
     } catch (e) {
         return res.json({ message: 'Missing stories? Spooky...' })
@@ -45,11 +44,10 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //Post new story
-router.post('/', restoreUser, storyValidators, asyncHandler(async(req, res) => {
+router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(req, res) => {
     try {
         const { authorId, title, body, imageUrl } = req.body
 
-        // handleValidationErrors(req)
         const validatorErrors = validationResult(req)
 
         if (validatorErrors.isEmpty()) {
@@ -62,7 +60,8 @@ router.post('/', restoreUser, storyValidators, asyncHandler(async(req, res) => {
             return res.json(newStory)
         } else {
             const errors = validatorErrors.array().map(err => err.msg)
-            return res.json({error: errors})
+
+            return res.json({title: 'Validation Failed', errors })
         }
     } catch (e) {
         return res.json({ message: 'no story for you' })
@@ -70,20 +69,29 @@ router.post('/', restoreUser, storyValidators, asyncHandler(async(req, res) => {
 }))
 
 //Edit an existing story
-router.put('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+router.put('/:storyId(\\d+)', restoreUser, storyValidators, asyncHandler(async(req, res) => {
     try {
         const storyId = req.params.storyId
         const story = await Story.findByPk(storyId)
         const { title, body, imageUrl } = req.body
-        const editedStory = await story.update({ title, body, imageUrl })
-        return res.json(editedStory)
+
+        const validatorErrors = validationResult(req)
+
+        if (validatorErrors.isEmpty()) {
+            const editedStory = await story.update({ title, body, imageUrl })
+
+            return res.json(editedStory)
+        } else {
+            const errors = validatorErrors.array().map(err => err.msg)
+
+            return res.json({title: 'Validation Failed', errors })
+        }
     } catch (e) {
-        //todo: better err handling
         return res.json({ message: 'could not find that story' })
     }
 }))
 
-//Todo: Delete an existing story
+//Delete an existing story
 router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
     try {
         const storyId = req.params.storyId
