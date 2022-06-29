@@ -63,6 +63,7 @@ function Story() {
         story ?
             <div key={story.id} className='story-container'>
                 <h2 className='story-title'>{story.title}</h2>
+                {story.User && <h3 className='story-author'>by {story.User.username}</h3>}
                 <p className='story-body'>{story.body}</p>
                 {editButton}
                 {showEditForm && cancelEditButton}

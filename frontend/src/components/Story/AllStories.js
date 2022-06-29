@@ -13,19 +13,20 @@ function AllStories() {
     }, [dispatch])
 
     return (
-        Object.values(stories).map(story => (
-            <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
-                <div className='story-container' key={story.id}>
-                    <h2>{story.title}</h2>
-                    <h3>{story.User.username}</h3>
-                    <p>{story.body}</p>
-                    <p>{Object.keys(story.Comments).length} comments</p>
-                </div>
-            </Link>
-            // <div onClick={(e) => handleStoryClick(e)}>
-            //     <Story story={story}/>
-            // </div>
-        ))
+        (stories &&
+            Object.values(stories).map(story => (
+                <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
+                    <div className='story-container'
+                        key={story.id}
+                        style={{borderBottom: '1px solid black'}}>
+                        <h2 className='story-title'>{story.title}</h2>
+                        {story.User && <h3>by {story.User.username}</h3>}
+                        <p>{story.body}</p>
+                        <p>{Object.keys(story.Comments).length} comments</p>
+                    </div>
+                </Link>
+            ))
+        )
     )
 }
 

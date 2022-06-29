@@ -118,21 +118,27 @@ const storyReducer = (state = {}, action) => {
     let newState;
     switch(action.type) {
         case READ_STORIES:
-            // console.log(action.stories)
-            // const dStories = {stories}
-            // const newStories = []
-            // dStories.forEach(story => {
-            //     newStories.push({story.id: story})
-            // })
             let comments = {}
+            // console.log(action.stories[6].Comments)
             newState = {...state}
             action.stories.forEach(story => {
                 newState[story.id] = story;
                 story.Comments.forEach(comment => {
-                    comments[comment.id] = comment
+                    comments = comment
                 })
-                story.Comments = comments
+                newState[story.id]['comments'] = comments
+                // newState[story.id].Comments.forEach(comment => {
+                //     comments[comment.id] = comment
+                //     newState[story.id].Comments = comments
+                // })
             })
+            // newState[story.id].Comments.forEach(comment => {
+
+            // })
+            // action.stories.Comments.forEach(comment => {
+            //     comments[comment.id] = comment
+            // })
+            // action.stories.Comments = comments
             return newState
         case CREATE_STORY:
             // console.log(action.story.id)
