@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import commentReducer from './comment';
 import sessionReducer from './session';
 import storyReducer from './story';
 
 //all other reducers go in here
 const rootReducer = combineReducers({
   session: sessionReducer,
-  story: storyReducer
+  story: storyReducer,
+  comment: commentReducer
 });
 
 //setting up env enhancers
