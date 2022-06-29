@@ -39,7 +39,7 @@ function Story() {
     }
 
     let editButton, deleteButton, cancelEditButton
-    if (story) {
+    if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
                 // <Link to={`/stories/${storyId}/edit`}>
