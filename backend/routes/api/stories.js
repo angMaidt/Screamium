@@ -9,7 +9,7 @@ const { requireAuth, restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
-//Story Validators
+//VALIDATORS
 const storyValidators = [
     check('title')
         .exists({ checkFalsy: true })
@@ -69,7 +69,7 @@ router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(r
 }))
 
 //Edit an existing story
-router.put('/:storyId(\\d+)', restoreUser, storyValidators, asyncHandler(async(req, res) => {
+router.put('/:storyId(\\d+)', restoreUser, requireAuth, storyValidators, asyncHandler(async(req, res) => {
     try {
         const storyId = req.params.storyId
         const story = await Story.findByPk(storyId)
