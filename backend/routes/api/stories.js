@@ -83,7 +83,7 @@ router.put('/:storyId(\\d+)', restoreUser, requireAuth, storyValidators, asyncHa
         } else {
             const errors = validatorErrors.array().map(err => err.msg)
 
-            return res.json({title: 'Validation Failed', errors })
+            return res.json({error: 'Validation Failed', errors })
         }
     } catch (e) {
         return res.json({ message: 'could not find that story' })

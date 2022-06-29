@@ -35,7 +35,7 @@ router.get('/:storyId', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //create a comment
-router.post('/:storyId', restoreUser, commentValidators, asyncHandler(async(req, res) => {
+router.post('/:storyId', restoreUser, requireAuth, commentValidators, asyncHandler(async(req, res) => {
     try {
         const { userId, storyId, body } = req.body
 
@@ -52,13 +52,32 @@ router.post('/:storyId', restoreUser, commentValidators, asyncHandler(async(req,
             const errors = validatorErrors.array().map(err => err.msg)
             return res.json({ error: 'Validation Failed', errors })
         }
-
     } catch (e) {
         return res.json({ message: 'unable to make comment at this time' })
     }
 }))
 
 //edit a comment
+router.put('/:commentId', restoreUser, commentValidators, asyncHandler(async(req, res) => {
+    try {
+        const commentId = req.params.commentId
+        const comment = await Comment.findByPk(commentId)
+        const { userId, storyId, body } = req.body
+
+        const validatorErrors = validationResult(req)
+
+        if (validatorErrors.isEmpty()) {
+            const editedComment = await comment.update({ userId, storyId, body })
+
+            return res.json(editedComment)
+        } else {
+            const errors = validatorErrors.array().map(err => err.msg)
+            return res.json({ error: 'Validation failed', errors })
+        }
+    } catch (e) {
+        return res.json({ message: 'Could not edit comment at this time' })
+    }
+}))
 
 //delete a comment
 
