@@ -3,7 +3,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 //file imports
-const { Story, User, Comment } = require('../../db/models');
+const { User, Comment } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
@@ -53,7 +53,7 @@ router.post('/:storyId(\\d+)', restoreUser, requireAuth, commentValidators, asyn
             return res.json({ error: 'Validation Failed', errors })
         }
     } catch (e) {
-        return res.json({ message: 'unable to make comment at this time' })
+        return res.json({ message: 'Unable to make comment at this time' })
     }
 }))
 
@@ -80,7 +80,7 @@ router.put('/:commentId(\\d+)', restoreUser, requireAuth, commentValidators, asy
 }))
 
 //delete a comment
-router.delete('/:commentId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
+router.delete('/:commentId(\\d+)', restoreUser, requireAuth, asyncHandler(async(req, res) => {
     try {
         const commentId = req.params.commentId
         const comment = await Comment.findByPk(commentId)
@@ -90,7 +90,7 @@ router.delete('/:commentId(\\d+)', restoreUser, asyncHandler(async(req, res) => 
             return res.json(comment.id)
         }
     } catch (e) {
-        return res.json({ message: 'could not destroy comment' })
+        return res.json({ message: 'Could not destroy comment' })
     }
 }))
 
