@@ -92,7 +92,6 @@ export const editAStory = (story) => async dispatch => {
 
     if (res.ok) {
         const editedStory = res.json()
-        // console.log(editedStory)
         dispatch(editStory(editedStory))
         return res
     }

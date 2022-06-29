@@ -41,10 +41,8 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                // <Link to={`/stories/${storyId}/edit`}>
-                    <button onClick={(e) => setShowEditForm(true)}
-                    >Edit</button>
-                // </Link>
+                <button onClick={(e) => setShowEditForm(true)}
+                >Edit</button>
             )
             cancelEditButton = (
                 <button onClick={(e) => setShowEditForm(false)}
@@ -76,7 +74,7 @@ function Story() {
             </div>
         :
             <div>
-                "Uh-oh, looks like this story doesn't exist! Go back to"
+                "Uh-oh, looks like this story doesn't exist! Go back to
                     <Link to='/stories' id='stories-link'>
                         Stories
                     </Link>
