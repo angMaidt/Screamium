@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createNewStory } from '../../store/story';
 
+export const defaultImage = 'https://cdn.thecollector.com/wp-content/uploads/2022/03/caravaggio-medusa-detail.jpg'
+
 function StoryForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user);
 
-    const defaultImage = 'https://cdn.thecollector.com/wp-content/uploads/2022/03/caravaggio-medusa-detail.jpg'
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');

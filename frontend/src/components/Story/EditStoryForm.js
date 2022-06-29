@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editAStory, getAllStories } from '../../store/story';
+import { defaultImage } from './StoryForm'
 
 function EditStoryForm({ setShowEditForm }) {
     const dispatch = useDispatch()
-    const defaultImage = 'https://cdn.thecollector.com/wp-content/uploads/2022/03/caravaggio-medusa-detail.jpg'
 
     const { storyId } = useParams()
     const story = useSelector(state => state.story[storyId])
