@@ -3,22 +3,22 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
    return queryInterface.bulkInsert('Comments', [{
-     userId: 7,
-     storyId: 55,
+     userId: 1,
+     storyId: 3,
      body: 'this story made me pee myself super spooky',
      createdAt: new Date(),
      updatedAt: new Date()
    },
    {
-    userId: 9,
-    storyId: 55,
+    userId: 2,
+    storyId: 3,
     body: 'thank you @ Demo-lition, I worked weally hard on it uwu',
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
-    userId: 9,
-    storyId: 56,
+    userId: 3,
+    storyId: 4,
     body: 'boring and not spooky at all :p',
     createdAt: new Date(),
     updatedAt: new Date()

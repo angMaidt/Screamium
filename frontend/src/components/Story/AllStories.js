@@ -29,7 +29,7 @@ function AllStories() {
                             <h2 className='story-title'>{story.title}</h2>
                             {story.User && <h3 className='story-username'>by {story.User.username}</h3>}
                             <div className='story-body-container'>
-                                <p className='story-body'>{story.body}</p>
+                                <p className='story-body stories'>{story.body}</p>
                             </div>
                             <div className='story-footer-elements-container'>
                                 <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>

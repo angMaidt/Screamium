@@ -51,11 +51,12 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
 //Post new story
 router.post('/', restoreUser, asyncHandler(async(req, res) => {
     try {
-        const { authorId, title, body } = req.body
+        const { authorId, title, body, imageUrl } = req.body
         const newStory = await Story.create({
             authorId,
             title,
-            body
+            body,
+            imageUrl
         })
         // console.log(newStory)
         return res.json(newStory)

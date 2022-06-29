@@ -8,12 +8,10 @@ import EditStoryForm from './EditStoryForm';
 
 function Story() {
     const dispatch = useDispatch();
-    // const history = useHistory();
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
     const [showEditForm, setShowEditForm] = useState(false);
-    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -63,8 +61,13 @@ function Story() {
     return (
         story ?
             <div className='story-container individual'>
+                {story.User && <h3 className='story-author'>{story.User.username}</h3>}
                 <h2 className='story-title'>{story.title}</h2>
-                {story.User && <h3 className='story-author'>by {story.User.username}</h3>}
+                {story.imageUrl &&
+                    <div className='story-image-container'
+                    style={{backgroundImage: `url(${story.imageUrl})`}}>
+                    </div>
+                }
                 <p className='story-body'>{story.body}</p>
                 {editButton}
                 {showEditForm && cancelEditButton}

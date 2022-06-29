@@ -13,6 +13,7 @@ module.exports = {
     'imageUrl',
     {
       type: Sequelize.STRING,
+      allowNull: false
     }
    );
   },
@@ -24,6 +25,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.removeColumn('Stories', 'image-url');
+   return queryInterface.removeColumn('Stories', 'imageUrl');
   }
 };
