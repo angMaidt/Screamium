@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { createNewComment, editAComment, getAllComments } from '../../store/comment';
 
-function CommentForm ({ storyId }) {
+function CommentForm () {
     const dispatch = useDispatch();
+    const { storyId } = useParams();
     const [body, setBody] = useState('');
     const [hasSubmitted, setHasSubmitted] = useState(false);
 

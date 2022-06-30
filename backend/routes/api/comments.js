@@ -42,11 +42,17 @@ router.post('/:storyId(\\d+)', restoreUser, requireAuth, commentValidators, asyn
         const validatorErrors = validationResult(req)
 
         if (validatorErrors.isEmpty()) {
-            const newComment = await Comment.create({
+            const comment = await Comment.create({
                 userId,
                 storyId,
                 body
             })
+
+            const newComment = await Comment.findOne({
+                where: { id: comment.id },
+                include: User
+            })
+
             return res.json(newComment)
         } else {
             const errors = validatorErrors.array().map(err => err.msg)

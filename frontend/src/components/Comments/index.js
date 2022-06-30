@@ -15,10 +15,10 @@ function Comments ({ visible, storyComments, storyId }) {
                 </div>
             :
             <div className='comment-wrapper'>
-                <CommentForm storyId={storyId}/>
+                <CommentForm />
                 {storyComments.map(comment => (
                     <div className='comment-container' key={comment.id}>
-                        <h5 className='comment-username'>{comment.User.username}</h5>
+                        {comment.User && <h5 className='comment-username'>{comment.User.username}</h5>}
                         {/* <p className='time-since-posted'></p> */}
                         <p className='comment-body'>{comment.body}</p>
                     </div>
