@@ -49,13 +49,6 @@ const deleteComment = (commentId) => {
     }
 }
 
-//reset comment store
-const resetComments = () => {
-    return {
-        type: RESET_COMMENTS,
-    }
-}
-
 //THUNKS
 //get all comments
 export const getAllComments = (storyId) => async dispatch => {
@@ -120,11 +113,6 @@ export const destroyAComment = (commentId) => async dispatch => {
     //todo: if res not okay, render err message
 }
 
-//reset comments
-export const resetAllComments = () => async dispatch => {
-    dispatch(resetComments())
-}
-
 //REDUCER
 const commentReducer = (state = {}, action) => {
     let newState;
@@ -152,9 +140,6 @@ const commentReducer = (state = {}, action) => {
         case DELETE_A_COMMENT:
             newState = { ...state }
             delete newState[action.commentId]
-            return newState
-        case RESET_COMMENTS:
-            newState = {}
             return newState
         default:
             return state

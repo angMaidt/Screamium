@@ -12,7 +12,7 @@ function Story() {
     const dispatch = useDispatch();
     const location = useLocation();
     const { storyId } = useParams();
-    console.log(storyId)
+    // console.log(storyId)
 
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
@@ -23,8 +23,8 @@ function Story() {
 
     useEffect(() => {
         const fetchData = async () => {
-            await dispatch(getAllComments(storyId))
             await dispatch(getAllStories())
+            await dispatch(getAllComments(storyId))
         }
         fetchData().catch(console.error)
     }, [dispatch])
@@ -72,7 +72,7 @@ function Story() {
     const storyComments = Object.values(comments).filter(comment => {
         return comment.storyId === Number(storyId)
     })
-    console.log(storyComments)
+    // console.log(storyComments)
 
     return (
         story ?
@@ -102,7 +102,7 @@ function Story() {
                 <div className='comment-side-panel'
                     style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
                 >
-                    <Comments visible={viewComments} comments={storyComments}/>
+                    <Comments visible={viewComments} storyComments={storyComments} storyId={storyId}/>
                 </div>
             </div>
         :
