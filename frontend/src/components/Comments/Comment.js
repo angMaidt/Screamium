@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import EditCommentForm from '../EditCommentForm'
+
 function Comment ({ comment }) {
     const [showEditForm, setShowEditForm] = useState(false);
 
@@ -21,6 +23,9 @@ function Comment ({ comment }) {
                         <button id={`edit-button-${comment.id}`} onClick={(e) => handleEditClick(e)}>Edit</button>
                         <button>Delete</button>
                     </div>
+                }
+                {showEditForm &&
+                    <EditCommentForm comment={comment}/>
                 }
             </div>
         </div>
