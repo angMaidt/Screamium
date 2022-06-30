@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link, Redirect } from 'react-router-dom';
+import { useParams, Link, Redirect, useLocation } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
@@ -10,17 +10,25 @@ import Comments from '../Comments'
 
 function Story() {
     const dispatch = useDispatch();
+    const location = useLocation();
     const { storyId } = useParams();
+    console.log(storyId)
+
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
     const comments = useSelector(state => state.comment)
+
     const [showEditForm, setShowEditForm] = useState(false);
     const [viewComments, setViewComments] = useState(false);
 
     useEffect(() => {
-        dispatch(getAllStories())
-        dispatch(getAllComments(storyId))
+        const fetchData = async () => {
+            await dispatch(getAllComments(storyId))
+            await dispatch(getAllStories())
+        }
+        fetchData().catch(console.error)
     }, [dispatch])
+
 
     useEffect(() => {
         if(showEditForm) setShowEditForm(false)
@@ -61,6 +69,11 @@ function Story() {
         }
     }
 
+    const storyComments = Object.values(comments).filter(comment => {
+        return comment.storyId === Number(storyId)
+    })
+    console.log(storyComments)
+
     return (
         story ?
             <div className='story-view'>
@@ -81,7 +94,7 @@ function Story() {
                             <button
                             id='show-comments'
                             onClick={() => setViewComments(!viewComments)}>
-                                {Object.keys(comments).length} Comments
+                            {storyComments.length} Comments
                             </button>
                     }
                 </div>
@@ -89,7 +102,7 @@ function Story() {
                 <div className='comment-side-panel'
                     style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
                 >
-                    <Comments visible={viewComments} comments={comments}/>
+                    <Comments visible={viewComments} comments={storyComments}/>
                 </div>
             </div>
         :
