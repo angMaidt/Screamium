@@ -14,6 +14,7 @@ function EditCommentForm ({ comment, setShowEditForm }) {
         e.preventDefault()
 
         const editedComment = {
+            id: comment.id,
             userId: user.id,
             storyId,
             body

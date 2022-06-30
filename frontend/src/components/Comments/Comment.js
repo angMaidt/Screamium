@@ -8,8 +8,10 @@ function Comment ({ comment }) {
 
     const user = useSelector(state => state.session.user);
 
+    let commentId;
     const handleEditClick = async (e) => {
-        console.log(e.currentTarget.id)
+        e.preventDefault();
+        // commentId = e.currentTarget.id
         setShowEditForm(true)
     }
 
