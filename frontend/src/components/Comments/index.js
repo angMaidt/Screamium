@@ -5,7 +5,7 @@ function Comments ({ visible, comments }) {
     if (!visible) return null;
 
     return (
-        <div className='side-panel-container'>
+        <div className='comment-panel-container'>
             {!comments ?
                 <div className="empty-comments-container">
                     There are currently no responses for this story.
