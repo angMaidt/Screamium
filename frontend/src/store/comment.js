@@ -31,7 +31,7 @@ const createComment = (newComment) => {
 }
 
 //edit a comment
-const editComments = (editedComment) => {
+const editComment = (editedComment) => {
     return {
         type: EDIT_A_COMMENT,
         editedComment
@@ -39,12 +39,12 @@ const editComments = (editedComment) => {
 }
 
 //delete a comment
-// const readComments = () => {
-//     return {
-//         type: '',
-//         payload
-//     }
-// }
+const deleteComment = (commentId) => {
+    return {
+        type: DELETE_A_COMMENT,
+        commentId
+    }
+}
 //THUNKS
 //get all comments
 export const getAllComments = (storyId) => async dispatch => {
@@ -89,13 +89,25 @@ export const editAComment = (editedComment) => async dispatch => {
     if (res.ok) {
         const editedComment = await res.json()
         // console.log(editedComment)
-        dispatch(editComments(editedComment))
+        dispatch(editComment(editedComment))
         return res
     }
     //todo: if res not ok, render an error message
 }
 
 //delete a comment
+export const destroyAComment = (commentId) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const comment = await res.json()
+        dispatch(deleteComment(comment))
+        return res
+    }
+    //todo: if res not okay, render err message
+}
 
 //REDUCER
 const commentReducer = (state = {}, action) => {
@@ -116,14 +128,15 @@ const commentReducer = (state = {}, action) => {
             }
             return newState
         case EDIT_A_COMMENT:
-            console.log(action.editedComment)
             newState = {
                 ...state,
                 [action.editedComment.id]: action.editedComment
             }
             return newState
         case DELETE_A_COMMENT:
-            // return state
+            newState = { ...state }
+            delete newState[action.commentId]
+            return newState
         default:
             return state
     }

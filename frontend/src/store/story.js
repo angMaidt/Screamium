@@ -139,7 +139,6 @@ const storyReducer = (state = {}, action) => {
             return newState
         case DESTROY_STORY:
             newState = { ...state }
-            // console.log(newState)
             delete newState[action.storyId]
             return newState
         default:
