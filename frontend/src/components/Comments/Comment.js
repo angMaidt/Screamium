@@ -1,18 +1,25 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { destroyAComment } from '../../store/comment';
 
 import EditCommentForm from '../EditCommentForm'
 
 function Comment ({ comment }) {
-    const [showEditForm, setShowEditForm] = useState(false);
-
+    const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
 
-    let commentId;
+    const [showEditForm, setShowEditForm] = useState(false);
+
+    // let commentId;
     const handleEditClick = async (e) => {
         e.preventDefault();
         // commentId = e.currentTarget.id
         setShowEditForm(true)
+    }
+    const handleDeleteClick = async (e) => {
+        e.preventDefault()
+
+        await dispatch(destroyAComment(comment.id))
     }
 
     return (
@@ -22,8 +29,8 @@ function Comment ({ comment }) {
                 <p className='comment-body'>{comment.body}</p>
                 {user.id === comment.User.id &&
                     <div className='button-wrapper'>
-                        <button id={`edit-button-${comment.id}`} onClick={(e) => handleEditClick(e)}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={(e) => handleEditClick(e)}>Edit</button>
+                        <button onClick={(e) => handleDeleteClick(e)}>Delete</button>
                     </div>
                 }
                 {showEditForm &&
