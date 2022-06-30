@@ -29,11 +29,11 @@ function CommentForm () {
         <div className='comment-form-container' style={{border:'solid 1px red'}}>
             {showCommentForm &&
             <div className='comment-form-wrapper'>
-                <div>
-                    <h4 htmlFor='user-name'>{user.username}</h4>
+                <div className='comment-form-username'>
+                    <h4 htmlFor='username'>{user.username}</h4>
                 </div>
                 <form className='comment-form'
-                onSubmit={handleSubmit}>
+                    onSubmit={handleSubmit}>
                     <input
                         type='text'
                         placeholder='What are your thoughts?'
@@ -46,12 +46,14 @@ function CommentForm () {
                     >Respond</button>
                     <button
                         onClick={() => setShowCommentForm(false)}
+                        type='button'
                     >Cancel</button>
                 </form>
             </div>
             }
             {!showCommentForm &&
-                <div className='dummy-comment-form-container'>
+                <div className='dummy-comment-form-container'
+                    onSubmit={null}>
                     <form className='dummy-comment-form'>
                         <input
                         type='text'
