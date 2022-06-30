@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getAllStories } from '../../store/story'
+import { defaultImage } from './StoryForm';
 import './AllStories.css'
 
 function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
+
+    const [imageSrc, setImgSrc] = useState();
 
     useEffect(() => {
         dispatch(getAllStories())

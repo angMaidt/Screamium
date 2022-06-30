@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Link, Redirect } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
+import { getAllComments } from '../../store/comment'
 import EditStoryForm from './EditStoryForm';
+import Comments from '../Comments'
 
 function Story() {
     const dispatch = useDispatch();
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
+    const comments = useSelector(state => state.comment)
     const [showEditForm, setShowEditForm] = useState(false);
+    const [viewComments, setViewComments] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
+        dispatch(getAllComments(storyId))
     }, [dispatch])
 
     useEffect(() => {
@@ -41,10 +46,8 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                // <Link to={`/stories/${storyId}/edit`}>
-                    <button onClick={(e) => setShowEditForm(true)}
-                    >Edit</button>
-                // </Link>
+                <button onClick={(e) => setShowEditForm(true)}
+                >Edit</button>
             )
             cancelEditButton = (
                 <button onClick={(e) => setShowEditForm(false)}
@@ -60,23 +63,38 @@ function Story() {
 
     return (
         story ?
-            <div className='story-container individual'>
-                {story.User && <h3 className='story-author'>{story.User.username}</h3>}
-                <h2 className='story-title'>{story.title}</h2>
-                {story.imageUrl &&
-                    <div className='story-image-container'
-                    style={{backgroundImage: `url(${story.imageUrl})`}}>
-                    </div>
-                }
-                <p className='story-body'>{story.body}</p>
-                {editButton}
-                {showEditForm && cancelEditButton}
-                {deleteButton}
-                {editForm}
+            <div className='story-view'>
+                <div className='story-main-area'>
+                    {story.User && <h3 className='story-author'>{story.User.username}</h3>}
+                    <h2 className='story-title'>{story.title}</h2>
+                    {story.imageUrl &&
+                        <div className='story-image-container'
+                        style={{backgroundImage: `url(${story.imageUrl})`}}>
+                        </div>
+                    }
+                    <p className='story-body'>{story.body}</p>
+                    {editButton}
+                    {showEditForm && cancelEditButton}
+                    {deleteButton}
+                    {editForm}
+                    {comments &&
+                            <button
+                            id='show-comments'
+                            onClick={() => setViewComments(!viewComments)}>
+                                {Object.keys(comments).length} Comments
+                            </button>
+                    }
+                </div>
+                {viewComments && <div className='site-blocker' onClick={() => setViewComments(!viewComments)}></div>}
+                <div className='comment-side-panel'
+                    style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
+                >
+                    <Comments visible={viewComments} comments={comments}/>
+                </div>
             </div>
         :
             <div>
-                "Uh-oh, looks like this story doesn't exist! Go back to"
+                "Uh-oh, looks like this story doesn't exist! Go back to
                     <Link to='/stories' id='stories-link'>
                         Stories
                     </Link>

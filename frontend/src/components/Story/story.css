@@ -1,3 +1,22 @@
-/* .story-container.individual {
-    background-color: red;
-} */
+.story-view {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.site-blocker {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(187, 187, 187, 0.3);
+    /* backdrop-filter: blur(1px); */
+}
+
+.comment-side-panel {
+    height: 100vh;
+    width: auto;
+    position: fixed;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+}

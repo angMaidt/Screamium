@@ -61,7 +61,7 @@ export const createNewStory = (newStory) => async dispatch => {
     if (res.ok) {
         const newStory = await res.json()
         dispatch(createStory(newStory))
-        return newStory
+        return res
     }
     //todo: if res not okay, render error message
 }
@@ -72,8 +72,6 @@ export const getAllStories = () => async dispatch => {
 
     if (res.ok) {
         const stories = await res.json()
-        // console.log(stories)
-        // console.log({stories})
         dispatch(readAllStories(stories))
         return res
     }
@@ -91,8 +89,7 @@ export const editAStory = (story) => async dispatch => {
     })
 
     if (res.ok) {
-        const editedStory = res.json()
-        // console.log(editedStory)
+        const editedStory = await res.json()
         dispatch(editStory(editedStory))
         return res
     }
@@ -109,6 +106,7 @@ export const destroyAStory = (storyId) => async dispatch => {
     if (res.ok) {
         dispatch(deleteStory(storyId))
         // history.push('/stories')
+        return res
     }
     //todo: if res not okay, render err message
 }
@@ -118,23 +116,13 @@ const storyReducer = (state = {}, action) => {
     let newState;
     switch(action.type) {
         case READ_STORIES:
-            let comments = {}
-            // console.log(action.stories[6].Comments)
-            newState = {...state}
+            newState = { ...state }
             action.stories.forEach(story => {
                 newState[story.id] = story;
-                // story.Comments.forEach(comment => {
-                //     comments = comment
-                // })
-                // newState[story.id]['comments'] = comments
-                // newState[story.id].Comments.forEach(comment => {
-                //     comments[comment.id] = comment
-                //     newState[story.id].Comments = comments
-                // })
             })
             return newState
         case CREATE_STORY:
-            // console.log(action.story.id)
+            // console.log(action.story)
             if (!state[action.story.id]) {
                 newState = {
                     ...state,
@@ -151,7 +139,6 @@ const storyReducer = (state = {}, action) => {
             return newState
         case DESTROY_STORY:
             newState = { ...state }
-            // console.log(newState)
             delete newState[action.storyId]
             return newState
         default:
