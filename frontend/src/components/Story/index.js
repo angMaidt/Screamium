@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Link, Redirect } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
+import { getAllComments } from '../../store/comment'
 import EditStoryForm from './EditStoryForm';
 
 function Story() {
@@ -11,10 +12,13 @@ function Story() {
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
+    const comments = useSelector(state => state.comment)
     const [showEditForm, setShowEditForm] = useState(false);
+    const [sideOpen, setSideOpen] = useState(false)
 
     useEffect(() => {
         dispatch(getAllStories())
+        dispatch(getAllComments(storyId))
     }, [dispatch])
 
     useEffect(() => {
@@ -71,6 +75,12 @@ function Story() {
                 {showEditForm && cancelEditButton}
                 {deleteButton}
                 {editForm}
+                {comments &&
+                    <button
+                    id='show-comments'
+                    onClick={() => setSideOpen(true)}>
+                        {Object.keys(comments).length} Comments
+                    </button>}
             </div>
         :
             <div>
