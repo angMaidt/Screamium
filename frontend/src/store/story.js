@@ -61,7 +61,7 @@ export const createNewStory = (newStory) => async dispatch => {
     if (res.ok) {
         const newStory = await res.json()
         dispatch(createStory(newStory))
-        return newStory
+        return res
     }
     //todo: if res not okay, render error message
 }
@@ -72,8 +72,6 @@ export const getAllStories = () => async dispatch => {
 
     if (res.ok) {
         const stories = await res.json()
-        // console.log(stories)
-        // console.log({stories})
         dispatch(readAllStories(stories))
         return res
     }
@@ -91,7 +89,7 @@ export const editAStory = (story) => async dispatch => {
     })
 
     if (res.ok) {
-        const editedStory = res.json()
+        const editedStory = await res.json()
         dispatch(editStory(editedStory))
         return res
     }
@@ -108,6 +106,7 @@ export const destroyAStory = (storyId) => async dispatch => {
     if (res.ok) {
         dispatch(deleteStory(storyId))
         // history.push('/stories')
+        return res
     }
     //todo: if res not okay, render err message
 }
@@ -123,7 +122,7 @@ const storyReducer = (state = {}, action) => {
             })
             return newState
         case CREATE_STORY:
-            // console.log(action.story.id)
+            // console.log(action.story)
             if (!state[action.story.id]) {
                 newState = {
                     ...state,

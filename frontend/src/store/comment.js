@@ -31,12 +31,12 @@ const createComment = (newComment) => {
 }
 
 //edit a comment
-// const readComments = () => {
-//     return {
-//         type: '',
-//         payload
-//     }
-// }
+const editComments = (editedComment) => {
+    return {
+        type: EDIT_A_COMMENT,
+        editedComment
+    }
+}
 
 //delete a comment
 // const readComments = () => {
@@ -72,12 +72,28 @@ export const createNewComment = (newComment) => async dispatch => {
     if (res.ok) {
         const newComment = await res.json()
         dispatch(createComment(newComment))
-        return newComment
+        return res
     }
     //todo: if res not okay, render error message
 }
 
 //edit a comment
+export const editAComment = (editedComment) => async dispatch => {
+
+    const res = await csrfFetch(`/api/comments/${editedComment.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: editedComment.userId, storyId: editedComment.storyId, body: editedComment.body })
+    })
+
+    if (res.ok) {
+        const editedComment = await res.json()
+        // console.log(editedComment)
+        dispatch(editComments(editedComment))
+        return res
+    }
+    //todo: if res not ok, render an error message
+}
 
 //delete a comment
 
@@ -100,7 +116,12 @@ const commentReducer = (state = {}, action) => {
             }
             return newState
         case EDIT_A_COMMENT:
-            // return state
+            console.log(action.editedComment)
+            newState = {
+                ...state,
+                [action.editedComment.id]: action.editedComment
+            }
+            return newState
         case DELETE_A_COMMENT:
             // return state
         default:
