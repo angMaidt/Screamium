@@ -85,8 +85,10 @@ function Story() {
                             </button>
                     }
                 </div>
-                <div className='comment-side-panel'>
-                    <div className='comment-side-panel-toggle-wrapper'></div>
+                {viewComments && <div className='site-blocker' onClick={() => setViewComments(!viewComments)}></div>}
+                <div className='comment-side-panel'
+                    style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
+                >
                     <Comments visible={viewComments} comments={comments}/>
                 </div>
             </div>
