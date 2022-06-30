@@ -87,8 +87,8 @@ function Story() {
                 </div>
                 <div className='comment-side-panel'>
                     <div className='comment-side-panel-toggle-wrapper'></div>
+                    <Comments visible={viewComments} comments={comments}/>
                 </div>
-                <Comments visible={viewComments} comments={comments}/>
             </div>
         :
             <div>
