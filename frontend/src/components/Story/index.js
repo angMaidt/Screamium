@@ -6,6 +6,7 @@ import './story.css';
 import { destroyAStory, getAllStories } from '../../store/story';
 import { getAllComments } from '../../store/comment'
 import EditStoryForm from './EditStoryForm';
+import Comments from '../Comments'
 
 function Story() {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function Story() {
     const story = useSelector(state => state.story[storyId]);
     const comments = useSelector(state => state.comment)
     const [showEditForm, setShowEditForm] = useState(false);
-    const [sideOpen, setSideOpen] = useState(false)
+    const [viewComments, setViewComments] = useState(false);
 
     useEffect(() => {
         dispatch(getAllStories())
@@ -62,25 +63,32 @@ function Story() {
 
     return (
         story ?
-            <div className='story-container individual'>
-                {story.User && <h3 className='story-author'>{story.User.username}</h3>}
-                <h2 className='story-title'>{story.title}</h2>
-                {story.imageUrl &&
-                    <div className='story-image-container'
-                    style={{backgroundImage: `url(${story.imageUrl})`}}>
-                    </div>
-                }
-                <p className='story-body'>{story.body}</p>
-                {editButton}
-                {showEditForm && cancelEditButton}
-                {deleteButton}
-                {editForm}
-                {comments &&
-                    <button
-                    id='show-comments'
-                    onClick={() => setSideOpen(true)}>
-                        {Object.keys(comments).length} Comments
-                    </button>}
+            <div className='story-view'>
+                <div className='story-main-area'>
+                    {story.User && <h3 className='story-author'>{story.User.username}</h3>}
+                    <h2 className='story-title'>{story.title}</h2>
+                    {story.imageUrl &&
+                        <div className='story-image-container'
+                        style={{backgroundImage: `url(${story.imageUrl})`}}>
+                        </div>
+                    }
+                    <p className='story-body'>{story.body}</p>
+                    {editButton}
+                    {showEditForm && cancelEditButton}
+                    {deleteButton}
+                    {editForm}
+                    {comments &&
+                            <button
+                            id='show-comments'
+                            onClick={() => setViewComments(!viewComments)}>
+                                {Object.keys(comments).length} Comments
+                            </button>
+                    }
+                </div>
+                <div className='comment-side-panel'>
+                    <div className='comment-side-panel-toggle-wrapper'></div>
+                </div>
+                <Comments visible={viewComments} comments={comments}/>
             </div>
         :
             <div>
