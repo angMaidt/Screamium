@@ -18,8 +18,8 @@ function Story() {
     const story = useSelector(state => state.story[storyId]);
     const comments = useSelector(state => state.comment)
 
-    const [showEditForm, setShowEditForm] = useState(false);
     const [viewComments, setViewComments] = useState(false);
+    const [showCommentForm, setShowCommentForm] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,7 +31,7 @@ function Story() {
 
 
     useEffect(() => {
-        if(showEditForm) setShowEditForm(false)
+        if(showCommentForm) setShowCommentForm(false)
     },[])
 
     const handleDelete = async (e) => {
@@ -42,10 +42,10 @@ function Story() {
     }
 
     let editForm;
-    if (showEditForm) {
+    if (showCommentForm) {
         editForm = (
             <div>
-                <EditStoryForm setShowEditForm={setShowEditForm}/>
+                <EditStoryForm setShowCommentForm={setShowCommentForm}/>
             </div>
         )
     }
@@ -54,11 +54,11 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                <button onClick={(e) => setShowEditForm(true)}
+                <button onClick={(e) => setShowCommentForm(true)}
                 >Edit</button>
             )
             cancelEditButton = (
-                <button onClick={(e) => setShowEditForm(false)}
+                <button onClick={(e) => setShowCommentForm(false)}
                 >Cancel Edit</button>
             )
             deleteButton = (
@@ -87,7 +87,7 @@ function Story() {
                     }
                     <p className='story-body'>{story.body}</p>
                     {editButton}
-                    {showEditForm && cancelEditButton}
+                    {showCommentForm && cancelEditButton}
                     {deleteButton}
                     {editForm}
                     {comments &&

@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { createNewComment, editAComment, getAllComments } from '../../store/comment';
 
-function CommentForm () {
+function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
     const dispatch = useDispatch();
     const { storyId } = useParams();
-    const [body, setBody] = useState('');
+    const [body, setBody] = useState(commentFormMode === 'edit' ? comment.body : '');
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [showCommentForm, setShowCommentForm] = useState(true)
 
@@ -23,6 +23,11 @@ function CommentForm () {
             body
         }
         await dispatch(createNewComment(comment))
+    }
+
+    const handleCancel = () => {
+        setShowCommentForm(false)
+        if (commentFormMode === 'edit') setCommentFormMode('')
     }
 
     return (
@@ -45,7 +50,7 @@ function CommentForm () {
                         disabled={!body}
                     >Respond</button>
                     <button
-                        onClick={() => setShowCommentForm(false)}
+                        onClick={() => handleCancel()}
                         type='button'
                     >Cancel</button>
                 </form>
@@ -62,6 +67,9 @@ function CommentForm () {
                         ></input>
                     </form>
                 </div>
+            }
+            {!setShowCommentForm && !commentFormMode &&
+                <></>
             }
         </div>
     )
