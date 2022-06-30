@@ -8,7 +8,7 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
     const [hasSubmitted, setHasSubmitted] = useState(false);const dispatch = useDispatch();
     const { storyId } = useParams();
     const [body, setBody] = useState('');
-    const [showCommentForm, setShowCommentForm] = useState(true)
+    const [showCommentForm, setShowCommentForm] = useState(false);
 
     const user = useSelector(state => state.session.user);
 
@@ -23,10 +23,11 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
             body
         }
         await dispatch(createNewComment(comment))
+        setShowCommentForm(false)
     }
 
     return (
-        <div className='comment-form-container' style={{border:'solid 1px red'}}>
+        <div className='comment-form-container'>
             {showCommentForm &&
             <div className='comment-form-wrapper'>
                 <div className='comment-form-username'>

@@ -24,11 +24,8 @@ function EditCommentForm ({ comment, setShowEditForm }) {
     }
 
     return (
-         <div className='comment-form-container' style={{border:'solid 1px red'}}>
+         <div className='comment-form-container'>
             <div className='comment-form-wrapper'>
-                <div className='comment-form-username'>
-                    <h4 htmlFor='username'>{user.username}</h4>
-                </div>
                 <form className='comment-form'
                     onSubmit={handleSubmit}>
                     <input

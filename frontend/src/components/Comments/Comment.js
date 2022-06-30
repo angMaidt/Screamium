@@ -27,7 +27,7 @@ function Comment ({ comment }) {
                     </div>
                 }
                 {showEditForm &&
-                    <EditCommentForm comment={comment}/>
+                    <EditCommentForm comment={comment} setShowEditForm={setShowEditForm}/>
                 }
             </div>
         </div>
