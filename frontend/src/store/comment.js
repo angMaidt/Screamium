@@ -13,9 +13,6 @@ const EDIT_A_COMMENT = 'comment/editAComment'
 //delete a comment
 const DELETE_A_COMMENT = 'comment/deleteAComment'
 
-//reset store
-const RESET_COMMENTS = 'comment/resetComments'
-
 //ACTION CREATORS
 //get all comments
 const readComments = (comments) => {

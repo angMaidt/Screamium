@@ -2,20 +2,20 @@ import { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import CommentForm from '../CommentForm/commentForm';
+import CommentForm from '../CommentForm';
+import EditCommentForm from '../EditCommentForm';
 import './comments.css';
 //render an editcomment form
 
 function Comments ({ visible, storyComments }) {
     const user = useSelector(state => state.session.user);
     const [showEditForm, setShowEditForm] = useState(false);
-    const [commentFormMode, setCommentFormMode] = useState('');
 
     if (!visible) return null;
 
-    const handleEdit = () => {
+    const handleEditClick = async (e) => {
+        console.log(e.currentTarget.id)
         setShowEditForm(true)
-        setCommentFormMode('edit')
     }
 
     return (
@@ -30,31 +30,19 @@ function Comments ({ visible, storyComments }) {
                 <CommentForm />
                 {storyComments.map(comment => (
                     <div className='comment-container' key={comment.id}>
-                        {!showEditForm ?
-                            <div className='comment-wrapper'>
-                                <h5 className='comment-username'>{comment.User.username}</h5>
-                                <p className='comment-body'>{comment.body}</p>
-                                {user.id === comment.User.id &&
-                                    <div className='button-wrapper'>
-                                        <button onClick={() => setShowEditForm(true)}>Edit</button>
-                                        <button>Delete</button>
-                                    </div>
-                                }
-                            </div>
-                            :
-                            <CommentForm
-                                comment={comment}
-                                showEditForm={showEditForm}
-                                setShowEditForm={setShowEditForm}
-                                commentFormMode={commentFormMode}
-                                setCommentFormMode={setCommentFormMode}
-                                />
-                        }
+                        <div className='comment-wrapper'>
+                            <h5 className='comment-username'>{comment.User.username}</h5>
+                            <p className='comment-body'>{comment.body}</p>
+                            {user.id === comment.User.id &&
+                                <div className='button-wrapper'>
+                                    <button id={`edit-button-${comment.id}`} onClick={(e) => handleEditClick(e)}>Edit</button>
+                                    <button>Delete</button>
+                                </div>
+                            }
+                        </div>
                     </div>
-
-
-
                 ))}
+
             </div>
             }
         </div>

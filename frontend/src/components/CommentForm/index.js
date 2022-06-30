@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { createNewComment, editAComment, getAllComments } from '../../store/comment';
 
 function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
-    const dispatch = useDispatch();
+
+    const [hasSubmitted, setHasSubmitted] = useState(false);const dispatch = useDispatch();
     const { storyId } = useParams();
-    const [body, setBody] = useState(commentFormMode === 'edit' ? comment.body : '');
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [body, setBody] = useState('');
     const [showCommentForm, setShowCommentForm] = useState(true)
 
     const user = useSelector(state => state.session.user);
@@ -23,11 +23,6 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
             body
         }
         await dispatch(createNewComment(comment))
-    }
-
-    const handleCancel = () => {
-        setShowCommentForm(false)
-        if (commentFormMode === 'edit') setCommentFormMode('')
     }
 
     return (
@@ -50,7 +45,7 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                         disabled={!body}
                     >Respond</button>
                     <button
-                        onClick={() => handleCancel()}
+                        onClick={() => setShowCommentForm(false)}
                         type='button'
                     >Cancel</button>
                 </form>
@@ -67,9 +62,6 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                         ></input>
                     </form>
                 </div>
-            }
-            {!setShowCommentForm && !commentFormMode &&
-                <></>
             }
         </div>
     )

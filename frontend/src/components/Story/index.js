@@ -24,7 +24,7 @@ function Story() {
     useEffect(() => {
         const fetchData = async () => {
             await dispatch(getAllStories())
-            // await dispatch(getAllComments(storyId))
+            await dispatch(getAllComments(storyId))
         }
         fetchData().catch(console.error)
     }, [dispatch])
