@@ -4,9 +4,9 @@ import { useParams, Link, Redirect, useLocation } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
-import { getAllComments } from '../../store/comment'
+import { getAllComments } from '../../store/comment';
 import EditStoryForm from './EditStoryForm';
-import Comments from '../Comments'
+import CommentsView from '../Comments/CommentsView.js';
 
 function Story() {
     const dispatch = useDispatch();
@@ -102,7 +102,7 @@ function Story() {
                 <div className='comment-side-panel'
                     style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
                 >
-                    <Comments visible={viewComments} storyComments={storyComments} storyId={storyId}/>
+                    <CommentsView visible={viewComments} storyComments={storyComments} storyId={storyId}/>
                 </div>
             </div>
         :
