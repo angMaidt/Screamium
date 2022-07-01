@@ -1,21 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createNewComment, editAComment, getAllComments } from '../../store/comment';
+import { createNewComment } from '../../store/comment';
 
-function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
-
-    const [hasSubmitted, setHasSubmitted] = useState(false);const dispatch = useDispatch();
+function CommentForm () {
     const { storyId } = useParams();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
+
     const [body, setBody] = useState('');
     const [showCommentForm, setShowCommentForm] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
 
-    const user = useSelector(state => state.session.user);
+    //validators
+    useEffect(() => {
+        let errors = [];
+        if (body.length > 500) errors.push('Comment must be less than 500 characters')
+        setValidationErrors(errors);
+    }, [body])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        setHasSubmitted(true)
 
         const comment = {
             userId: user.id,
@@ -33,6 +39,16 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                 <div className='comment-form-username'>
                     <h4 htmlFor='username'>{user.username}</h4>
                 </div>
+                {validationErrors.length > 0 && (
+                    <div className='errors-container'>
+                        The following errors were found:
+                        <ul className='errors'>
+                            {validationErrors.map(error => (
+                                <li className='error' key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <form className='comment-form'
                     onSubmit={handleSubmit}>
                     <input
@@ -43,7 +59,7 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                     ></input>
                     <button
                         type='submit'
-                        disabled={!body}
+                        disabled={!body || validationErrors.length > 0}
                     >Respond</button>
                     <button
                         onClick={() => setShowCommentForm(false)}
