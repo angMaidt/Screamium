@@ -26,9 +26,21 @@ function NavBar({ isLoaded }){
   }
 
   return (
-    <div className='nav' id='nav-container'>
-      <div className='nav-wrapper'>
-        <h2>Screamium</h2>
+    <div className='nav' id='nav-wrapper'
+      style={{
+        backgroundColor: 'rgb(5, 4, 5)',
+        height: '70px',
+        width: '100vw',
+      }}>
+      <div className='nav-container'
+        style={{
+          position: 'fixed',
+          left: '0',
+          backgroundColor: 'rgb(5, 4, 5)',
+          height: '70px',
+          width: '100vw',
+        }}>
+          <h2>Screamium</h2>
         {isLoaded && sessionLinks}
       </div>
     </div>
