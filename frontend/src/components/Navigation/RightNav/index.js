@@ -36,12 +36,12 @@ function RightNav() {
                         </div>
                         <div style={{ color: 'white'}}>
                             <Link to='/dark-fantasy'>
-                                <h3>Weird Tales</h3>
+                                <h3>Dark Fantasy</h3>
                             </Link>
                         </div>
                         <div style={{ color: 'white'}}>
                             <Link to='/psychological'>
-                                <h3>Dark Fantasy</h3>
+                                <h3>Psychological</h3>
                             </Link>
                         </div>
                         <div style={{ color: 'white'}}>
@@ -51,12 +51,12 @@ function RightNav() {
                         </div>
                         <div style={{ color: 'white'}}>
                             <Link to='/supernatural'>
-                                <h3>Psychological</h3>
+                                <h3>Supernatural</h3>
                             </Link>
                         </div>
                         <div style={{ color: 'white'}}>
                             <Link to='/weird-tales'>
-                                <h3>Supernatural</h3>
+                                <h3>Weird Tales</h3>
                             </Link>
                         </div>
                     </div>
