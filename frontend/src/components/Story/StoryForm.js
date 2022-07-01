@@ -42,6 +42,7 @@ function StoryForm() {
     }
 
     return (
+        user ?
         <div className='total-form-container'>
             <h2>Publish a spooky story</h2>
             {hasSubmitted && validationErrors.length > 0 && (
@@ -88,6 +89,8 @@ function StoryForm() {
                 </form>
             </div>
         </div>
+        :
+        <div className='login-to-publish'>Login To Publish a Story!</div>
     )
 }
 
