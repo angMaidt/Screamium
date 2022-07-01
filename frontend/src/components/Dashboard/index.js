@@ -1,7 +1,7 @@
 import LeftNav from "../Navigation/LeftNav";
 import RightNav from "../Navigation/RightNav";
 import View from "../View";
-import './Dashboard.css'
+import './Dashboard.css';
 
 function Dashboard({ isLoaded }) {
     return (

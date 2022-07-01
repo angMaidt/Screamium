@@ -14,27 +14,23 @@ function NavBar({ isLoaded }){
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        <NavLink to='/stories/new'>Publish Story</NavLink>
       </>
     );
   } else {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup" style={{textDecoration: 'none'}}>Sign Up</NavLink>
+        <NavLink to="/signup" style={{ textDecoration: 'none'}}>Sign Up</NavLink>
       </>
     );
   }
 
   return (
     <div className='nav' id='nav-container'>
-      <ul>
-        <li>
-          <NavLink exact to="/" style={{textDecoration: 'none'}}>Home</NavLink>
-          <NavLink to='/stories' style={{textDecoration: 'none'}}>Stories</NavLink>
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
+      <div className='nav-wrapper'>
+        <h2>Screamium</h2>
+        {isLoaded && sessionLinks}
+      </div>
     </div>
   );
 }

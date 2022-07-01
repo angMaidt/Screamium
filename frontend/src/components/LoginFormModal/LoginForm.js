@@ -55,7 +55,10 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button
+        type="submit"
+        style={{ height:'20px' }}
+      >Log In</button>
       <button onClick={handleDemoLogin}>Demo-Login</button>
     </form>
   );
