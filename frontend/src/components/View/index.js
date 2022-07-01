@@ -9,6 +9,7 @@ import StoryForm from "../Story/StoryForm";
 import EditStoryForm from "../Story/EditStoryForm";
 import GenreCard from "../GenreCard";
 import StoryCard from "../Story/StoryCard";
+import MyStoriesView from "../Story/MyStoriesView";
 
 function View({ isLoaded }) {
     return (
@@ -34,7 +35,10 @@ function View({ isLoaded }) {
             <Story />
           </Route>
           <Route path='/stories/:storyId/edit'>
-            <EditStoryForm/>
+            <EditStoryForm />
+          </Route>
+          <Route path='/my-stories'>
+            <MyStoriesView />
           </Route>
           <Route path='/genres/:genreId'>
             {/* <GenreCard /> */}
