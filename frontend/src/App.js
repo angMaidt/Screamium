@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 //file imports
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
+import NavBar from "./components/Navigation/NavBar";
 import SignupFormPage from "./components/SignupFormPage";
 import AllStories from './components/Story/AllStories.js';
 import Story from './components/Story'
 import StoryForm from "./components/Story/StoryForm.js";
 import EditStoryForm from "./components/Story/EditStoryForm";
+import Dashboard from "./components/Dashboard/index.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,28 +21,8 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path='/'></Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path='/stories'>
-            <AllStories />
-          </Route>
-          <Route path='/stories/new'>
-            <StoryForm />
-          </Route>
-          <Route exact path='/stories/:storyId'>
-            <Story />
-          </Route>
-          <Route path='/stories/:storyId/edit'>
-            <EditStoryForm/>
-          </Route>
-          <Route>uh-oh, looks like you got lost in the woods again...</Route>
-        </Switch>
-      )}
+      <NavBar isLoaded={isLoaded} />
+      <Dashboard isLoaded={isLoaded}/>
     </>
   );
 }

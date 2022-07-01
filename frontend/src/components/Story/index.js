@@ -1,29 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link, Redirect } from 'react-router-dom';
+import { useParams, Link, Redirect, useLocation } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
-import { getAllComments } from '../../store/comment'
+import { getAllComments } from '../../store/comment';
 import EditStoryForm from './EditStoryForm';
-import Comments from '../Comments'
+import CommentsView from '../Comments/CommentsView.js';
 
 function Story() {
     const dispatch = useDispatch();
+    const location = useLocation();
     const { storyId } = useParams();
+    // console.log(storyId)
+
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
     const comments = useSelector(state => state.comment)
-    const [showEditForm, setShowEditForm] = useState(false);
+
     const [viewComments, setViewComments] = useState(false);
+    const [showCommentForm, setShowCommentForm] = useState(false);
 
     useEffect(() => {
-        dispatch(getAllStories())
-        dispatch(getAllComments(storyId))
+        const fetchData = async () => {
+            await dispatch(getAllStories())
+            await dispatch(getAllComments(storyId))
+        }
+        fetchData().catch(console.error)
     }, [dispatch])
 
+
     useEffect(() => {
-        if(showEditForm) setShowEditForm(false)
+        if(showCommentForm) setShowCommentForm(false)
     },[])
 
     const handleDelete = async (e) => {
@@ -34,10 +42,10 @@ function Story() {
     }
 
     let editForm;
-    if (showEditForm) {
+    if (showCommentForm) {
         editForm = (
             <div>
-                <EditStoryForm setShowEditForm={setShowEditForm}/>
+                <EditStoryForm setShowCommentForm={setShowCommentForm}/>
             </div>
         )
     }
@@ -46,11 +54,11 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                <button onClick={(e) => setShowEditForm(true)}
+                <button onClick={(e) => setShowCommentForm(true)}
                 >Edit</button>
             )
             cancelEditButton = (
-                <button onClick={(e) => setShowEditForm(false)}
+                <button onClick={(e) => setShowCommentForm(false)}
                 >Cancel Edit</button>
             )
             deleteButton = (
@@ -60,6 +68,10 @@ function Story() {
             )
         }
     }
+
+    const storyComments = Object.values(comments).filter(comment => {
+        return comment.storyId === Number(storyId)
+    })
 
     return (
         story ?
@@ -74,14 +86,14 @@ function Story() {
                     }
                     <p className='story-body'>{story.body}</p>
                     {editButton}
-                    {showEditForm && cancelEditButton}
+                    {showCommentForm && cancelEditButton}
                     {deleteButton}
                     {editForm}
                     {comments &&
                             <button
                             id='show-comments'
                             onClick={() => setViewComments(!viewComments)}>
-                                {Object.keys(comments).length} Comments
+                            {storyComments.length} Comments
                             </button>
                     }
                 </div>
@@ -89,7 +101,7 @@ function Story() {
                 <div className='comment-side-panel'
                     style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
                 >
-                    <Comments visible={viewComments} comments={comments}/>
+                    <CommentsView visible={viewComments} storyComments={storyComments} storyId={storyId}/>
                 </div>
             </div>
         :

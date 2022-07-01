@@ -39,6 +39,7 @@ function EditStoryForm({ setShowEditForm }) {
             body,
             imageUrl: imageUrl ? imageUrl : defaultImage
         }
+        console.log(editedStory)
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
         setShowEditForm(false)

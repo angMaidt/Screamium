@@ -13,10 +13,11 @@
 }
 
 .comment-side-panel {
-    height: 100vh;
+    height: 100%;
     width: auto;
     position: fixed;
     right: 0;
     background-color: white;
     z-index: 1;
+    overflow-y: scroll;
 }

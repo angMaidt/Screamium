@@ -42,11 +42,17 @@ router.post('/:storyId(\\d+)', restoreUser, requireAuth, commentValidators, asyn
         const validatorErrors = validationResult(req)
 
         if (validatorErrors.isEmpty()) {
-            const newComment = await Comment.create({
+            const comment = await Comment.create({
                 userId,
                 storyId,
                 body
             })
+
+            const newComment = await Comment.findOne({
+                where: { id: comment.id },
+                include: User
+            })
+
             return res.json(newComment)
         } else {
             const errors = validatorErrors.array().map(err => err.msg)
@@ -61,13 +67,18 @@ router.post('/:storyId(\\d+)', restoreUser, requireAuth, commentValidators, asyn
 router.put('/:commentId(\\d+)', restoreUser, requireAuth, commentValidators, asyncHandler(async(req, res) => {
     try {
         const commentId = req.params.commentId
-        const comment = await Comment.findByPk(commentId)
+        const originalComment = await Comment.findByPk(commentId)
         const { userId, storyId, body } = req.body
 
         const validatorErrors = validationResult(req)
 
         if (validatorErrors.isEmpty()) {
-            const editedComment = await comment.update({ userId, storyId, body })
+            await originalComment.update({ userId, storyId, body })
+
+            const editedComment = await Comment.findOne({
+                where: { id: originalComment.id },
+                include: User
+            })
 
             return res.json(editedComment)
         } else {
