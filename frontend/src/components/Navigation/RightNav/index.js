@@ -51,11 +51,6 @@ function RightNav() {
                             <h3>Supernatural</h3>
                         </div>
                     </div>
-                    {/* <div style={{ color:'white' }}>Genres/Topics Over Here</div>
-                    <div style={{ color:'white' }}>Genres/Topics Over Here</div>
-                    <div style={{ color:'white' }}>Genres/Topics Over Here</div>
-                    <div style={{ color:'white' }}>Genres/Topics Over Here</div>
-                    <div style={{ color:'white' }}>Genres/Topics Over Here</div> */}
                 </div>
             </div>
     )

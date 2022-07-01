@@ -10,6 +10,12 @@ import EditStoryForm from "../Story/EditStoryForm";
 // import GenreCard from "../GenreCard";
 import StoryCard from "../Story/StoryCard";
 import MyStoriesView from "../Story/MyStoriesView";
+import ClassicHorrorView from '../GenreViews/ClassicHorror';
+import DarkFantasyView from '../GenreViews/DarkFantasy';
+import PsychologicalView from '../GenreViews/Psychological';
+import SciFiHorrorView from "../GenreViews/SciFiHorror";
+import SupernaturalView from "../GenreViews/Supernatural";
+import WeirdTalesView from "../GenreViews/WeirdTales";
 
 function View({ isLoaded }) {
     return (
@@ -40,8 +46,23 @@ function View({ isLoaded }) {
           <Route path='/my-stories'>
             <MyStoriesView />
           </Route>
-          <Route path='/genres/:genreId'>
-            {/* <GenreCard /> */}
+          <Route path='/classic-horror'>
+            <ClassicHorrorView />
+          </Route>
+          <Route path='/dark-fantasy'>
+            <DarkFantasyView />
+          </Route>
+          <Route path='/psychological'>
+            <PsychologicalView />
+          </Route>
+          <Route path='/sci-fi'>
+            <SciFiHorrorView />
+          </Route>
+          <Route path='/supernatural'>
+            <SupernaturalView />
+          </Route>
+          <Route path='/weird-tales'>
+            <WeirdTalesView />
           </Route>
           <Route>uh-oh, looks like you got lost in the woods again...</Route>
         </Switch>
