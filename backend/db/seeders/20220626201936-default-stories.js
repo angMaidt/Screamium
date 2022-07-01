@@ -8,7 +8,6 @@ module.exports = {
      body: 'This is the text of The Raven by Edgar Allen Poe',
      createdAt: new Date(),
      updatedAt: new Date(),
-     imageUrl: 'https://cindyknoke.files.wordpress.com/2015/10/dsc05591.jpg'
    },
    {
     authorId: 3,
@@ -16,7 +15,6 @@ module.exports = {
     body: 'The last man on Earth sat alone in a room. There was a knock on the door ...',
     createdAt: new Date(),
     updatedAt: new Date(),
-    imageUrl: 'https://img-9gag-fun.9cache.com/photo/aPWYemV_460s.jpg'
   }], {});
   },
 

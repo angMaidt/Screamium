@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     authorId: { type: DataTypes.INTEGER, allowNull: false },
     title: { type: DataTypes.STRING(50), allowNull: false },
     body: { type: DataTypes.TEXT, allowNull: false },
-    imageUrl: { type: DataTypes.STRING }
   }, {});
   Story.associate = function(models) {
     // associations can be defined here

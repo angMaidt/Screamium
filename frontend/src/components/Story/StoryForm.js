@@ -13,7 +13,7 @@ function StoryForm() {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [imageUrl, setImageUrl] = useState('')
+    // const [imageUrl, setImageUrl] = useState('')
     const [validationErrors, setValidationErrors] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -23,9 +23,9 @@ function StoryForm() {
         if (!title.length) errors.push('Please provide a title for your story')
         if (title.length > 50) errors.push('Title must be less than 50 characters')
         if (!body) errors.push('Please provide a body for your story')
-        if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
+        // if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
         setValidationErrors(errors)
-    }, [title, body, imageUrl])
+    }, [title, body])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ function StoryForm() {
             authorId: user.id,
             title,
             body,
-            imageUrl: imageUrl ? imageUrl : defaultImage
+            // imageUrl: imageUrl ? imageUrl : defaultImage
         }
         await dispatch(createNewStory(story))
         history.push('/stories')
@@ -77,13 +77,13 @@ function StoryForm() {
                         ></textarea>
                     </div>
                     <div id='new-story-image-url'>
-                        <label htmlFor='image-url'>Image URL</label>
+                        {/* <label htmlFor='image-url'>Image URL</label>
                         <input
                             type='text'
                             placeholder='For default image, leave field blank'
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
-                        ></input>
+                        ></input> */}
                     </div>
                     <button>Submit</button>
                 </form>

@@ -7,11 +7,11 @@ function StoryCard({ story }) {
                     <div className='story-container stories'
                     key={story.id}
                     style={{borderBottom: '1px solid black'}}>
-                        {story.imageUrl &&
+                        {/* {story.imageUrl &&
                             <div className='story-image-container'
                             style={{backgroundImage: `url(${story.imageUrl})`}}>
                             </div>
-                        }
+                        } */}
                         <div className='story-all-text-container'>
                             <h2 className='story-title'>{story.title}</h2>
                             {story.User && <h3 className='story-username'>by {story.User.username}</h3>}

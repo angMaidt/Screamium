@@ -78,11 +78,11 @@ function Story() {
                 <div className='story-main-area'>
                     {story.User && <h3 className='story-author'>{story.User.username}</h3>}
                     <h2 className='story-title'>{story.title}</h2>
-                    {story.imageUrl &&
+                    {/* {story.imageUrl &&
                         <div className='story-image-container'
                         style={{backgroundImage: `url(${story.imageUrl})`}}>
                         </div>
-                    }
+                    } */}
                     <p className='story-body'>{story.body}</p>
                     {editButton}
                     {showCommentForm && cancelEditButton}
