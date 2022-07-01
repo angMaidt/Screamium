@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { editAComment } from '../../store/comment';
 
 function EditCommentForm ({ comment, setShowEditForm }) {
-    const dispatch = useDispatch();
     const { storyId } = useParams();
-    const [body, setBody] = useState(comment.body);
-
+    const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
+
+    const [body, setBody] = useState(comment.body);
+    const [validationErrors, setValidationErrors] = useState([]);
+
+    //validators
+    useEffect(() => {
+        let errors = [];
+        if (body.length > 500) errors.push('Comment must be less than 500 characters')
+        setValidationErrors(errors);
+    }, [body])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,6 +34,16 @@ function EditCommentForm ({ comment, setShowEditForm }) {
     return (
          <div className='comment-form-container'>
             <div className='comment-form-wrapper'>
+            {validationErrors.length > 0 && (
+                    <div className='errors-container'>
+                        The following errors were found:
+                        <ul className='errors'>
+                            {validationErrors.map(error => (
+                                <li className='error' key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <form className='comment-form'
                     onSubmit={handleSubmit}>
                     <input
@@ -36,7 +54,7 @@ function EditCommentForm ({ comment, setShowEditForm }) {
                     ></input>
                     <button
                         type='submit'
-                        disabled={!body}
+                        disabled={!body || validationErrors.length > 0}
                     >Respond</button>
                     <button
                         onClick={() => setShowEditForm(false)}

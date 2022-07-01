@@ -10,7 +10,6 @@ import CommentsView from '../Comments/CommentsView.js';
 
 function Story() {
     const dispatch = useDispatch();
-    const location = useLocation();
     const { storyId } = useParams();
     // console.log(storyId)
 
