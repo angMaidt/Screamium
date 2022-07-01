@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllStories } from '../../store/story'
 import { defaultImage } from './StoryForm';
-import StoryCard from './StoryCard';
+import StoryCard from '../Story/StoryCard';
 import './AllStories.css'
 
 function AllStories() {
