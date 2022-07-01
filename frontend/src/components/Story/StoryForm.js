@@ -10,7 +10,6 @@ function StoryForm() {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
 
-
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     // const [imageUrl, setImageUrl] = useState('')
@@ -79,44 +78,52 @@ function StoryForm() {
                             onChange={e => setBody(e.target.value)}
                         ></textarea>
                     </div>
-                    <div id='new-story-image-url'>
+                    <div id='new-story-genre-container'>
                         <label htmlFor='genre'>Choose a Genre</label>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='2'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='3'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='4'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='5'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='6'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
-                            <input
-                                type='radio'
-                                name='genre'
-                                value='7'
-                                onChange={(e) => setGenreId(e.target.value)}
-                            ></input>
+                            <div className='new-story-genre-wrapper'>
+                                <label htmlFor='Classic Horror'>Classic Horror</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='2'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Weird Tales'>Weird Tales</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='3'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Dark Fantasy'>Dark Fantasy</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='4'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Sci-Fi'>Sci-Fi</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='5'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Psychological'>Psychological</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='6'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Supernatural'>Supernatural</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='7'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                            </div>
                     </div>
                     <button>Submit</button>
                 </form>

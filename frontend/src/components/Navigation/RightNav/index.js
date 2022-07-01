@@ -1,4 +1,3 @@
-import GenreCard from "../../GenreCard";
 import { Link, NavLink } from "react-router-dom";
 
 function RightNav() {
@@ -31,24 +30,34 @@ function RightNav() {
                     className="right-nav-container">
                     <div className='genre-card-wrapper'>
                         <div style={{ color: 'white'}}>
-                            {/* <Link to=''> */}
+                            <Link to='/classic-horror'>
                                 <h3>Classic Horror</h3>
-                            {/* </Link> */}
+                            </Link>
                         </div>
                         <div style={{ color: 'white'}}>
-                            <h3>Weird Tales</h3>
+                            <Link to='/dark-fantasy'>
+                                <h3>Weird Tales</h3>
+                            </Link>
                         </div>
                         <div style={{ color: 'white'}}>
-                            <h3>Dark Fantasy</h3>
+                            <Link to='/psychological'>
+                                <h3>Dark Fantasy</h3>
+                            </Link>
                         </div>
                         <div style={{ color: 'white'}}>
-                            <h3>Sci-Fi Horror</h3>
+                            <Link to='/sci-fi'>
+                                <h3>Sci-Fi Horror</h3>
+                            </Link>
                         </div>
                         <div style={{ color: 'white'}}>
-                            <h3>Psychological</h3>
+                            <Link to='/supernatural'>
+                                <h3>Psychological</h3>
+                            </Link>
                         </div>
                         <div style={{ color: 'white'}}>
-                            <h3>Supernatural</h3>
+                            <Link to='/weird-tales'>
+                                <h3>Supernatural</h3>
+                            </Link>
                         </div>
                     </div>
                 </div>
