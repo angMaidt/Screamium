@@ -27,7 +27,7 @@ function Comment ({ comment }) {
             <div className='comment-wrapper'>
                 <h5 className='comment-username'>{comment.User.username}</h5>
                 <p className='comment-body'>{comment.body}</p>
-                {user.id === comment.User.id &&
+                {user && user.id === comment.User.id &&
                     <div className='button-wrapper'>
                         <button onClick={(e) => handleEditClick(e)}>Edit</button>
                         <button onClick={(e) => handleDeleteClick(e)}>Delete</button>

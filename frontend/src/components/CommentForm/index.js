@@ -28,7 +28,7 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
 
     return (
         <div className='comment-form-container'>
-            {showCommentForm &&
+            {user && showCommentForm &&
             <div className='comment-form-wrapper'>
                 <div className='comment-form-username'>
                     <h4 htmlFor='username'>{user.username}</h4>
@@ -52,7 +52,7 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                 </form>
             </div>
             }
-            {!showCommentForm &&
+            {user && !showCommentForm &&
                 <div className='dummy-comment-form-container'
                     onSubmit={null}>
                     <form className='dummy-comment-form'>
@@ -62,6 +62,14 @@ function CommentForm ({ comment, commentFormMode, setCommentFormMode }) {
                         onClick={() => setShowCommentForm(true)}
                         ></input>
                     </form>
+                </div>
+            }
+            {!user && !showCommentForm &&
+                <div
+                className='login-to-leave-comment'
+                style={{ border: 'solid 1px black' }}
+                >
+                    Login to share your thoughts!
                 </div>
             }
         </div>

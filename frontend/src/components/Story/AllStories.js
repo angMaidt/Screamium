@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { getAllStories } from '../../store/story'
 import { defaultImage } from './StoryForm';
 import './AllStories.css'
-import { resetAllComments } from '../../store/comment';
 
 function AllStories() {
     const dispatch = useDispatch();
