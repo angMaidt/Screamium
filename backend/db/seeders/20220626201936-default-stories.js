@@ -8,6 +8,7 @@ module.exports = {
      body: 'This is the text of The Raven by Edgar Allen Poe',
      createdAt: new Date(),
      updatedAt: new Date(),
+     genreId: 2
    },
    {
     authorId: 3,
@@ -15,6 +16,7 @@ module.exports = {
     body: 'The last man on Earth sat alone in a room. There was a knock on the door ...',
     createdAt: new Date(),
     updatedAt: new Date(),
+    genreId: 6
   }], {});
   },
 
