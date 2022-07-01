@@ -7,7 +7,7 @@ import AllStories from '../Story/AllStories';
 import Story from '../Story/index';
 import StoryForm from "../Story/StoryForm";
 import EditStoryForm from "../Story/EditStoryForm";
-import GenreCard from "../GenreCard";
+// import GenreCard from "../GenreCard";
 import StoryCard from "../Story/StoryCard";
 import MyStoriesView from "../Story/MyStoriesView";
 
