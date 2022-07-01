@@ -19,13 +19,14 @@ function View({ isLoaded }) {
             <div className="view-wrapper">
             {isLoaded && (
         <Switch>
-          <Route exact path='/'></Route>
+          <Route exact path='/'>
+            <AllStories />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/stories'>
-            <AllStories />
-          </Route>
+          {/* <Route exact path='/dashboard'>
+          </Route> */}
           <Route path='/stories/new'>
             <StoryForm />
           </Route>

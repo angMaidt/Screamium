@@ -23,27 +23,6 @@ function App() {
     <>
       <NavBar isLoaded={isLoaded} />
       <Dashboard isLoaded={isLoaded}/>
-      {/* {isLoaded && (
-        <Switch>
-          <Route exact path='/'></Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path='/stories'>
-            <AllStories />
-          </Route>
-          <Route path='/stories/new'>
-            <StoryForm />
-          </Route>
-          <Route exact path='/stories/:storyId'>
-            <Story />
-          </Route>
-          <Route path='/stories/:storyId/edit'>
-            <EditStoryForm/>
-          </Route>
-          <Route>uh-oh, looks like you got lost in the woods again...</Route>
-        </Switch>
-      )} */}
     </>
   );
 }

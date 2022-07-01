@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import ProfileButton from "../ProfileButton";
 
 function LeftNav() {
+    const user = useSelector(state => state.session.user);
+
     return (
         <div
             style={{
@@ -10,7 +14,7 @@ function LeftNav() {
             }}
             className='left-nav'>
             <div className='left-nav-container' style={{ display: 'flex', flexDirection: 'column' }}>
-                <NavLink to='/stories' style={{textDecoration: 'none'}}>Stories</NavLink>
+                <NavLink to='/' style={{textDecoration: 'none'}}>Stories</NavLink>
                 <div style={{ color: 'white'}}>My Stories</div>
                 <NavLink to='/stories/new' style={{textDecoration: 'none'}}>Publish Story</NavLink>
             </div>

@@ -72,7 +72,6 @@ function Story() {
     const storyComments = Object.values(comments).filter(comment => {
         return comment.storyId === Number(storyId)
     })
-    // console.log(storyComments)
 
     return (
         story ?
