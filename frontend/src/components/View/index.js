@@ -7,6 +7,8 @@ import AllStories from '../Story/AllStories';
 import Story from '../Story/index';
 import StoryForm from "../Story/StoryForm";
 import EditStoryForm from "../Story/EditStoryForm";
+import GenreCard from "../GenreCard";
+import StoryCard from "../Story/StoryCard";
 
 function View({ isLoaded }) {
     return (
@@ -25,8 +27,6 @@ function View({ isLoaded }) {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          {/* <Route exact path='/dashboard'>
-          </Route> */}
           <Route path='/stories/new'>
             <StoryForm />
           </Route>
@@ -35,6 +35,9 @@ function View({ isLoaded }) {
           </Route>
           <Route path='/stories/:storyId/edit'>
             <EditStoryForm/>
+          </Route>
+          <Route path='/genres/:genreId'>
+            {/* <GenreCard /> */}
           </Route>
           <Route>uh-oh, looks like you got lost in the woods again...</Route>
         </Switch>

@@ -21,12 +21,12 @@ function StoryCard({ story }) {
         return genreName;
     }
 
-    const genre = genreNameParser(story.genreId)
-    console.log(genre)
+    const genre = genreNameParser(story?.genreId)
+    // console.log(genre)
 
     return (
         <div className="story-card-container">
-                            <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
+                <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
                     <div className='story-container stories'
                     key={story.id}
                     style={{borderBottom: '1px solid black'}}>
@@ -51,6 +51,7 @@ function StoryCard({ story }) {
                                     {story.body && story.body.length >= 1000 && story.body.length <= 2000 && <p className='time-to-read'> 5 min read</p>}
                                     {story.body && story.body.length >= 2001 && <p className='time-to-read'> 10+ min read</p>}
                                 </div>
+                                <div className='genre-container'>{genre}</div>
                             </div>
                         </div>
                     </div>
