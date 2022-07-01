@@ -19,11 +19,9 @@ const storyValidators = [
     check('body')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a body for your story'),
-    // check('imageUrl')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage('Please provide an image for your story')
-    //     .matches(/\.(jpg|jpeg|png|gif|svg)$/)
-    //     .withMessage('URL must end with .jpg, .jpeg, .png, .gif, or .svg')
+    check('genreId')
+        .exists({ checkFalsy: true })
+        .withMessage('Please choose a genre for your story')
 ];
 
 //ROUTES
@@ -46,7 +44,7 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
 //Post new story
 router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(req, res) => {
     try {
-        const { authorId, title, body } = req.body
+        const { authorId, title, body, genreId } = req.body
 
         const validatorErrors = validationResult(req)
 
@@ -54,7 +52,8 @@ router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(r
             const newStory = await Story.create({
                 authorId,
                 title,
-                body
+                body,
+                genreId
             })
             return res.json(newStory)
         } else {

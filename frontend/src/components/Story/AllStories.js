@@ -27,7 +27,7 @@ function AllStories() {
     return (
         (stories &&
             Object.values(stories).map(story => (
-                <StoryCard story={story} />
+                <StoryCard key={story.id} story={story} />
             ))
         )
     )

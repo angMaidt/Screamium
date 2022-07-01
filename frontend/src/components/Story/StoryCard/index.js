@@ -1,17 +1,42 @@
 import { Link } from 'react-router-dom';
 
 function StoryCard({ story }) {
+
+    const genreNameParser = (genreId) => {
+        let genreName
+
+        if (genreId === 2) {
+            genreName = 'Classic Horror'
+        } else if (genreId === 3) {
+            genreName = 'Weird Tales'
+        } else if (genreId === 4) {
+            genreName = 'Dark Fantasy'
+        } else if (genreId === 5) {
+            genreName = 'Sci-Fi Horror'
+        } else if (genreId === 6) {
+            genreName = 'Psychological'
+        } else if (genreId === 7) {
+            genreName = 'Supernatural'
+        }
+        return genreName;
+    }
+
+    const genre = genreNameParser(story.genreId)
+    console.log(genre)
+
     return (
         <div className="story-card-container">
                             <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
                     <div className='story-container stories'
                     key={story.id}
                     style={{borderBottom: '1px solid black'}}>
-                        {/* {story.imageUrl &&
-                            <div className='story-image-container'
-                            style={{backgroundImage: `url(${story.imageUrl})`}}>
+                        {genre &&
+                            <div
+                                className='story-image-container'
+                                style={{backgroundImage: `url(${story.imageUrl})`}}>
+                                    {genre}
                             </div>
-                        } */}
+                        }
                         <div className='story-all-text-container'>
                             <h2 className='story-title'>{story.title}</h2>
                             {story.User && <h3 className='story-username'>by {story.User.username}</h3>}
