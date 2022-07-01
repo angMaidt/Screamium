@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 //file imports
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
-import SignupFormPage from "./components/SignupFormPage";
-import AllStories from './components/Story/AllStories.js';
-import Story from './components/Story'
-import StoryForm from "./components/Story/StoryForm.js";
-import EditStoryForm from "./components/Story/EditStoryForm";
+import NavBar from "./components/Navigation/";
+// import SignupFormPage from "./components/SignupFormPage";
+// import AllStories from './components/Story/AllStories.js';
+// import Story from './components/Story'
+// import StoryForm from "./components/Story/StoryForm.js";
+// import EditStoryForm from "./components/Story/EditStoryForm";
+import Dashboard from "./components/Dashboard/index.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +21,9 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      <NavBar isLoaded={isLoaded} />
+      <Dashboard isLoaded={isLoaded}/>
+      {/* {isLoaded && (
         <Switch>
           <Route exact path='/'></Route>
           <Route path="/signup">
@@ -40,8 +42,8 @@ function App() {
             <EditStoryForm/>
           </Route>
           <Route>uh-oh, looks like you got lost in the woods again...</Route>
-        </Switch>
-      )}
+        </Switch> */}
+      {/* )} */}
     </>
   );
 }

@@ -1,8 +1,12 @@
 #nav-container {
     display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
     color: white;
     background-color: darkslateblue;
-    width: 100%;
+    width: 100vw;
     height: 75px;
     border-bottom: 1px solid black;
 }
