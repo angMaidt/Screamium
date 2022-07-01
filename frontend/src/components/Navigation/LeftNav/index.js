@@ -2,10 +2,8 @@ function LeftNav() {
     return (
         <div style={{
             backgroundColor: 'red',
-            height: '100%',
-            width: '30%',
-            position: 'fixed',
-            left: '0'
+            height: '100vh',
+            width: '25vw',
         }}></div>
     )
 }

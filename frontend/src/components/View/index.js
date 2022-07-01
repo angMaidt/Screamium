@@ -12,35 +12,33 @@ function View({ isLoaded }) {
     return (
         <div
             style={{
-                backgroundColor: 'blue',
                 height: '100%',
-                width: '30%',}}
+                width: '50vw'
+            }}
             className='view-container'>
-                {isLoaded && (
-                <div className="view-wrapper">
-                    <Switch>
-                    <Route exact path='/'>
-                        {/* TODO render splashpage */}
-                    </Route>
-                    <Route path="/signup">
-                        <SignupFormPage />
-                    </Route>
-                    <Route exact path='/stories'>
-                        <AllStories />
-                    </Route>
-                    <Route path='/stories/new'>
-                        <StoryForm />
-                    </Route>
-                    <Route exact path='/stories/:storyId'>
-                        <Story />
-                    </Route>
-                    <Route path='/stories/:storyId/edit'>
-                        <EditStoryForm/>
-                    </Route>
-                    <Route>uh-oh, looks like you got lost in the woods again...</Route>
-                    </Switch>
-                </div>
-                )}
+            <div className="view-wrapper">
+            {isLoaded && (
+        <Switch>
+          <Route exact path='/'></Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+          <Route exact path='/stories'>
+            <AllStories />
+          </Route>
+          <Route path='/stories/new'>
+            <StoryForm />
+          </Route>
+          <Route exact path='/stories/:storyId'>
+            <Story />
+          </Route>
+          <Route path='/stories/:storyId/edit'>
+            <EditStoryForm/>
+          </Route>
+          <Route>uh-oh, looks like you got lost in the woods again...</Route>
+        </Switch>
+      )}
+            </div>
         </div>
     )
 }
