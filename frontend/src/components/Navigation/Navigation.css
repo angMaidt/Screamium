@@ -1,39 +1,5 @@
-#nav-container {
-    display: flex;
-    color: white;
-    background-color: rgb(5, 4, 5);
-    width: 100vw;
-    height: 75px;
-    border-bottom: 1px solid white;
-}
-
-.active {
-    color:white;
-}
-
-#nav-container *:visited {
-    color: white;
-}
-
 .fa-regular {
+    background-color: rgb(5, 4, 5);
     color: white;
     font-size: 24px;
 }
-
-#user-dropdown {
-    border: none;
-    background-color: transparent;
-}
-
-#user-dropdown:hover {
-    background-color: transparent;
-}
-
-.nav-wrapper {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    /* align-items: baseline;
-    justify-content: space-around; */
-}
-
