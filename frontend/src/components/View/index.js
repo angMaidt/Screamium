@@ -20,7 +20,7 @@ function View({ isLoaded }) {
                 <div className="view-wrapper">
                     <Switch>
                     <Route exact path='/'>
-                        
+                        {/* TODO render splashpage */}
                     </Route>
                     <Route path="/signup">
                         <SignupFormPage />

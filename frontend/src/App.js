@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 //file imports
 import * as sessionActions from "./store/session";
-import NavBar from "./components/Navigation/";
+import NavBar from "./components/Navigation/NavBar";
 // import SignupFormPage from "./components/SignupFormPage";
 // import AllStories from './components/Story/AllStories.js';
 // import Story from './components/Story'

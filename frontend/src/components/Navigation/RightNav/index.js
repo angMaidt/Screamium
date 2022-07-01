@@ -4,9 +4,12 @@ function RightNav() {
             backgroundColor: 'red',
             height: '100%',
             width: '30%',
-            position: 'fixed',
+            position: 'absolute',
             right: '0'
-        }}></div>
+        }}
+            className='right-nav'>
+                
+            </div>
     )
 }
 
