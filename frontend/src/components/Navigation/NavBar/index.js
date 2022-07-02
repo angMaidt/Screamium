@@ -1,19 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from '../../Navigation/ProfileButton';
 import StoryForm from '../../Story/StoryForm';
 import LoginFormModal from '../../LoginFormModal';
+import * as sessionActions from '../../../store/session';
 import '../Navigation.css';
 
 function NavBar({ isLoaded }){
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileButton user={sessionUser} />
+        {/* <ProfileButton user={sessionUser} /> */}
+        <button onClick={logout} className='button' id='logout'>Log Out</button>
       </>
     );
   } else {
@@ -28,25 +36,18 @@ function NavBar({ isLoaded }){
   return (
     <div className='nav' id='nav-wrapper'
       style={{
-        display: 'flex',
-        backgroundColor: 'rgb(5, 4, 5)',
         height: '70px',
         width: '100vw',
         borderBottom: '1px solid white',
       }}>
-      <div className='nav-container'
-        style={{
-          // display: 'flex',
-          position: 'fixed',
-          left: '0',
-          backgroundColor: 'rgb(5, 4, 5)',
-          height: '70px',
-          width: '100vw',
-          borderBottom: '1px solid white',
-        }}>
-          <img src='/images/logo.png' style={{ height: '50px'}}/>
+      <div className='nav-container'>
+        <div id='logo'>
+          <img src='/images/logo.png' style={{ height: '40px'}}/>
           <h2 style={{color: 'white'}}>Screamium</h2>
-        {isLoaded && sessionLinks}
+        </div>
+        <div id='login-and-about'>
+          {isLoaded && sessionLinks}
+        </div>
       </div>
     </div>
   );
