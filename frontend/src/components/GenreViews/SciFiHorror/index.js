@@ -9,7 +9,7 @@ function SciFiHorrorView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const genreStories = Object.values(stories).filter(story => story.genreId === 5)
+    const genreStories = Object.values(stories).filter(story => story.genreId === 4)
 
     useEffect(() => {
         const fetchData = async() => {

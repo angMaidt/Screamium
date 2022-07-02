@@ -12,7 +12,6 @@ function StoryForm() {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    // const [imageUrl, setImageUrl] = useState('')
     const [genreId, setGenreId] = useState('')
     const [validationErrors, setValidationErrors] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -24,7 +23,6 @@ function StoryForm() {
         if (title.length > 50) errors.push('Title must be less than 50 characters')
         if (!body) errors.push('Please provide a body for your story')
         if (!genreId) errors.push('Please choose a genre for your story')
-        // if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
         setValidationErrors(errors)
     }, [title, body, genreId])
 
@@ -37,7 +35,6 @@ function StoryForm() {
             title,
             body,
             genreId
-            // imageUrl: imageUrl ? imageUrl : defaultImage
         }
         await dispatch(createNewStory(story))
         history.push('/')
@@ -85,42 +82,42 @@ function StoryForm() {
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='2'
+                                    value='1'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                                 <label htmlFor='Weird Tales'>Weird Tales</label>
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='3'
+                                    value='2'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                                 <label htmlFor='Dark Fantasy'>Dark Fantasy</label>
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='4'
+                                    value='3'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                                 <label htmlFor='Sci-Fi'>Sci-Fi</label>
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='5'
+                                    value='4'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                                 <label htmlFor='Psychological'>Psychological</label>
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='6'
+                                    value='5'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                                 <label htmlFor='Supernatural'>Supernatural</label>
                                 <input
                                     type='radio'
                                     name='genre'
-                                    value='7'
+                                    value='6'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
                             </div>

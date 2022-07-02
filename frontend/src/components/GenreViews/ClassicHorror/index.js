@@ -8,7 +8,7 @@ function ClassicHorrorView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const genreStories = Object.values(stories).filter(story => story.genreId === 2)
+    const genreStories = Object.values(stories).filter(story => story.genreId === 1)
 
     useEffect(() => {
         const fetchData = async() => {

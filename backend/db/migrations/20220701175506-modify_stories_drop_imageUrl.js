@@ -17,7 +17,14 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.dropTable('users');
-    */
+      */
+   return queryInterface.addColumn(
+    'Stories',
+    'imageUrl',
+    {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+   );
   }
 };

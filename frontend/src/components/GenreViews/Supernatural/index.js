@@ -8,7 +8,7 @@ function SupernaturalView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const genreStories = Object.values(stories).filter(story => story.genreId === 7)
+    const genreStories = Object.values(stories).filter(story => story.genreId === 6)
     console.log('here i am')
     useEffect(() => {
         const fetchData = async() => {

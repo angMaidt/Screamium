@@ -8,7 +8,7 @@ function PsychologicalView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const genreStories = Object.values(stories).filter(story => story.genreId === 6)
+    const genreStories = Object.values(stories).filter(story => story.genreId === 5)
 
     useEffect(() => {
         const fetchData = async() => {
