@@ -28,7 +28,9 @@ function NavBar({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup" style={{ textDecoration: 'none'}}>Sign Up</NavLink>
+        <NavLink to="/signup" style={{ textDecoration: 'none'}}>
+          <button id='sign-up'>Sign Up</button>
+        </NavLink>
       </>
     );
   }
