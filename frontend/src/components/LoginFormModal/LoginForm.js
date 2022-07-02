@@ -73,7 +73,7 @@ function LoginForm() {
         >Log In</button>
         <div className='linebreak'></div>
         <div className='demo-button-container'>
-          <button id='demo-login' onClick={handleDemoLogin}>Demo-Login</button>
+          <button id='demo-login' onClick={handleDemoLogin}>Demo Login</button>
         </div>
       </div>
     </form>
