@@ -33,14 +33,14 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
       <div className='login-form-container'>
         <div className='welcome-container'>
           <h2 id='welcome'>Welcome Back.</h2>
+          <ul className="login-errors">
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
         </div>
         <div className='input-wrapper'>
           <div className="username-container">

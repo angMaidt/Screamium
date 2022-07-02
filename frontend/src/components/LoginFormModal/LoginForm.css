@@ -9,8 +9,11 @@
     align-items: center;
 }
 
-.errors {
+.login-errors {
+    display: flex;
+    flex-direction: column;
     color: rgb(207, 11, 11);
+    margin-bottom: 20px;
 }
 
 .form-field * {
@@ -21,7 +24,8 @@
 
 #login {
     background-color: transparent;
-    color: white
+    color: white;
+    font-size: 16px;
 }
 
 .login-form-container {

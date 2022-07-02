@@ -20,8 +20,10 @@ function NavBar({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        {/* <ProfileButton user={sessionUser} /> */}
-        <button onClick={logout} className='button' id='logout'>Log Out</button>
+        <div className='sessionlinks-container'>
+          <p id='nav-username'>Welcome, {sessionUser.username}</p>
+          <button onClick={logout} className='button' id='logout'>Log Out</button>
+        </div>
       </>
     );
   } else {
