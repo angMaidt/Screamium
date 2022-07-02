@@ -18,13 +18,14 @@
     width: 100vw;
     border-bottom: 1px solid white;
     gap: 50%;
+    align-items: center;
 }
 
 
 #logo {
     display: flex;
     align-items: center;
-    padding-left: 8%;
+    padding-left: 2vw;
     gap: 10px;
 }
 
