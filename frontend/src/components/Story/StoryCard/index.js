@@ -5,24 +5,23 @@ function StoryCard({ story }) {
     const genreNameParser = (genreId) => {
         let genreName
 
-        if (genreId === 2) {
+        if (genreId === 1) {
             genreName = 'Classic Horror'
-        } else if (genreId === 3) {
+        } else if (genreId === 2) {
             genreName = 'Weird Tales'
-        } else if (genreId === 4) {
+        } else if (genreId === 3) {
             genreName = 'Dark Fantasy'
-        } else if (genreId === 5) {
+        } else if (genreId === 4) {
             genreName = 'Sci-Fi Horror'
-        } else if (genreId === 6) {
+        } else if (genreId === 5) {
             genreName = 'Psychological'
-        } else if (genreId === 7) {
+        } else if (genreId === 6) {
             genreName = 'Supernatural'
         }
         return genreName;
     }
 
     const genre = genreNameParser(story?.genreId)
-    // console.log(genre)
 
     return (
         <div className="story-card-container">
@@ -32,8 +31,7 @@ function StoryCard({ story }) {
                     style={{borderBottom: '1px solid black'}}>
                         {genre &&
                             <div
-                                className='story-image-container'
-                                style={{backgroundImage: `url(${story.imageUrl})`}}>
+                                className='story-image-container'>
                                     {genre}
                             </div>
                         }

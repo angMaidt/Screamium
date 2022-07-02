@@ -2,15 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 
 function RightNav() {
 
-    // const genres = [
-    //     'Classic Horror',
-    //     'Weird Tales',
-    //     'Dark Fantasy',
-    //     'Sci-Fi Horror',
-    //     'Psychological',
-    //     'Supernatural'
-    // ]
-
     return (
         <div
             style={{
