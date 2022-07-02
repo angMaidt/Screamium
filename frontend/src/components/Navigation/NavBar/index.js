@@ -44,6 +44,7 @@ function NavBar({ isLoaded }){
           width: '100vw',
           borderBottom: '1px solid white',
         }}>
+          <img src='/images/logo.png' style={{ height: '50px'}}/>
           <h2 style={{color: 'white'}}>Screamium</h2>
         {isLoaded && sessionLinks}
       </div>
