@@ -11,7 +11,6 @@ function EditStoryForm({ setShowEditForm }) {
     const story = useSelector(state => state.story[storyId])
     const [title, setTitle] = useState(story.title)
     const [body, setBody] = useState(story.body)
-    const [imageUrl, setImageUrl] = useState(story.imageUrl)
     const [validationErrors, setValidationErrors] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -25,7 +24,6 @@ function EditStoryForm({ setShowEditForm }) {
         if (!title.length) errors.push('Please provide a title for your story')
         if (title.length > 50) errors.push('Title must be less than 50 characters')
         if (!body) errors.push('Please provide a body for your story')
-        // if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
         setValidationErrors(errors)
     }, [title, body])
 
@@ -37,7 +35,7 @@ function EditStoryForm({ setShowEditForm }) {
             id: storyId,
             title,
             body,
-            // imageUrl: imageUrl ? imageUrl : defaultImage
+            genreId: story.genreId
         }
         console.log(editedStory)
         await dispatch(editAStory(editedStory))
