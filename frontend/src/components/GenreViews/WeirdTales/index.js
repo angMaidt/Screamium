@@ -1,30 +1,29 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllStories } from '../../store/story'
+import { getAllStories } from '../../../store/story';
+import StoryCard from '../../Story/StoryCard';
 
-import StoryCard from './StoryCard';
-import './AllStories.css'
-
-function AllStories() {
+function WeirdTalesView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
+
+    const weirdStories = Object.values(stories).filter(story => story.genreId === 3)
 
     useEffect(() => {
         const fetchData = async() => {
             await dispatch(getAllStories())
-
         }
         fetchData().catch(console.error)
     }, [dispatch])
 
     return (
         (stories &&
-            Object.values(stories).map(story => (
+            weirdStories.map(story => (
                 <StoryCard key={story.id} story={story} />
             ))
         )
     )
 }
 
-export default AllStories;
+export default WeirdTalesView;

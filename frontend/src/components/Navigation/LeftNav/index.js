@@ -15,6 +15,8 @@ function LeftNav() {
             }}>
             <div
                 style={{
+                    display: 'flex',
+                    flexDirection: 'column',
                     position: 'fixed',
                     left: '0',
                     backgroundColor: 'rgb(5, 4, 5)',
@@ -22,9 +24,9 @@ function LeftNav() {
                     width: '25vw',
                 }}
                 className='left-nav-container'>
-                    <NavLink to='/' style={{textDecoration: 'none'}}>Stories</NavLink>
-                    <div style={{ color: 'white'}}>My Stories</div>
-                    <NavLink to='/stories/new' style={{textDecoration: 'none'}}>Publish Story</NavLink>
+                    <NavLink to='/'>Stories</NavLink>
+                    <NavLink to='/my-stories'>My Stories</NavLink>
+                    <NavLink to='/stories/new'>Publish Story</NavLink>
             </div>
         </div>
     )

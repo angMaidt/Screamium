@@ -18,7 +18,7 @@ function Story() {
     const comments = useSelector(state => state.comment)
 
     const [viewComments, setViewComments] = useState(false);
-    const [showCommentForm, setShowCommentForm] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +30,7 @@ function Story() {
 
 
     useEffect(() => {
-        if(showCommentForm) setShowCommentForm(false)
+        if(showEditForm) setShowEditForm(false)
     },[])
 
     const handleDelete = async (e) => {
@@ -41,10 +41,10 @@ function Story() {
     }
 
     let editForm;
-    if (showCommentForm) {
+    if (showEditForm) {
         editForm = (
             <div>
-                <EditStoryForm setShowCommentForm={setShowCommentForm}/>
+                <EditStoryForm setShowEditForm={setShowEditForm}/>
             </div>
         )
     }
@@ -53,11 +53,11 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                <button onClick={(e) => setShowCommentForm(true)}
+                <button onClick={(e) => setShowEditForm(true)}
                 >Edit</button>
             )
             cancelEditButton = (
-                <button onClick={(e) => setShowCommentForm(false)}
+                <button onClick={(e) => setShowEditForm(false)}
                 >Cancel Edit</button>
             )
             deleteButton = (
@@ -78,14 +78,9 @@ function Story() {
                 <div className='story-main-area'>
                     {story.User && <h3 className='story-author'>{story.User.username}</h3>}
                     <h2 className='story-title'>{story.title}</h2>
-                    {story.imageUrl &&
-                        <div className='story-image-container'
-                        style={{backgroundImage: `url(${story.imageUrl})`}}>
-                        </div>
-                    }
                     <p className='story-body'>{story.body}</p>
                     {editButton}
-                    {showCommentForm && cancelEditButton}
+                    {showEditForm && cancelEditButton}
                     {deleteButton}
                     {editForm}
                     {comments &&

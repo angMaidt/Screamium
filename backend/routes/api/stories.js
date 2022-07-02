@@ -19,11 +19,9 @@ const storyValidators = [
     check('body')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a body for your story'),
-    check('imageUrl')
+    check('genreId')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide an image for your story')
-        .matches(/\.(jpg|jpeg|png|gif|svg)$/)
-        .withMessage('URL must end with .jpg, .jpeg, .png, .gif, or .svg')
+        .withMessage('Please choose a genre for your story')
 ];
 
 //ROUTES
@@ -46,7 +44,7 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
 //Post new story
 router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(req, res) => {
     try {
-        const { authorId, title, body, imageUrl } = req.body
+        const { authorId, title, body, genreId } = req.body
 
         const validatorErrors = validationResult(req)
 
@@ -55,7 +53,7 @@ router.post('/', restoreUser, requireAuth, storyValidators, asyncHandler(async(r
                 authorId,
                 title,
                 body,
-                imageUrl
+                genreId
             })
             return res.json(newStory)
         } else {
@@ -72,12 +70,12 @@ router.put('/:storyId(\\d+)', restoreUser, requireAuth, storyValidators, asyncHa
     try {
         const storyId = req.params.storyId
         const story = await Story.findByPk(storyId)
-        const { title, body, imageUrl } = req.body
+        const { title, body } = req.body
 
         const validatorErrors = validationResult(req)
 
         if (validatorErrors.isEmpty()) {
-            const editedStory = await story.update({ title, body, imageUrl })
+            const editedStory = await story.update({ title, body })
 
             return res.json(editedStory)
         } else {

@@ -10,10 +10,10 @@ function StoryForm() {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
 
-
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [imageUrl, setImageUrl] = useState('')
+    // const [imageUrl, setImageUrl] = useState('')
+    const [genreId, setGenreId] = useState('')
     const [validationErrors, setValidationErrors] = useState('')
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -23,9 +23,10 @@ function StoryForm() {
         if (!title.length) errors.push('Please provide a title for your story')
         if (title.length > 50) errors.push('Title must be less than 50 characters')
         if (!body) errors.push('Please provide a body for your story')
-        if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
+        if (!genreId) errors.push('Please choose a genre for your story')
+        // if (!imageUrl.match(/\.(jpg|jpeg|png|gif|svg)$/) && imageUrl.length) errors.push('URL must end with .jpg, .jpeg, .png, .gif, or .svg. To use a default image, leave field blank')
         setValidationErrors(errors)
-    }, [title, body, imageUrl])
+    }, [title, body, genreId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,10 +36,11 @@ function StoryForm() {
             authorId: user.id,
             title,
             body,
-            imageUrl: imageUrl ? imageUrl : defaultImage
+            genreId
+            // imageUrl: imageUrl ? imageUrl : defaultImage
         }
         await dispatch(createNewStory(story))
-        history.push('/stories')
+        history.push('/')
     }
 
     return (
@@ -76,14 +78,52 @@ function StoryForm() {
                             onChange={e => setBody(e.target.value)}
                         ></textarea>
                     </div>
-                    <div id='new-story-image-url'>
-                        <label htmlFor='image-url'>Image URL</label>
-                        <input
-                            type='text'
-                            placeholder='For default image, leave field blank'
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                        ></input>
+                    <div id='new-story-genre-container'>
+                        <label htmlFor='genre'>Choose a Genre</label>
+                            <div className='new-story-genre-wrapper'>
+                                <label htmlFor='Classic Horror'>Classic Horror</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='2'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Weird Tales'>Weird Tales</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='3'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Dark Fantasy'>Dark Fantasy</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='4'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Sci-Fi'>Sci-Fi</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='5'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Psychological'>Psychological</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='6'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                                <label htmlFor='Supernatural'>Supernatural</label>
+                                <input
+                                    type='radio'
+                                    name='genre'
+                                    value='7'
+                                    onChange={(e) => setGenreId(e.target.value)}
+                                ></input>
+                            </div>
                     </div>
                     <button>Submit</button>
                 </form>
