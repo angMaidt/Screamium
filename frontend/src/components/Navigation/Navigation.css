@@ -38,3 +38,8 @@
     /* padding-left: 8%; */
     gap: 10px;
 }
+
+#logout {
+    background-color: transparent;
+    color: white
+}
