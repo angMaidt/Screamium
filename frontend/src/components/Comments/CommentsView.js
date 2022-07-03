@@ -11,6 +11,7 @@ function CommentsView ({ visible, storyComments }) {
 
     return (
         <div className='comment-panel-container'>
+            
             {!storyComments ?
                 <div className="empty-comments-container">
                     There are currently no responses for this story.

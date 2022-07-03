@@ -32,14 +32,17 @@ function CommentForm () {
         }
         await dispatch(createNewComment(comment))
         setShowCommentForm(false)
+        setBody('');
     }
 
     return (
         <div className='comment-form-container'>
             {user && showCommentForm &&
             <div className='comment-form-wrapper'>
-                <div className='comment-form-username'>
-                    <h4 htmlFor='username'>{user.username}</h4>
+                <div className='comment-username'>
+                    <h4
+                    style={{ fontFamily: 'Arial', fontSize: '15px', fontStyle: 'italic' }}
+                    htmlFor='username'>{user.username}</h4>
                 </div>
                 {validationErrors.length > 0 && (
                     <div className='errors-container'>
@@ -53,21 +56,25 @@ function CommentForm () {
                 )}
                 <form className='comment-form'
                     onSubmit={handleSubmit}>
-                    <input
+                    <textarea
                         type='text'
-
+                        className='comment-input'
                         placeholder='What are your thoughts?'
                         value={body}
                         onChange={e => setBody(e.target.value)}
-                    ></input>
-                    <button
-                        type='submit'
-                        disabled={!body || validationErrors.length > 0}
-                    >Respond</button>
-                    <button
-                        onClick={() => setShowCommentForm(false)}
-                        type='button'
-                    >Cancel</button>
+                    ></textarea>
+                    <div id='comment-button-wrapper'>
+                        <button
+                            type='submit'
+                            id='respond'
+                            disabled={!body || validationErrors.length > 0}
+                        >Respond</button>
+                        <button
+                            type='button'
+                            id='cancel-comment'
+                            onClick={() => setShowCommentForm(false)}
+                        >Cancel</button>
+                    </div>
                 </form>
             </div>
             }
@@ -75,13 +82,12 @@ function CommentForm () {
                 <div className='dummy-comment-form-container'
                     onSubmit={null}>
                     <form className='dummy-comment-form'>
-                        <div id='dummy-comment-input'>
-                            <input
-                            type='text'
-                            placeholder='What are your thoughts?'
-                            onClick={() => setShowCommentForm(true)}
-                            ></input>
-                        </div>
+                        <input
+                        type='text'
+                        id='dummy-comment-input'
+                        placeholder='What are your thoughts?'
+                        onClick={() => setShowCommentForm(true)}
+                        ></input>
                     </form>
                 </div>
             }
