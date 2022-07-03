@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './StoryCard.css'
 
 function StoryCard({ story }) {
 
@@ -26,7 +27,7 @@ function StoryCard({ story }) {
     return (
         <div className="story-card-container">
                 <Link style={{textDecoration: 'none'}} key={story.id} to={`/stories/${story.id}`}>
-                    <div className='story-container stories'
+                    <div className='story-container'
                     key={story.id}
                     style={{borderBottom: '1px solid black'}}>
                         {genre &&
@@ -39,7 +40,7 @@ function StoryCard({ story }) {
                             <h2 className='story-title'>{story.title}</h2>
                             {story.User && <h3 className='story-username'>by {story.User.username}</h3>}
                             <div className='story-body-container'>
-                                <p className='story-body stories'>{story.body}</p>
+                                <p className='story-body'>{story.body}</p>
                             </div>
                             <div className='story-footer-elements-container'>
                                 <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>

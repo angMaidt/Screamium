@@ -47,7 +47,7 @@ function NavBar({ isLoaded }){
       <div className='nav-container'>
         <div id='logo'>
           <img src='/images/logo.png' style={{ height: '40px'}}/>
-          <h2 style={{color: 'white'}}>Screamium</h2>
+          <p style={{color: 'white'}}>Screamium</p>
         </div>
         <div id='login-and-about'>
           {isLoaded && sessionLinks}

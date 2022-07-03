@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllStories } from '../../store/story'
 
 import StoryCard from './StoryCard';
-import './AllStories.css'
+// import './AllStories.css'
 
 function AllStories() {
     const dispatch = useDispatch();
@@ -21,7 +21,9 @@ function AllStories() {
     return (
         (stories &&
             Object.values(stories).map(story => (
-                <StoryCard key={story.id} story={story} />
+                <div className='story-card-container'>
+                    <StoryCard key={story.id} story={story} />
+                </div>
             ))
         )
     )
