@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createNewComment } from '../../store/comment';
 
+import './CommentForm.css';
+
 function CommentForm () {
     const { storyId } = useParams();
     const dispatch = useDispatch();
@@ -53,6 +55,7 @@ function CommentForm () {
                     onSubmit={handleSubmit}>
                     <input
                         type='text'
+
                         placeholder='What are your thoughts?'
                         value={body}
                         onChange={e => setBody(e.target.value)}
@@ -72,11 +75,13 @@ function CommentForm () {
                 <div className='dummy-comment-form-container'
                     onSubmit={null}>
                     <form className='dummy-comment-form'>
-                        <input
-                        type='text'
-                        placeholder='What are your thoughts?'
-                        onClick={() => setShowCommentForm(true)}
-                        ></input>
+                        <div id='dummy-comment-input'>
+                            <input
+                            type='text'
+                            placeholder='What are your thoughts?'
+                            onClick={() => setShowCommentForm(true)}
+                            ></input>
+                        </div>
                     </form>
                 </div>
             }

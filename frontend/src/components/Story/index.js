@@ -102,9 +102,7 @@ function Story() {
                     {showEditForm && cancelEditButton}
                 </div>
                 {viewComments && <div className='site-blocker' onClick={() => setViewComments(!viewComments)}></div>}
-                <div className='comment-side-panel'
-                    style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
-                >
+                <div className='comment-side-panel'>
                     <CommentsView visible={viewComments} storyComments={storyComments} storyId={storyId}/>
                 </div>
             </div>
