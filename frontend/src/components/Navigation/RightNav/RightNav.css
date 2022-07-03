@@ -17,11 +17,6 @@
     width: 20vw;
 }
 
-.active {
-    color: purple;
-    /* background-color: blueviolet; */
-}
-
 .genre-card-wrapper {
     display: flex;
     flex-direction: column;
@@ -44,5 +39,9 @@
 }
 
 .genre-card:hover {
+    font-size: 25px;
+}
+
+.active {
     font-size: 25px;
 }

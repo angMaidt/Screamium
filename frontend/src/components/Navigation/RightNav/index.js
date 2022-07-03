@@ -11,7 +11,7 @@ function RightNav() {
                             <div
                             className='genre-card'
                             style={{ backgroundColor: '#0347AD' }}>
-                                    <h3>Classic Horror</h3>
+                                <h3>Classic Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/dark-fantasy'>
@@ -25,14 +25,14 @@ function RightNav() {
                         <div
                             className='genre-card'
                             style={{ backgroundColor: '#071E7A' }}>
-                                    <h3>Psychological</h3>
+                                <h3>Psychological</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/sci-fi'>
                         <div
                             className='genre-card'
                             style={{ backgroundColor: '#030E6E' }}>
-                                    <h3>Sci-Fi Horror</h3>
+                                <h3>Sci-Fi Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/supernatural'>
@@ -46,7 +46,7 @@ function RightNav() {
                         <div
                             className='genre-card'
                             style={{ backgroundColor: 'rgb( 5, 4, 5)' }}>
-                                    <h3>Weird Tales</h3>
+                                <h3>Weird Tales</h3>
                             </div>
                         </NavLink>
                     </div>
