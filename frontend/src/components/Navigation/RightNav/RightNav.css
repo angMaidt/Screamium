@@ -1,0 +1,42 @@
+/* .right-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+
+.right-nav-container {
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(5,4,5);
+    height: 100vh;
+    width: 20vw;
+}
+
+.active {
+    color: purple;
+    /* background-color: blueviolet; */
+}
+
+.genre-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* justify-self: center; */
+}
+
+.genre-card {
+    display: flex;
+    background-color: rgb(5,4,5);
+    border: solid 1px white;
+    margin-top: 10px;
+    width: 18vw;
+    height: 13vh;
+    align-items: center;
+    justify-content: center;
+}
