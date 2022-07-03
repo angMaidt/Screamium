@@ -1,0 +1,136 @@
+.login-to-publish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 75vw
+}
+
+.total-form-container {
+    height: 100vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10%;
+}
+
+#publish-a-story {
+    font-size: 40px;
+    margin-bottom: 3%
+}
+
+#new-story-title input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#new-story-body textarea {
+    width: 100%;
+    height: 40vh;
+    border: none;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-container input:focus, textarea:focus {
+    background-color: rgb(238, 238, 238);
+    /* background-color: black;
+    color: white */
+
+}
+
+.new-story-genre-wrapper input[type='radio'] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.new-story-genre-wrapper label {
+    display: inline-block;
+    background-color: rgb(5,4,5);
+    color: white;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 50px;
+}
+
+#classic-horror:checked + label, #classic-horror + label:hover {
+    background-color:#0347AD;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#weird-tales:checked + label, #weird-tales + label:hover {
+    background-color:#11001f;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#dark-fantasy:checked + label, #dark-fantasy + label:hover {
+    background-color:#032A85;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#sci-fi:checked + label, #sci-fi + label:hover {
+    background-color:#030E6E;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#psychological:checked + label, #psychological + label:hover {
+    background-color:#071E7A;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#supernatural:checked + label, #supernatural + label:hover {
+    background-color:#090033;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.new-story-genre-wrapper input[type='radio']:focus + label {
+    font-size: 20px;
+}
+
+.new-story-genre-wrapper {
+    height: 120%;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form button {
+    align-self: flex-end;
+    /* position: relative;
+    bottom: 5vh; */
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.form button:hover {
+    color: white;
+    background-color: black;
+}
+
+#genre {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

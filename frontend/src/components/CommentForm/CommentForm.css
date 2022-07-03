@@ -83,3 +83,8 @@
     background-color: red;
     color: white
 }
+
+.login-to-leave-comment {
+    font-size: 20px;
+    margin-bottom: -20px
+}

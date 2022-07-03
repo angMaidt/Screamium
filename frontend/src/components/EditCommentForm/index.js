@@ -54,11 +54,11 @@ function EditCommentForm ({ comment, setShowEditForm }) {
                         onChange={e => setBody(e.target.value)}
                     ></textarea>
                     <div id='comment-button-wrapper'>
-                        <button
-                            type='submit'
-                            id='respond'
-                            disabled={!body || validationErrors.length > 0}
-                        >Respond</button>
+                            <button
+                                type='submit'
+                                id='respond'
+                                disabled={!body || validationErrors.length > 0}
+                            >Respond</button>
                         <button
                             type='button'
                             id='cancel-comment'

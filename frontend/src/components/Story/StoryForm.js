@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createNewStory } from '../../store/story';
-
-export const defaultImage = 'https://cdn.thecollector.com/wp-content/uploads/2022/03/caravaggio-medusa-detail.jpg'
+import './StoryForm.css'
 
 function StoryForm() {
     const dispatch = useDispatch();
@@ -43,11 +42,11 @@ function StoryForm() {
     return (
         user ?
         <div className='total-form-container'>
-            <h2>Publish a spooky story</h2>
+            <h2 id='publish-a-story'>Publish a spooky story.</h2>
             {hasSubmitted && validationErrors.length > 0 && (
-                <div className='errors-container'>
-                    The following errors were found:
-                    <ul className='errors'>
+                <div className='errors-container' style={{ fontFamily: 'arial' }}>
+                    <h3>The following errors were found:</h3>
+                    <ul className='errors' >
                         {validationErrors.map(error => (
                             <li className='error' key={error}>{error}</li>
                         ))}
@@ -59,7 +58,6 @@ function StoryForm() {
                     id='create-story'
                     onSubmit={handleSubmit}>
                     <div id='new-story-title'>
-                        <label htmlFor='title'>Title</label>
                         <input
                             type='text'
                             placeholder='Title'
@@ -68,7 +66,6 @@ function StoryForm() {
                             />
                     </div>
                     <div id='new-story-body'>
-                        <label htmlFor='body'>Body</label>
                         <textarea
                             placeholder='It was a dark and stormy night...'
                             value={body}
@@ -76,58 +73,69 @@ function StoryForm() {
                         ></textarea>
                     </div>
                     <div id='new-story-genre-container'>
-                        <label htmlFor='genre'>Choose a Genre</label>
+                        <h3 htmlFor='genre' id='genre'>Choose a Genre: </h3>
                             <div className='new-story-genre-wrapper'>
-                                <label htmlFor='Classic Horror'>Classic Horror</label>
                                 <input
                                     type='radio'
+                                    id='classic-horror'
                                     name='genre'
                                     value='1'
                                     onChange={(e) => setGenreId(e.target.value)}
-                                ></input>
-                                <label htmlFor='Weird Tales'>Weird Tales</label>
+                                    // checked={!genreId}
+                                    // style={checked ?{  backgroundColor: '#0347AD'} : null }
+                                >
+                                </input>
+                                <label htmlFor='classic-horror'>Classic Horror</label>
                                 <input
                                     type='radio'
+                                    id='weird-tales'
                                     name='genre'
                                     value='2'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
-                                <label htmlFor='Dark Fantasy'>Dark Fantasy</label>
+                                <label htmlFor='weird-tales'>Weird Tales</label>
                                 <input
                                     type='radio'
+                                    id='dark-fantasy'
                                     name='genre'
                                     value='3'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
-                                <label htmlFor='Sci-Fi'>Sci-Fi</label>
+                                <label htmlFor='dark-fantasy'>Dark Fantasy</label>
                                 <input
                                     type='radio'
+                                    id='sci-fi'
                                     name='genre'
                                     value='4'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
-                                <label htmlFor='Psychological'>Psychological</label>
+                                <label htmlFor='sci-fi'>Sci-Fi</label>
                                 <input
                                     type='radio'
+                                    id='psychological'
                                     name='genre'
                                     value='5'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
-                                <label htmlFor='Supernatural'>Supernatural</label>
+                                <label htmlFor='psychological'>Psychological</label>
                                 <input
                                     type='radio'
+                                    id='supernatural'
                                     name='genre'
                                     value='6'
                                     onChange={(e) => setGenreId(e.target.value)}
                                 ></input>
+                                <label htmlFor='supernatural'>Supernatural</label>
                             </div>
                     </div>
-                    <button>Submit</button>
+                    <button id='submit-story'>Submit</button>
                 </form>
             </div>
         </div>
         :
-        <div className='login-to-publish'>Login To Publish a Story!</div>
+        <div className='login-to-publish'>
+        <h2>Login To Publish a Story!</h2>
+        </div>
     )
 }
 

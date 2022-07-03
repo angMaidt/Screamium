@@ -93,10 +93,10 @@ function CommentForm () {
             }
             {!user && !showCommentForm &&
                 <div
-                className='login-to-leave-comment'
-                style={{ border: 'solid 1px black' }}
+
+                className='login-to-leave-comment comment-input'
                 >
-                    Login to share your thoughts!
+                <h3>Login to share your thoughts!</h3>
                 </div>
             }
         </div>

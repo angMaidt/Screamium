@@ -38,14 +38,14 @@ function RightNav() {
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/supernatural'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#000033' }}>
+                            style={{ backgroundColor: '#100152' }}>
                                 <h3>Supernatural</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/weird-tales'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: 'rgb( 5, 4, 5)' }}>
+                            style={{ backgroundColor: '#11001f' }}>
                                 <h3>Weird Tales</h3>
                             </div>
                         </NavLink>
