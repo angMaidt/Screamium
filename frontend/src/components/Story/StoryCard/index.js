@@ -49,7 +49,7 @@ function StoryCard({ story }) {
                             {story.User && <p className='story-username'>by {story.User.username}</p>}
                         {/* </div> */}
                         <div className='story-body-container'>
-                            <p className='story-body'>{story.body}</p>
+                            <p className='story-body preview'>{story.body}</p>
                         </div>
                         <div className='story-footer-elements-container'>
                             <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>

@@ -53,7 +53,7 @@
     margin-bottom: 10px;
 }
 
-.story-body {
+.story-body.preview {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -63,12 +63,12 @@
     width: 30vw;
 }
 
-.story-body-container::first-letter {
+/* .story-body-container::first-letter {
     /* font-size: 20px; */
     /* width: 20%; */
     /* color: red; */
     /* font-weight: bolder; */
-}
+/* } */
 
 .story-footer-elements-container {
     display: flex;

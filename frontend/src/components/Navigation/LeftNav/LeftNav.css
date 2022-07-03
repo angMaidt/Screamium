@@ -51,7 +51,7 @@
     /* justify-content: center; */
 }
 
-.fa-solid {
+.fa-house-chimney, .fa-bookmark, .fa-pen-to-square {
     color: white;
     font-size: 30px;
 }
