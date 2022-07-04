@@ -25,14 +25,15 @@
 }
 
 #logo p {
-    font-size: 40px;
-    font-size: 40px;
-    letter-spacing: 1px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 28px;
     /* font-family:'Courier New', Courier, monospace; */
 }
 
 #login-and-about {
     display: flex;
+    padding-top: 10px;
     align-items: center;
     gap: 10px;
 }
@@ -44,6 +45,8 @@
 }
 
 #sign-up {
+    position: fixed;
+    top: 29px;
     background-color: transparent;
     color: white;
     font-size: 16px;

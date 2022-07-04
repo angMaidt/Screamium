@@ -109,7 +109,7 @@ function Story() {
         :
             <div id='no-longer-exists'>
                 <h3 id='publish-a-story'>Uh-oh, looks like this story no longer exists! Go back to</h3>
-                    <Link style={{textDecoration: 'none', color:'red'}} to='/stories' id='stories-link'>
+                    <Link style={{textDecoration: 'none', color:'red'}} to='/' id='stories-link'>
                         <button id='publish-a-story'>Stories</button>
                     </Link>
             </div>

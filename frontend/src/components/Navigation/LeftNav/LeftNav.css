@@ -59,7 +59,7 @@
     text-decoration: none;
     font-size: 75px;
     background-color: rgb(128, 73, 167);
-    background-size: 400%;
+    /* background-size: 400%; */
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     cursor: pointer
