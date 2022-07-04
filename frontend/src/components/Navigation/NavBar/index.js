@@ -44,7 +44,7 @@ function NavBar({ isLoaded }){
       }}>
       <div className='nav-container'>
         <div id='logo'>
-          <Link to='/' style={{ textDecoration: 'none' }}>
+          <Link id='logo' to='/' style={{ textDecoration: 'none' }}>
             <i className="fa-solid fa-book-skull" style={{ color: 'white', fontSize: '30px'}}></i>
             <p style={{color: 'white'}}>Screamium.</p>
           </Link>
