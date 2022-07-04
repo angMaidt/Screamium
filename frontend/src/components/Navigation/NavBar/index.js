@@ -48,7 +48,9 @@ function NavBar({ isLoaded }){
         <div id='logo'>
           <i className="fa-solid fa-book-skull" style={{ color: 'white', fontSize: '30px'}}></i>
           {/* <img src='/images/logo.png' style={{ height: '40px'}}/> */}
-          <p style={{color: 'white'}}>Screamium.</p>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <p style={{color: 'white'}}>Screamium.</p>
+          </Link>
         </div>
         <div id='login-and-about'>
           {isLoaded && sessionLinks}
