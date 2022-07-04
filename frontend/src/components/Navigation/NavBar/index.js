@@ -1,8 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ProfileButton from '../../Navigation/ProfileButton';
-import StoryForm from '../../Story/StoryForm';
 import LoginFormModal from '../../LoginFormModal';
 import * as sessionActions from '../../../store/session';
 import '../Navigation.css';
@@ -46,9 +44,8 @@ function NavBar({ isLoaded }){
       }}>
       <div className='nav-container'>
         <div id='logo'>
-          <i className="fa-solid fa-book-skull" style={{ color: 'white', fontSize: '30px'}}></i>
-          {/* <img src='/images/logo.png' style={{ height: '40px'}}/> */}
           <Link to='/' style={{ textDecoration: 'none' }}>
+            <i className="fa-solid fa-book-skull" style={{ color: 'white', fontSize: '30px'}}></i>
             <p style={{color: 'white'}}>Screamium.</p>
           </Link>
         </div>

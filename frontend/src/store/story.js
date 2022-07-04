@@ -80,7 +80,6 @@ export const getAllStories = () => async dispatch => {
 
 //edit a story
 export const editAStory = (story) => async dispatch => {
-    // console.log(story.id)
 
     const res = await csrfFetch(`/api/stories/${story.id}`, {
         method: 'PUT',
@@ -122,7 +121,6 @@ const storyReducer = (state = {}, action) => {
             })
             return newState
         case CREATE_STORY:
-            // console.log(action.story)
             if (!state[action.story.id]) {
                 newState = {
                     ...state,
@@ -135,7 +133,6 @@ const storyReducer = (state = {}, action) => {
                 ...state,
                 [action.editedStory.id]: action.editedStory
             }
-            // console.log(newState)
             return newState
         case DESTROY_STORY:
             newState = { ...state }

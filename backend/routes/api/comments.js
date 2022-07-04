@@ -23,7 +23,6 @@ const commentValidators = [
 router.get('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
     try {
         const storyId = req.params.storyId
-        console.log(storyId)
         const comments = await Comment.findAll({
             where: { storyId },
             include: User

@@ -37,7 +37,6 @@ function EditStoryForm({ setShowEditForm }) {
             body,
             genreId: story.genreId
         }
-        console.log(editedStory)
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
         setShowEditForm(false)

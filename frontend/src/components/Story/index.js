@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link, Redirect, useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import './story.css';
 
 import { destroyAStory, getAllStories } from '../../store/story';
@@ -11,7 +11,6 @@ import CommentsView from '../Comments/CommentsView.js';
 function Story() {
     const dispatch = useDispatch();
     const { storyId } = useParams();
-    // console.log(storyId)
 
     const sessionUser = useSelector(state => state.session.user);
     const story = useSelector(state => state.story[storyId]);
