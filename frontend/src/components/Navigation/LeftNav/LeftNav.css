@@ -1,4 +1,4 @@
-.left-nav-wrapper {
+/* .left-nav-wrapper {
     height: 100vh;
     width: 10vw;
     border-left: 1px solid white;
@@ -39,7 +39,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
 }
 
 .fa-house-chimney, .fa-bookmark, .fa-pen-to-square {
@@ -59,8 +58,7 @@
     text-decoration: none;
     font-size: 75px;
     background-color: rgb(128, 73, 167);
-    /* background-size: 400%; */
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     cursor: pointer
-}
+} */

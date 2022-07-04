@@ -1,6 +1,6 @@
 /* general rules for view window go here */
 
-#missing-container {
+/* #missing-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,4 +22,4 @@
 
 #lost {
     margin-top: 1vh;;
-}
+} */

@@ -1,4 +1,4 @@
-.login-to-publish {
+/* .login-to-publish {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,8 +118,6 @@
 
 .form button {
     align-self: flex-end;
-    /* position: relative;
-    bottom: 5vh; */
     margin-top: 50px;
     font-size: 20px;
     font-weight: bold;
@@ -189,4 +187,4 @@
 #cancel-edit:hover {
     background-color: red;
     color: white;
-}
+} */

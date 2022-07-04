@@ -1,4 +1,4 @@
-.story-view {
+/* .story-view {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,8 +36,6 @@
 }
 
 .story-author {
-    /* font-family: arial; */
-    /* font-style: italic; */
     font-size: 18px;
     margin-bottom: 10px;
 }
@@ -65,7 +63,6 @@
     z-index: 1;
     right: 21vw;
     bottom: 0;
-    /* margin-left: 10px; */
 }
 
 .story-action-buttons * {
@@ -98,4 +95,4 @@
     border-radius: 50px;
     width:120%;
     color: white;
-}
+} */
