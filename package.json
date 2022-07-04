@@ -13,8 +13,8 @@
     "start": "npm start --prefix backend"
   },
   "engines": {
-    "npm": ">=7.0.0",
-    "node" : ">=16.0.0"
+    "npm": "8.x",
+    "node" : "16.x"
   },
   "repository": {
     "type": "git",
