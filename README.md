@@ -2,6 +2,8 @@
 
 **Screamium** is a clone of Medium, the popular hosting site for user-submitted articles and thought pieces. Screamium focuses on the spookier side of user content, encouraging users to submit their own tales from beyond. Screamium was created using Postgres, Express, React, and Node.js.
 
+View the live site [here](https://screamium-app.herokuapp.com/)!
+
 ![splash-page-3 0](https://user-images.githubusercontent.com/100968885/177126040-5b91d73e-1221-4b1f-9c95-ee4f4ec131c2.png)
 
 ## Features
