@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { getAllStories } from '../../../store/story';
 import StoryCard from '../StoryCard';
+import './MyStoriesView.css';
 
 function MyStoriesView() {
     const dispatch = useDispatch();
@@ -22,13 +23,20 @@ function MyStoriesView() {
 
     return (
         user ?
-        (stories &&
-            myStories.map(story => (
-                <StoryCard key={story.id} story={story} />
-            ))
-        )
-        :
-        <Redirect to='/'></Redirect>
+        <div className='my-stories-container'>
+            <div className='page-title-container'>
+                <h2 id='publish-a-story'>My Stories</h2>
+                <div className='title-linebreak'></div>
+                <div className='title-linebreak'></div>
+            </div>
+            {stories &&
+                myStories.map(story => (
+                    <StoryCard key={story.id} story={story} />
+                ))
+            }
+        </div>
+            :
+            <Redirect to='/'></Redirect>
     )
 }
 

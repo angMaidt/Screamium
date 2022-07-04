@@ -77,27 +77,3 @@
     color: rgba(5, 4, 5, 0.8);
 }
 
-.site-blocker {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    /* background-color: red; */
-    /* backdrop-filter: blur(1px); */
-}
-
-.comment-side-panel {
-    height: 100vh;
-    width: auto;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: white;
-    z-index: 1;
-    overflow-y: scroll;
-    border-left: 2px solid black;
-}
-
-.comment-side-panel::-webkit-scrollbar {
-    display:none
-}

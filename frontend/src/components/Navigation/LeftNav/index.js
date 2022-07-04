@@ -10,17 +10,17 @@ function LeftNav() {
             <div className='left-nav-container'>
                 <div className="home-and-story-container">
                     <NavLink to='/'>
-                        <i class="fa-solid fa-house-chimney"></i>
+                        <i className="fa-solid fa-house-chimney"></i>
                     </NavLink>
                     {user &&
                     <NavLink to='/my-stories'>
-                        <i class="fa-solid fa-bookmark"></i>
+                        <i className="fa-solid fa-bookmark"></i>
                     </NavLink>}
                 </div>
                 <div className="nav-publish">
                     <div className='nav-linebreak'></div>
                     <NavLink to='/stories/new'>
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i className="fa-solid fa-pen-to-square"></i>
                     </NavLink>
                 </div>
             </div>

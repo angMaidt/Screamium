@@ -19,9 +19,16 @@ function SupernaturalView() {
 
     return (
         (stories &&
-            genreStories.map(story => (
+            <div className='my-stories-container'>
+                <div className='page-title-container'>
+                    <h2 id='publish-a-story'>Supernatural</h2>
+                    <div className='title-linebreak'></div>
+                    <div className='title-linebreak'></div>
+                </div>
+            {genreStories.map(story => (
                 <StoryCard key={story.id} story={story} />
-            ))
+            ))}
+            </div>
         )
     )
 }

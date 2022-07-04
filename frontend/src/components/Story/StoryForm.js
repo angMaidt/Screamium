@@ -81,7 +81,6 @@ function StoryForm() {
                                     name='genre'
                                     value='1'
                                     onChange={(e) => setGenreId(e.target.value)}
-                                    checked={!genreId}
                                 >
                                 </input>
                                 <label htmlFor='classic-horror'>Classic Horror</label>

@@ -34,10 +34,10 @@ function Comment ({ comment }) {
             {user && user.id === comment.User.id &&
                 <div className='button-wrapper'>
                     <button onClick={(e) => handleEditClick(e)}>
-                        <i class="fa-solid fa-pen"></i>
+                        <i className="fa-solid fa-pen"></i>
                     </button>
                     <button onClick={(e) => handleDeleteClick(e)}>
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>
             }

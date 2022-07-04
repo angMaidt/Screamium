@@ -11,14 +11,14 @@ function CommentsView ({ visible, storyComments }) {
 
     return (
         <div className='comment-panel-container'>
-            
+
             {!storyComments ?
                 <div className="empty-comments-container">
                     There are currently no responses for this story.
                     Be the first to respond.
                 </div>
             :
-            <div className='comment-wrapper'>
+            <div className='all-comments-wrapper'>
                 <CommentForm />
                 {storyComments.map(comment => (
                     <Comment key={comment.id} comment={comment}/>

@@ -1,0 +1,26 @@
+#header-container {
+    width: 80vw;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* margin-left: 12%;
+    margin-top: 5vh; */
+}
+
+#header-img {
+    height: 400px;
+    border: 1px solid black;
+}
+
+#header-text {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    /* left: 58%;
+    left: 2%; */
+    font-size: 70px;
+    text-shadow: 2px 5px 0 #000;
+    right: 24%;
+}

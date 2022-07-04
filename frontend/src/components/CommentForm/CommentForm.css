@@ -18,7 +18,9 @@
 }
 
 #dummy-comment-input {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    margin-top: 10px;
+    margin-left: 5%;
     width: 18vw;
     height: 30px;
     font-family: 'Times New Roman', Times, serif;
@@ -53,10 +55,6 @@
 
 .button-wrapper i:hover {
     color: rgb(0, 0, 0, .8);
-}
-
-.comment-side-panel {
-    padding-top: 15vh;
 }
 
 .comment-form button {

@@ -54,7 +54,7 @@ function Story() {
         if (sessionUser.id === story.authorId) {
             editButton = (
                 <button id='edit-button' onClick={(e) => setShowEditForm(true)}>
-                    <i class="fa-solid fa-pen"></i>
+                    <i className="fa-solid fa-pen"></i>
                 </button>
             )
             cancelEditButton = (
@@ -63,7 +63,7 @@ function Story() {
             )
             deleteButton = (
                 <button id='delete-button' onClick={(e) => { handleDelete(e)}}>
-                    <i class="fa-solid fa-trash"></i>
+                    <i className="fa-solid fa-trash"></i>
                 </button>
             )
         }
@@ -94,7 +94,7 @@ function Story() {
                             <button
                             id='show-comments'
                             onClick={() => setViewComments(!viewComments)}>
-                                <i class="fa-solid fa-comment"></i>
+                                <i className="fa-solid fa-comment"></i>
                             </button>
                     }
                     </div>
