@@ -36,13 +36,6 @@ function StoryCard({ story }) {
                 <div className='story-container'
                 key={story.id}
                 style={{borderBottom: '1px solid black'}}>
-                    {genre &&
-                        <div
-                            className='story-image-container'
-                            style={{ backgroundColor: genreColor }}>
-                                {/* {genre} */}
-                        </div>
-                    }
                     <div className='story-all-text-container'>
                         {/* <div className='card-top'> */}
                             <h2 className='story-title'>{story.title}</h2>
