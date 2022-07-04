@@ -8,7 +8,7 @@ export const genreNameParser = (genreId) => {
         genreColor= '#0347AD'
         genreName = 'Classic Horror'
     } else if (genreId === 2) {
-        genreColor= 'rgb( 5, 4, 5)'
+        genreColor= '#11001f'
         genreName = 'Weird Tales'
     } else if (genreId === 3) {
         genreColor = '#032A85'

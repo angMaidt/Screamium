@@ -10,14 +10,14 @@ function RightNav() {
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/classic-horror'>
                             <div
                             className='genre-card'
-                            style={{ backgroundColor: '#0347AD' }}>
+                            style={{ backgroundColor: '#0258da' }}>
                                 <h3>Classic Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/dark-fantasy'>
                             <div
                             className='genre-card'
-                            style={{ backgroundColor: '#032A85' }}>
+                            style={{ backgroundColor: '#0839ac' }}>
                                 <h3>Dark Fantasy</h3>
                             </div>
                         </NavLink>
@@ -31,14 +31,14 @@ function RightNav() {
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/sci-fi'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#030E6E' }}>
+                            style={{ backgroundColor: '#02094b' }}>
                                 <h3>Sci-Fi Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/supernatural'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#100152' }}>
+                            style={{ backgroundColor: '#000033' }}>
                                 <h3>Supernatural</h3>
                             </div>
                         </NavLink>

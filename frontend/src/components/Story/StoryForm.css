@@ -57,7 +57,7 @@
 }
 
 #classic-horror:checked + label, #classic-horror + label:hover {
-    background-color:#0347AD;
+    background-color:#0258da;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -73,7 +73,7 @@
 }
 
 #dark-fantasy:checked + label, #dark-fantasy + label:hover {
-    background-color:#032A85;
+    background-color:#0839ac;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -81,7 +81,7 @@
 }
 
 #sci-fi:checked + label, #sci-fi + label:hover {
-    background-color:#030E6E;
+    background-color:#02094b;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -89,7 +89,7 @@
 }
 
 #psychological:checked + label, #psychological + label:hover {
-    background-color:#071E7A;
+    background-color:#0a279c;
     font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
