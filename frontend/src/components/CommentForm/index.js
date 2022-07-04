@@ -64,16 +64,20 @@ function CommentForm () {
                         onChange={e => setBody(e.target.value)}
                     ></textarea>
                     <div id='comment-button-wrapper'>
-                        <button
-                            type='submit'
-                            id='respond'
-                            disabled={!body || validationErrors.length > 0}
-                        >Respond</button>
-                        <button
-                            type='button'
-                            id='cancel-comment'
-                            onClick={() => setShowCommentForm(false)}
-                        >Cancel</button>
+                        {body &&
+                            <>
+                                <button
+                                type='submit'
+                                id='respond'
+                                disabled={!body || validationErrors.length > 0}
+                                >Respond</button>
+                                <button
+                                    type='button'
+                                    id='cancel-comment'
+                                    onClick={() => setShowCommentForm(false)}
+                                >Cancel</button>
+                            </>
+                        }
                     </div>
                 </form>
             </div>
