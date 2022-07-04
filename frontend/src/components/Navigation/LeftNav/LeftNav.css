@@ -57,7 +57,7 @@
 .fa-github:hover {
     text-decoration: none;
     font-size: 75px;
-    background-color: rgb(128, 73, 167);
+    color: rgb(128, 73, 167);
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     cursor: pointer
