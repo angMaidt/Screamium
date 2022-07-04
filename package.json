@@ -12,6 +12,10 @@
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend"
   },
+  "engines": {
+    "npm": "8.x",
+    "node" : "16.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angMaidt/Screamium.git"
