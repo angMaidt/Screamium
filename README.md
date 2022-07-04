@@ -27,6 +27,7 @@
 
 ## Installation Instructions
 * Clone repo to desired location
+* Run npm install in both /backend and /frontend
 * cd into /backend and npm start
 * cd into /frontend and npm start
 * If window does not automatically open, navigate in your browser to localhost:3000
