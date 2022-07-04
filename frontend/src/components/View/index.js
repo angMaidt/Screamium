@@ -64,7 +64,9 @@ function View({ isLoaded }) {
           <Route path='/weird-tales'>
             <WeirdTalesView />
           </Route>
-          <Route>uh-oh, looks like you got lost in the woods again...</Route>
+          <Route>
+            <h2 id='p'>uh-oh, looks like you got lost in the woods again...</h2>
+          </Route>
         </Switch>
       )}
             </div>

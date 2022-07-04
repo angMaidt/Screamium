@@ -39,13 +39,6 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-.form-container input:focus, textarea:focus {
-    background-color: rgb(238, 238, 238);
-    /* background-color: black;
-    color: white */
-
-}
-
 .new-story-genre-wrapper input[type='radio'] {
     opacity: 0;
     position: fixed;
@@ -67,36 +60,48 @@
     background-color:#0347AD;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 #weird-tales:checked + label, #weird-tales + label:hover {
     background-color:#11001f;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 #dark-fantasy:checked + label, #dark-fantasy + label:hover {
     background-color:#032A85;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 #sci-fi:checked + label, #sci-fi + label:hover {
     background-color:#030E6E;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 #psychological:checked + label, #psychological + label:hover {
     background-color:#071E7A;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 #supernatural:checked + label, #supernatural + label:hover {
     background-color:#090033;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
 }
 
 .new-story-genre-wrapper input[type='radio']:focus + label {
@@ -138,7 +143,7 @@
 .edit-total-form-container {
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: 100vh;
     width: 50vw;
     align-items: center;
     justify-content: flex-start;
@@ -174,6 +179,7 @@
 .edit-story-button-wrapper {
     display: flex;
     justify-content: space-between;
+    background-color: white;
 }
 
 #cancel-edit {

@@ -77,3 +77,25 @@
     color: rgba(5, 4, 5, 0.8);
 }
 
+#no-longer-exists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10vw;
+    padding-left: 20vw;
+    text-align: center
+}
+
+#stories-link button {
+    background-color: transparent;
+    border-radius: 50px;
+    width:120%
+}
+
+#stories-link button:hover {
+    background-color: rgb(100, 0, 100);
+    border-radius: 50px;
+    width:120%;
+    color: white;
+}

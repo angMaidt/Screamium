@@ -22,6 +22,9 @@ function LeftNav() {
                     <NavLink to='/stories/new'>
                         <i className="fa-solid fa-pen-to-square"></i>
                     </NavLink>
+                    <a>
+                        <i className="fa-brands fa-github"></i>
+                    </a>
                 </div>
             </div>
         </div>
