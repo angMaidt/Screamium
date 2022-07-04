@@ -1,16 +1,31 @@
-.signup-container {
+.form-signup-container {
     display: flex;
-    flex-direction: row;
-    height: 300px;
-    width: 300px;
-    background-color: white;
-    box-shadow: 0 0 12px gray;
-    padding: 25px;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 20vw;
+
+}
+
+#join-us {
+    font-size: 50px;
+}
+
+.signup-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    /* width: 300px; */
 }
 
 .errors {
+    display: flex;
+    flex-direction: column;
     color: rgb(207, 11, 11);
+    margin-top: 20px;
 }
 
 .form-field * {
@@ -19,18 +34,26 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.button {
-    color: darkblue;
-    border-width: 1px;
-    border-color: darkblue;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
+.form-signup-container .form-field {
+    padding-top: 20px;
 }
 
-.button:hover {
-    cursor: pointer;
+#confirm-password {
+    padding-bottom: 30px;
+}
+
+#submit {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 80px;
+    height: 20px;
+    font-weight: bold;
+    border-width: 1px;
+}
+
+#submit:hover {
+    margin-bottom: 20px;
+    background-color: black;
     color: white;
-    background-color: darkblue;
 }

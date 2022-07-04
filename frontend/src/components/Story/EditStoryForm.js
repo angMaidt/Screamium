@@ -46,10 +46,10 @@ function EditStoryForm({ setShowEditForm }) {
     return (
         !hasSubmitted ?
         <div className='edit-total-form-container'>
-            <h3>Edit your story</h3>
+            <h3 id='edit-a-story'>Edit your spooky story.</h3>
             {validationErrors.length > 0 && (
             <div className='errors-container'>
-                The following errors were found:
+                <h3>The following errors were found:</h3>
                 <ul className='errors'>
                     {validationErrors.map(error => (
                         <li className='error' key={error}>{error}</li>
@@ -61,8 +61,7 @@ function EditStoryForm({ setShowEditForm }) {
                 <form className='form'
                     id='edit-story'
                     onSubmit={(e) => handleSubmit(e)}>
-                    <div id='edit-story-title'>
-                        <label htmlFor='title'>Title</label>
+                    <div id='new-story-title'>
                         <input
                             type='text'
                             placeholder='Title'
@@ -71,23 +70,16 @@ function EditStoryForm({ setShowEditForm }) {
                             />
                     </div>
                     <div id='edit-story-body'>
-                        <label htmlFor='body'>Body</label>
                         <textarea
                             placeholder='It was a dark and stormy night...'
                             value={body}
                             onChange={e => setBody(e.target.value)}
                         ></textarea>
                     </div>
-                    <div id='edit-story-image-url'>
-                        {/* <label htmlFor='image'>Image URL</label>
-                        <input
-                            type='text'
-                            placeholder='For default image, leave field blank'
-                            value={imageUrl}
-                            onChange={e => setImageUrl(e.target.value)}
-                        ></input> */}
+                    <div className='edit-story-button-wrapper'>
+                        <button>Submit</button>
+                        <button id='cancel-edit' onClick={() => setShowEditForm(false)}>Cancel Edit</button>
                     </div>
-                    <button>Submit</button>
                 </form>
             </div>
         </div>

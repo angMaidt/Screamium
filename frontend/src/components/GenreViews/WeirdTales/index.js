@@ -8,7 +8,7 @@ function WeirdTalesView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const weirdStories = Object.values(stories).filter(story => story.genreId === 2)
+    const genreStories = Object.values(stories).filter(story => story.genreId === 2)
 
     useEffect(() => {
         const fetchData = async() => {
@@ -19,9 +19,16 @@ function WeirdTalesView() {
 
     return (
         (stories &&
-            weirdStories.map(story => (
+            <div className='my-stories-container'>
+                <div className='page-title-container'>
+                    <h2 id='publish-a-story'>Weird Tales</h2>
+                    <div className='title-linebreak'></div>
+                    <div className='title-linebreak'></div>
+                </div>
+            {genreStories.map(story => (
                 <StoryCard key={story.id} story={story} />
-            ))
+            ))}
+            </div>
         )
     )
 }

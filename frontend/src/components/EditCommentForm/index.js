@@ -44,22 +44,27 @@ function EditCommentForm ({ comment, setShowEditForm }) {
                         </ul>
                     </div>
                 )}
-                <form className='comment-form'
+                <form className='comment-form edit'
                     onSubmit={handleSubmit}>
-                    <input
+                    <textarea
                         type='text'
+                        className='comment-input edit'
                         placeholder='What are your thoughts?'
                         value={body}
                         onChange={e => setBody(e.target.value)}
-                    ></input>
-                    <button
-                        type='submit'
-                        disabled={!body || validationErrors.length > 0}
-                    >Respond</button>
-                    <button
-                        onClick={() => setShowEditForm(false)}
-                        type='button'
-                    >Cancel</button>
+                    ></textarea>
+                    <div id='comment-button-wrapper'>
+                            <button
+                                type='submit'
+                                id='respond'
+                                disabled={!body || validationErrors.length > 0}
+                            >Respond</button>
+                        <button
+                            type='button'
+                            id='cancel-comment'
+                            onClick={() => setShowEditForm(false)}
+                        >Cancel</button>
+                    </div>
                 </form>
             </div>
         </div>

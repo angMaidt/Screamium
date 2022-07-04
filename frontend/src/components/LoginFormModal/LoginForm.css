@@ -9,8 +9,11 @@
     align-items: center;
 }
 
-.errors {
+.login-errors {
+    display: flex;
+    flex-direction: column;
     color: rgb(207, 11, 11);
+    margin-bottom: 20px;
 }
 
 .form-field * {
@@ -19,18 +22,97 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.button {
-    color: darkblue;
-    border-width: 1px;
-    border-color: darkblue;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
+#login {
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
 }
 
-.button:hover {
-    cursor: pointer;
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.linebreak {
+    height: 2px;
+    width: 80%;
+    background-color:gray;
+}
+
+.username-container {
+    padding-bottom: 20px;
+}
+
+.password-container {
+    padding-bottom: 20px;
+}
+
+#welcome {
+    padding-bottom: 30px;
+}
+
+#username-label {
+    padding-right: 10px;
+}
+
+#password-label {
+    padding-right: 73px;
+}
+
+.demo-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#demo-login {
+    margin-top: 40px;
+}
+
+#login-submit {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 80px;
+    height: 20px;
+    font-weight: bold;
+    border-width: 1px;
+}
+#login-submit:hover {
+    background-color: black;
     color: white;
-    background-color: darkblue;
+}
+
+#demo-login {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 120px;
+    height: 20px;
+    font-weight: bold;
+    border-width: 1px;
+}
+
+#demo-login:hover {
+    margin-bottom: 20px;
+    background-color: black;
+    color: white;
 }

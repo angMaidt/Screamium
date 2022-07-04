@@ -1,0 +1,24 @@
+/* general rules for view window go here */
+
+#missing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 20vw;
+    margin-top: 2vh;
+}
+
+#missing-container #publish-a-story {
+    color: red;
+    margin-top: 1vh;
+}
+
+#missing-container img {
+    border: 1px solid red;
+}
+
+#lost {
+    margin-top: 1vh;;
+}

@@ -23,20 +23,27 @@ function Comment ({ comment }) {
     }
 
     return (
-        <div className='comment-container' key={comment.id}>
+        <div className='comment-container' key={comment.id} style={{ borderBottom: '1px solid black' }}>
             <div className='comment-wrapper'>
-                <h5 className='comment-username'>{comment.User.username}</h5>
+                <h5
+                    className='comment-username'
+                    style={{ fontFamily: 'Arial', fontSize: '15px', fontStyle: 'italic' }}
+                        >{comment.User.username}</h5>
                 <p className='comment-body'>{comment.body}</p>
-                {user && user.id === comment.User.id &&
-                    <div className='button-wrapper'>
-                        <button onClick={(e) => handleEditClick(e)}>Edit</button>
-                        <button onClick={(e) => handleDeleteClick(e)}>Delete</button>
-                    </div>
-                }
-                {showEditForm &&
-                    <EditCommentForm comment={comment} setShowEditForm={setShowEditForm}/>
-                }
             </div>
+            {user && user.id === comment.User.id &&
+                <div className='button-wrapper'>
+                    <button onClick={(e) => handleEditClick(e)}>
+                        <i className="fa-solid fa-pen"></i>
+                    </button>
+                    <button onClick={(e) => handleDeleteClick(e)}>
+                        <i className="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            }
+            {showEditForm &&
+                <EditCommentForm comment={comment} setShowEditForm={setShowEditForm}/>
+            }
         </div>
     )
 }

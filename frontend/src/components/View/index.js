@@ -16,6 +16,7 @@ import PsychologicalView from '../GenreViews/Psychological';
 import SciFiHorrorView from "../GenreViews/SciFiHorror";
 import SupernaturalView from "../GenreViews/Supernatural";
 import WeirdTalesView from "../GenreViews/WeirdTales";
+import './view.css';
 
 function View({ isLoaded }) {
     return (
@@ -64,7 +65,13 @@ function View({ isLoaded }) {
           <Route path='/weird-tales'>
             <WeirdTalesView />
           </Route>
-          <Route>uh-oh, looks like you got lost in the woods again...</Route>
+          <Route>
+            <div id='missing-container'>
+              <img src='/images/404-image.jpg'/>
+              <h2 id='lost'>Uh-oh, looks like you got lost in the woods again...</h2>
+              <h2 id='publish-a-story'>404</h2>
+            </div>
+          </Route>
         </Switch>
       )}
             </div>

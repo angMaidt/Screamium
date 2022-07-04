@@ -1,32 +1,31 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import ProfileButton from "../ProfileButton";
+import './LeftNav.css';
 
 function LeftNav() {
     const user = useSelector(state => state.session.user);
 
     return (
-        <div
-            className="left-nav-wrapper"
-            style={{
-                backgroundColor: 'rgb(5, 4, 5)',
-                height: '100vh',
-                width: '25vw',
-            }}>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    position: 'fixed',
-                    left: '0',
-                    backgroundColor: 'rgb(5, 4, 5)',
-                    height: '100vh',
-                    width: '25vw',
-                }}
-                className='left-nav-container'>
-                    <NavLink to='/'>Stories</NavLink>
-                    <NavLink to='/my-stories'>My Stories</NavLink>
-                    <NavLink to='/stories/new'>Publish Story</NavLink>
+        <div className="left-nav-wrapper">
+            <div className='left-nav-container'>
+                <div className="home-and-story-container">
+                    <NavLink to='/'>
+                        <i className="fa-solid fa-house-chimney"></i>
+                    </NavLink>
+                    {user &&
+                    <NavLink to='/my-stories'>
+                        <i className="fa-solid fa-bookmark"></i>
+                    </NavLink>}
+                </div>
+                <div className="nav-publish">
+                    <div className='nav-linebreak'></div>
+                    <NavLink to='/stories/new'>
+                        <i className="fa-solid fa-pen-to-square"></i>
+                    </NavLink>
+                    <a href='https://github.com/angMaidt'>
+                        <i className="fa-brands fa-github"></i>
+                    </a>
+                </div>
             </div>
         </div>
     )

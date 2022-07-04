@@ -1,23 +1,101 @@
 .story-view {
     display: flex;
-    flex: 1 1 auto;
-    justify-content: stretch;
-    align-items: stretch;
-}
-.site-blocker {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    background-color: rgba(187, 187, 187, 0.3);
-    /* backdrop-filter: blur(1px); */
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    margin-left: 20%;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.comment-side-panel {
-    height: 100%;
-    width: auto;
+.story-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-linebreak {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.by {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.story-title.big {
+    font-size: 30px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.story-author {
+    /* font-family: arial; */
+    /* font-style: italic; */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.story-body.story {
+    width: 50vw;
+    text-indent: 50px;
+    line-height: 20px;
+}
+
+.story-body.story::first-letter {
+    font-size: 40px;
+}
+
+#show-comments, #edit-button, #delete-button {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+}
+
+.story-action-buttons {
     position: fixed;
-    right: 0;
-    background-color: white;
+    display: flex;
+    flex-direction: row;
     z-index: 1;
-    overflow-y: scroll;
+    right: 21vw;
+    bottom: 0;
+    /* margin-left: 10px; */
+}
+
+.story-action-buttons * {
+    margin: 5px;
+    color: rgba(5, 4, 5, 0.2);
+}
+
+.story-action-buttons *:hover {
+    color: rgba(5, 4, 5, 0.8);
+}
+
+#no-longer-exists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10vw;
+    padding-left: 20vw;
+    text-align: center
+}
+
+#stories-link button {
+    background-color: transparent;
+    border-radius: 50px;
+    width:120%
+}
+
+#stories-link button:hover {
+    background-color: rgb(100, 0, 100);
+    border-radius: 50px;
+    width:120%;
+    color: white;
 }

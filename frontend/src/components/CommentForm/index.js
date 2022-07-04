@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createNewComment } from '../../store/comment';
 
+import './CommentForm.css';
+
 function CommentForm () {
     const { storyId } = useParams();
     const dispatch = useDispatch();
@@ -30,14 +32,17 @@ function CommentForm () {
         }
         await dispatch(createNewComment(comment))
         setShowCommentForm(false)
+        setBody('');
     }
 
     return (
         <div className='comment-form-container'>
             {user && showCommentForm &&
             <div className='comment-form-wrapper'>
-                <div className='comment-form-username'>
-                    <h4 htmlFor='username'>{user.username}</h4>
+                <div className='comment-username'>
+                    <h4
+                    style={{ fontFamily: 'Arial', fontSize: '15px', fontStyle: 'italic' }}
+                    htmlFor='username'>{user.username}</h4>
                 </div>
                 {validationErrors.length > 0 && (
                     <div className='errors-container'>
@@ -51,20 +56,25 @@ function CommentForm () {
                 )}
                 <form className='comment-form'
                     onSubmit={handleSubmit}>
-                    <input
+                    <textarea
                         type='text'
+                        className='comment-input'
                         placeholder='What are your thoughts?'
                         value={body}
                         onChange={e => setBody(e.target.value)}
-                    ></input>
-                    <button
-                        type='submit'
-                        disabled={!body || validationErrors.length > 0}
-                    >Respond</button>
-                    <button
-                        onClick={() => setShowCommentForm(false)}
-                        type='button'
-                    >Cancel</button>
+                    ></textarea>
+                    <div id='comment-button-wrapper'>
+                        <button
+                            type='submit'
+                            id='respond'
+                            disabled={!body || validationErrors.length > 0}
+                        >Respond</button>
+                        <button
+                            type='button'
+                            id='cancel-comment'
+                            onClick={() => setShowCommentForm(false)}
+                        >Cancel</button>
+                    </div>
                 </form>
             </div>
             }
@@ -74,6 +84,7 @@ function CommentForm () {
                     <form className='dummy-comment-form'>
                         <input
                         type='text'
+                        id='dummy-comment-input'
                         placeholder='What are your thoughts?'
                         onClick={() => setShowCommentForm(true)}
                         ></input>
@@ -82,10 +93,10 @@ function CommentForm () {
             }
             {!user && !showCommentForm &&
                 <div
-                className='login-to-leave-comment'
-                style={{ border: 'solid 1px black' }}
+
+                className='login-to-leave-comment comment-input'
                 >
-                    Login to share your thoughts!
+                <h3>Login to share your thoughts!</h3>
                 </div>
             }
         </div>

@@ -1,0 +1,93 @@
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-form-container {
+    display: flex;
+    width: 20vw;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+.dummy-comment-form {
+    width: 20vw
+}
+
+#dummy-comment-input {
+    /* margin-bottom: 20px; */
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 18vw;
+    height: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+.comment-input {
+    margin-bottom: 20px;
+    width: 18vw;
+    height: 60px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+.comment-input.edit {
+    margin-left: -2vw;
+}
+
+.button-wrapper {
+    align-self: flex-end;
+}
+
+.button-wrapper button {
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 0, 0, .2);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    font-size: 18px
+}
+
+.button-wrapper i:hover {
+    color: rgb(0, 0, 0, .8);
+}
+
+.comment-form button {
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 80px;
+    color: black;
+    font-weight: bold;
+}
+
+#comment-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#respond:hover {
+    background-color: black;
+    color: white
+}
+
+#cancel-comment:hover {
+    background-color: red;
+    color: white
+}
+
+.login-to-leave-comment {
+    font-size: 20px;
+    margin-bottom: -20px
+}
+
+.comment-form-wrapper {
+    margin-top: 1vh;
+    margin-left: 1vw;
+}

@@ -53,17 +53,18 @@ function Story() {
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
-                <button onClick={(e) => setShowEditForm(true)}
-                >Edit</button>
+                <button id='edit-button' onClick={(e) => setShowEditForm(true)}>
+                    <i className="fa-solid fa-pen"></i>
+                </button>
             )
             cancelEditButton = (
                 <button onClick={(e) => setShowEditForm(false)}
                 >Cancel Edit</button>
             )
             deleteButton = (
-                <button id='delete-button' onClick={(e) => {
-                    handleDelete(e)
-                }}>Delete</button>
+                <button id='delete-button' onClick={(e) => { handleDelete(e)}}>
+                    <i className="fa-solid fa-trash"></i>
+                </button>
             )
         }
     }
@@ -76,33 +77,40 @@ function Story() {
         story ?
             <div className='story-view'>
                 <div className='story-main-area'>
-                    {story.User && <h3 className='story-author'>{story.User.username}</h3>}
-                    <h2 className='story-title'>{story.title}</h2>
-                    <p className='story-body'>{story.body}</p>
-                    {editButton}
-                    {showEditForm && cancelEditButton}
-                    {deleteButton}
-                    {editForm}
+                    <div className='story-title-container'>
+                        <div className='title-linebreak'></div>
+                        <div className='title-linebreak'></div>
+                        <h2 className='story-title big'>{story.title}</h2>
+                        <p className='by'>By</p>
+                        {story.User && <p className='story-author'>{story.User.username}</p>}
+                        <div className='title-linebreak'></div>
+                        <div className='title-linebreak'></div>
+                    </div>
+                    <p className='story-body story'>{story.body}</p>
+                    <div className='story-action-buttons'>
+                        {editButton}
+                        {deleteButton}
                     {comments &&
                             <button
                             id='show-comments'
                             onClick={() => setViewComments(!viewComments)}>
-                            {storyComments.length} Comments
+                                <i className="fa-solid fa-comment"></i>
                             </button>
                     }
+                    </div>
+                    {editForm}
+                    {showEditForm && cancelEditButton}
                 </div>
                 {viewComments && <div className='site-blocker' onClick={() => setViewComments(!viewComments)}></div>}
-                <div className='comment-side-panel'
-                    style={viewComments ? {boxShadow: '-5px 1px 15px 0px rgba(187, 187, 187, 0.3)'} : {}}
-                >
+                <div className='comment-side-panel'>
                     <CommentsView visible={viewComments} storyComments={storyComments} storyId={storyId}/>
                 </div>
             </div>
         :
-            <div>
-                "Uh-oh, looks like this story doesn't exist! Go back to
-                    <Link to='/stories' id='stories-link'>
-                        Stories
+            <div id='no-longer-exists'>
+                <h3 id='publish-a-story'>Uh-oh, looks like this story no longer exists! Go back to</h3>
+                    <Link style={{textDecoration: 'none', color:'red'}} to='/stories' id='stories-link'>
+                        <button id='publish-a-story'>Stories</button>
                     </Link>
             </div>
     )
