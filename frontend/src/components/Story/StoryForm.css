@@ -1,4 +1,4 @@
-/* .login-to-publish {
+.login-to-publish {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,4 +187,4 @@
 #cancel-edit:hover {
     background-color: red;
     color: white;
-} */
+}
