@@ -81,8 +81,7 @@ function StoryForm() {
                                     name='genre'
                                     value='1'
                                     onChange={(e) => setGenreId(e.target.value)}
-                                    // checked={!genreId}
-                                    // style={checked ?{  backgroundColor: '#0347AD'} : null }
+                                    checked={!genreId}
                                 >
                                 </input>
                                 <label htmlFor='classic-horror'>Classic Horror</label>
