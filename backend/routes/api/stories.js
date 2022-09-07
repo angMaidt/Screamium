@@ -3,7 +3,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 //file imports
-const { Story, User, Comment } = require('../../db/models');
+const { Story, User, Comment, Bookmark } = require('../../db/models');
 const { requireAuth, restoreUser } = require('../../utils/auth');
 // const { handleValidationErrors } = require('../../utils/validation');
 
@@ -99,6 +99,40 @@ router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
         }
     } catch (e) {
         return res.json({ message: 'could not destroy story' })
+    }
+}))
+
+//BOOKMARKS
+//Create a bookmark
+router.post('/:storyId(\\d+)/bookmark', restoreUser, asyncHandler(async(req, res) => {
+    const storyId = req.params.storyId
+    const { userId } = req.body
+
+    try {
+        const newBookmark = await Bookmark.findOrCreate({
+            where: { userId, storyId }
+        })
+        return res.json(newBookmark)
+    } catch (e) {
+        return res.json({ message: 'Could not bookmark story' })
+    }
+}))
+
+//Destroy a bookmark
+router.delete('/:storyId(\\d+)/bookmark', restoreUser, asyncHandler(async(req, res) => {
+    const storyId = req.params.storyId
+    const { userId } = req.body
+
+    try {
+        const bookmark = await Bookmark.findOne({
+            where: { userId, storyId }
+        })
+
+        await bookmark.destroy()
+
+        return res.json({ message: 'Bookmark destroyed' })
+    } catch (e) {
+        return res.json({ message: 'Could not unbookmark story' })
     }
 }))
 
