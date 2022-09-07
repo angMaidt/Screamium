@@ -5,22 +5,22 @@ export const genreNameParser = (genreId) => {
     let genreName, genreColor
 
     if (genreId === 1) {
-        genreColor= '#0347AD'
+        genreColor= 'var(--classic)'
         genreName = 'Classic Horror'
     } else if (genreId === 2) {
-        genreColor= '#11001f'
+        genreColor= 'var(--weird)'
         genreName = 'Weird Tales'
     } else if (genreId === 3) {
-        genreColor = '#032A85'
+        genreColor = 'var(--fantasy)'
         genreName = 'Dark Fantasy'
     } else if (genreId === 4) {
-        genreColor = '#030E6E'
+        genreColor = 'var(--sci-fi)'
         genreName = 'Sci-Fi Horror'
     } else if (genreId === 5) {
-        genreColor = '#071E7A'
+        genreColor = 'var(--psychological)'
         genreName = 'Psychological'
     } else if (genreId === 6) {
-        genreColor = '#000033'
+        genreColor = 'var(--supernatural)'
         genreName = 'Supernatural'
     }
     return [ genreName, genreColor ];
@@ -28,7 +28,7 @@ export const genreNameParser = (genreId) => {
 
 function StoryCard({ story }) {
     const genre = genreNameParser(story?.genreId)
-    const [ genreName, genreColor ] = genre
+    const [genreName, genreColor] = genre
 
     return (
         <div className="story-card-container">

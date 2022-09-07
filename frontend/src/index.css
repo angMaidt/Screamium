@@ -1,3 +1,11 @@
+:root {
+   --classic: #0258da;;
+   --fantasy: #0839ac;;
+   --psychological: #071e7a;
+   --sci-fi: #030E6E;
+   --supernatural: #000033;
+   --weird: #050405;
+}
 
 * {
     padding: 0;

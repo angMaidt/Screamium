@@ -10,42 +10,42 @@ function RightNav() {
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/classic-horror'>
                             <div
                             className='genre-card'
-                            style={{ backgroundColor: '#0258da' }}>
+                            style={{ backgroundColor: 'var(--classic)' }}>
                                 <h3>Classic Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/dark-fantasy'>
                             <div
                             className='genre-card'
-                            style={{ backgroundColor: '#0839ac' }}>
+                            style={{ backgroundColor: 'var(--fantasy)' }}>
                                 <h3>Dark Fantasy</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/psychological'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#071E7A' }}>
+                            style={{ backgroundColor: 'var(--psychological)' }}>
                                 <h3>Psychological</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/sci-fi'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#02094b' }}>
+                            style={{ backgroundColor: 'var(--sci-fi)' }}>
                                 <h3>Sci-Fi Horror</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/supernatural'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#000033' }}>
+                            style={{ backgroundColor: 'var(--supernatural)' }}>
                                 <h3>Supernatural</h3>
                             </div>
                         </NavLink>
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/weird-tales'>
                         <div
                             className='genre-card'
-                            style={{ backgroundColor: '#11001f' }}>
+                            style={{ backgroundColor: 'var(--weird)' }}>
                                 <h3>Weird Tales</h3>
                             </div>
                         </NavLink>
