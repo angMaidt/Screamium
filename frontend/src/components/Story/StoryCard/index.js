@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import Bookmark from '../Bookmark';
 import './StoryCard.css'
 
 export const genreNameParser = (genreId) => {
@@ -28,11 +30,25 @@ export const genreNameParser = (genreId) => {
 }
 
 function StoryCard({ story }) {
-    const sessionUser = useSelector(state => state.session.user);
+    const [bookmarks, setBookmarks] = useState([])
+
+    // const sessionUser = useSelector(state => state.session.user);
 
     //finding genre
     const genre = genreNameParser(story?.genreId)
     const [genreName, genreColor] = genre
+
+    useEffect(() => {
+        const fetchBookmarks = async() => {
+            const res = await fetch('/api/stories/bookmarks')
+            if (res.ok) {
+                const data = await res.json()
+                // console.log(data)
+                setBookmarks(data)
+            }
+        }
+        fetchBookmarks().catch(console.error)
+    }, [])
 
     return (
         <div className="story-card-container">
@@ -61,7 +77,8 @@ function StoryCard({ story }) {
                                     <p>{genreName}</p>
                                 </div>
                             </div>
-                            <div className='bookmarks'>
+                            <Bookmark story={story} bookmarks={bookmarks}/>
+                            {/* <div className='bookmarks'>
                                 {!sessionUser && (
                                     <div>
                                         <p>Login to bookmark this story!</p>
@@ -72,7 +89,7 @@ function StoryCard({ story }) {
                                             ></i>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

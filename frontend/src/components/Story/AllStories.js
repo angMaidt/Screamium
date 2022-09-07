@@ -10,7 +10,7 @@ function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    const [bookmarks, setBookmarks] = useState([])
+    // const [bookmarks, setBookmarks] = useState([])
     // console.log(bookmarks)
 
     useEffect(() => {
@@ -20,17 +20,19 @@ function AllStories() {
         }
         fetchData().catch(console.error)
 
-        const fetchBookmarks = async() => {
-            const res = await fetch('/api/stories/bookmarks')
-            if (res.ok) {
-                const data = await res.json()
-                // console.log(data)
-                setBookmarks(data)
-            }
-        }
-        fetchBookmarks().catch(console.error)
+        // const fetchBookmarks = async() => {
+        //     const res = await fetch('/api/stories/bookmarks')
+        //     if (res.ok) {
+        //         const data = await res.json()
+        //         // console.log(data)
+        //         setBookmarks(data)
+        //     }
+        // }
+        // fetchBookmarks().catch(console.error)
 
     }, [dispatch])
+
+
 
     return (
         <>
