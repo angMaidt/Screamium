@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     Story.belongsTo(models.User, { foreignKey: 'authorId' });
     Story.hasMany(models.Comment, { foreignKey: 'storyId', onDelete: 'CASCADE', hooks: true });
     Story.belongsTo(models.Genre, { foreignKey: 'genreId' })
+    Story.belongsToMany(models.User, {
+      through: 'Bookmark',
+      foreignKey: 'storyId',
+      otherKey: 'userId'
+    })
   };
   return Story;
 };
