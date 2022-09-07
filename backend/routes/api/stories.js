@@ -30,7 +30,12 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
     //query for the stories and send them back as json
     try {
         const stories = await Story.findAll({
-            include: [User, Comment],
+            include: [
+                User,
+                Comment,
+                // Bookmark
+                // { model: Bookmark}
+            ],
             order: [
                 ['createdAt', 'DESC'],
             ]
@@ -103,7 +108,36 @@ router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //BOOKMARKS
-//Create a bookmark
+//Get all bookmarks
+router.get('/bookmarks', restoreUser, asyncHandler(async(req, res) => {
+    // const { userId } = req.body
+
+    try {
+        const bookmarks = await Bookmark.findAll()
+        return res.json(bookmarks)
+    } catch (e) {
+        return res.json({ message: 'Could not get all bookmarks' })
+    }
+}))
+
+//Get all of a users bookmarks
+router.get('/user-bookmarks', restoreUser, asyncHandler(async(req, res) => {
+    const { userId } = req.body
+
+    try {
+        const bookmarks = await Bookmark.findAll({
+            include: Story,
+            where: {
+                userId
+            }
+        })
+        return res.json(bookmarks)
+    } catch (e) {
+        return res.json({ message: 'Could not get all bookmarks' })
+    }
+}))
+
+//create a bookmark
 router.post('/:storyId(\\d+)/bookmark', restoreUser, asyncHandler(async(req, res) => {
     const storyId = req.params.storyId
     const { userId } = req.body
