@@ -9,6 +9,7 @@ import './header.css'
 function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
+
     const [bookmarks, setBookmarks] = useState([])
     // console.log(bookmarks)
 
@@ -23,7 +24,7 @@ function AllStories() {
             const res = await fetch('/api/stories/bookmarks')
             if (res.ok) {
                 const data = await res.json()
-                console.log(data)
+                // console.log(data)
                 setBookmarks(data)
             }
         }

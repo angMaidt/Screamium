@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './StoryCard.css'
 
 export const genreNameParser = (genreId) => {
@@ -27,6 +28,9 @@ export const genreNameParser = (genreId) => {
 }
 
 function StoryCard({ story }) {
+    const sessionUser = useSelector(state => state.session.user);
+
+    //finding genre
     const genre = genreNameParser(story?.genreId)
     const [genreName, genreColor] = genre
 
@@ -45,15 +49,29 @@ function StoryCard({ story }) {
                             <p className='story-body preview'>{story.body}</p>
                         </div>
                         <div className='story-footer-elements-container'>
-                            <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>
-                            <div className='time-to-read-container'>
-                                {story.body && story.body.length <= 100 && <p className='time-to-read'> 1 min read</p>}
-                                {story.body && story.body.length >= 101 && story.body.length <= 999 && <p className='time-to-read'> 3 min read</p>}
-                                {story.body && story.body.length >= 1000 && story.body.length <= 2000 && <p className='time-to-read'> 5 min read</p>}
-                                {story.body && story.body.length >= 2001 && <p className='time-to-read'> 10+ min read</p>}
+                            <div>
+                                <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>
+                                <div className='time-to-read-container'>
+                                    {story.body && story.body.length <= 100 && <p className='time-to-read'> 1 min read</p>}
+                                    {story.body && story.body.length >= 101 && story.body.length <= 999 && <p className='time-to-read'> 3 min read</p>}
+                                    {story.body && story.body.length >= 1000 && story.body.length <= 2000 && <p className='time-to-read'> 5 min read</p>}
+                                    {story.body && story.body.length >= 2001 && <p className='time-to-read'> 10+ min read</p>}
+                                </div>
+                                <div className='genre-container' style={{ backgroundColor: genreColor }} >
+                                    <p>{genreName}</p>
+                                </div>
                             </div>
-                            <div className='genre-container' style={{ backgroundColor: genreColor }} >
-                                <p>{genreName}</p>
+                            <div className='bookmarks'>
+                                {!sessionUser && (
+                                    <div>
+                                        <p>Login to bookmark this story!</p>
+                                        <i className='fa-regular fa-bookmark'
+                                            id='bookmark'
+                                            style={{ 'color': 'var(--blood-red)' }}
+                                            // style={{ 'color': 'var(--gold)' }}
+                                            ></i>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
