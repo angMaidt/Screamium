@@ -110,7 +110,6 @@ router.delete('/:storyId(\\d+)', restoreUser, asyncHandler(async(req, res) => {
 //BOOKMARKS
 //Get all bookmarks
 router.get('/bookmarks', restoreUser, asyncHandler(async(req, res) => {
-    // const { userId } = req.body
 
     try {
         const bookmarks = await Bookmark.findAll()
@@ -133,7 +132,7 @@ router.get('/user-bookmarks', restoreUser, asyncHandler(async(req, res) => {
         })
         return res.json(bookmarks)
     } catch (e) {
-        return res.json({ message: 'Could not get all bookmarks' })
+        return res.json({ message: 'Could not get all user bookmarks' })
     }
 }))
 
