@@ -1,15 +1,16 @@
 import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 import { getAllStories } from '../../../store/story';
 import StoryCard from '../StoryCard';
 import './MyStoriesView.css';
 
 function MyStoriesView() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const history = useHistory()
     const stories = useSelector(state => state.story)
-    const user = useSelector(state => state.session.user);
+    const user = useSelector(state => state.session.user)
 
     let userId
     if (user) userId = user.id
@@ -31,7 +32,9 @@ function MyStoriesView() {
     }
 
     //stories the user has written and stories they have liked
-    myStories = [...myStories, ...bookmarkedStories]
+    if (myStories && bookmarkedStories) {
+        myStories = [...myStories, ...bookmarkedStories]
+    }
 
     useEffect(() => {
         const fetchData = async() => {
@@ -44,7 +47,7 @@ function MyStoriesView() {
     useEffect(() => {
         setUnbookmarked(false)
         const fetchBookmarks = async() => {
-            const res = await fetch(`/api/stories/${user.id}/bookmarked`)
+            const res = await fetch(`/api/stories/${userId}/bookmarked`)
             if (res.ok) {
                 const data = await res.json()
                 setBookmarks(data)
@@ -52,6 +55,8 @@ function MyStoriesView() {
         }
         fetchBookmarks().catch(console.error)
     }, [unbookmarked])
+
+    if (!user) return history.push('/')
 
     return (
         user ?
