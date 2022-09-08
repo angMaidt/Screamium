@@ -118,8 +118,8 @@ router.get('/bookmarks', restoreUser, asyncHandler(async(req, res) => {
 }))
 
 //Get all of a users bookmarks
-router.get('/user-bookmarks', restoreUser, asyncHandler(async(req, res) => {
-    const { userId } = req.body
+router.get('/:userId(\\d+)/bookmarked', restoreUser, asyncHandler(async(req, res) => {
+    const userId = req.params.userId
 
     try {
         const bookmarks = await Bookmark.findAll({
