@@ -113,7 +113,7 @@ function Bookmark({ story, singleStory }) {
         }
     }
 
-    if (!storyBookmarks) return null
+    // if (!storyBookmarks) return null
 
     if (sessionUser && owner) {
         return (
