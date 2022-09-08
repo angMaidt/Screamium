@@ -16,7 +16,10 @@ function Bookmark({ story, singleStory }) {
     const [owner, setOwner] = useState(false)
     const [hover, setHover] = useState(false)
 
-    const storyBookmarks = allBookmarks.filter(bookmark => bookmark.storyId === story.id)
+    let storyBookmarks
+    if (allBookmarks) {
+        storyBookmarks = allBookmarks.filter(bookmark => bookmark.storyId === story.id)
+    }
 
     useEffect(() => {
         const fetchBookmarks = async() => {
