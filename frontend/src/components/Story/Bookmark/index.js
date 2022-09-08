@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import csrfFetch from '../../../store/csrf';
 import { getAllStories } from '../../../store/story';
 
-function Bookmark({ story }) {
+function Bookmark({ story, singleStory }) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
 
@@ -105,10 +105,28 @@ function Bookmark({ story }) {
         }
     }
 
+    // console.log(owner)
+
+    if (sessionUser && owner) {
+        return (
+            !singleStory && (
+                <div className='bookmarks'>
+                    <div>
+                        <p>You posted this story!</p>
+                        <i className='fa-solid fa-bookmark'
+                            id='bookmark'
+                            title='Cannot bookmark own story'
+                            style={{ 'color': 'var(--gold)' }}></i>
+                    </div>
+                </div>
+            )
+        )
+    }
+
     if (!sessionUser) {
         return (
             <div className='bookmarks'>
-            {!sessionUser && (
+            {!sessionUser && !singleStory && (
                 <div>
                     <p>Login to bookmark this story!</p>
                     <i className='fa-regular fa-bookmark'
@@ -119,16 +137,19 @@ function Bookmark({ story }) {
         )
     }
 
+
     return (
         <div className='bookmarks'>
             {bookmark ?
                 <i className='fa-solid fa-bookmark'
-                id='bookmark'
+                // id='bookmark'
+                id={ singleStory ? 'story-bookmark' : 'bookmark' }
                 title='De-bookmark this story!'
                 onClick={handleUnbookmark}></i>
                 :
                 <i className={`${hover ? 'fa-solid' : 'fa-regular'} fa-bookmark`}
-                id='bookmark'
+                id={ singleStory ? 'story-bookmark' : 'bookmark' }
+                // id='bookmark'
                 title='Bookmark this story!'
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}

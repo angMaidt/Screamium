@@ -89,6 +89,14 @@
     font-size: 25px;
 }
 
+#story-bookmarks {
+    color: rgba(5, 4, 5, 0.2)
+}
+
+#bookmark:hover, #story-bookmark:hover {
+    cursor: pointer
+}
+
 .genre-container {
     display: flex;
     color: white;

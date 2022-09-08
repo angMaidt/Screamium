@@ -7,6 +7,7 @@ import { destroyAStory, getAllStories } from '../../store/story';
 import { getAllComments } from '../../store/comment';
 import EditStoryForm from './EditStoryForm';
 import CommentsView from '../Comments/CommentsView.js';
+import Bookmark from './Bookmark';
 
 function Story() {
     const dispatch = useDispatch();
@@ -48,12 +49,14 @@ function Story() {
         )
     }
 
-    let editButton, deleteButton, cancelEditButton
+    let editButton, deleteButton, cancelEditButton, bookmarkButton
     if (story && sessionUser) {
         if (sessionUser.id === story.authorId) {
             editButton = (
                 <button id='edit-button' onClick={(e) => setShowEditForm(true)}>
-                    <i className="fa-solid fa-pen"></i>
+                    <i
+                    className="fa-solid fa-pen"
+                    title='Edit this Story'></i>
                 </button>
             )
             cancelEditButton = (
@@ -62,7 +65,9 @@ function Story() {
             )
             deleteButton = (
                 <button id='delete-button' onClick={(e) => { handleDelete(e)}}>
-                    <i className="fa-solid fa-trash"></i>
+                    <i
+                        className="fa-solid fa-trash"
+                        title='Delete this Story'></i>
                 </button>
             )
         }
@@ -87,13 +92,16 @@ function Story() {
                     </div>
                     <p className='story-body story'>{story.body}</p>
                     <div className='story-action-buttons'>
+                        <Bookmark story={story} singleStory={true}/>
                         {editButton}
                         {deleteButton}
                     {comments &&
                             <button
-                            id='show-comments'
-                            onClick={() => setViewComments(!viewComments)}>
-                                <i className="fa-solid fa-comment"></i>
+                                id='show-comments'
+                                onClick={() => setViewComments(!viewComments)}>
+                                <i
+                                    className="fa-solid fa-comment"
+                                    title='View Comments'></i>
                             </button>
                     }
                     </div>
