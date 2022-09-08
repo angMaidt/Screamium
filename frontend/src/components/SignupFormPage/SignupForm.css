@@ -57,10 +57,11 @@
     font-weight: bold;
     border-width: 1px;
     padding: 5px 15px;
+    transition: all .15s ease-in-out
 }
 
 #submit:hover {
     margin-bottom: 20px;
-    background-color: black;
+    background-color: var(--blood-red);
     color: white;
 }

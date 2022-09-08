@@ -44,7 +44,20 @@
 .fa-house-chimney, .fa-bookmark, .fa-pen-to-square {
     color: white;
     font-size: 30px;
+    /* transition: all .15s ease-in-out; */
 }
+
+/* .left-nav-container i {
+    color: white;
+} */
+
+.left-nav-container i:not(.fa-github):hover {
+    color: var(--blood-red);
+}
+
+/* .active {
+    color: var(--blood-red);
+} */
 
 .fa-github {
     position: fixed;
