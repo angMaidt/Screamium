@@ -50,7 +50,7 @@
     font-size: 40px;
 }
 
-#show-comments, #edit-button, #delete-button {
+#show-comments, #edit-button, #delete-button, #story-bookmark {
     border: none;
     background-color: transparent;
     font-size: 30px;
