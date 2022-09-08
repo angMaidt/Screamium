@@ -57,55 +57,62 @@
 }
 
 #classic-horror:checked + label, #classic-horror + label:hover {
-    background-color:#05AFF2;
-    font-size: 20px;
+    background-color: var(--classic);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 #weird-tales:checked + label, #weird-tales + label:hover {
-    background-color:rgb(5,4,5);
-    font-size: 20px;
+    background-color: var(--weird);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 #dark-fantasy:checked + label, #dark-fantasy + label:hover {
-    background-color:#04BF10;
-    font-size: 20px;
+    background-color: var(--fantasy);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 #sci-fi:checked + label, #sci-fi + label:hover {
-    background-color:#F28705;
-    font-size: 20px;
+    background-color: var(--sci-fi);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 #psychological:checked + label, #psychological + label:hover {
-    background-color:#0a279c;
-    font-size: 20px;
+    background-color: var(--psychological);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 #supernatural:checked + label, #supernatural + label:hover {
-    background-color:#090033;
-    font-size: 20px;
+    background-color: var(--supernatural);
+    /* font-size: 20px; */
+    scale: 1.2;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
 }
 
 .new-story-genre-wrapper input[type='radio']:focus + label {
-    font-size: 20px;
+    /* font-size: 20px; */
+    scale: 1.2;
 }
 
 .new-story-genre-wrapper {

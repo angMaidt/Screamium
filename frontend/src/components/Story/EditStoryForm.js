@@ -29,7 +29,7 @@ function EditStoryForm({ setShowEditForm }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validationErrors.length) return alert('Cannot Submit!')
+        if (validationErrors.length) return
 
         const editedStory = {
             id: storyId,

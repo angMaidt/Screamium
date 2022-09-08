@@ -6,13 +6,14 @@
 .nav-container {
     display: flex;
     position: fixed;
+    align-items: center;
+    justify-content: space-between;
     left: 0;
     background-color: rgb(5, 4, 5);
     height: 70px;
     width: 100vw;
     border-bottom: 1px solid white;
-    gap: 65%;
-    align-items: center;
+    /* gap: 65%; */
     z-index: 2;
 }
 
@@ -34,14 +35,16 @@
     display: flex;
     padding-top: 10px;
     align-items: center;
-    gap: 10px;
-    padding-left: 3%;
+    /* gap: 10px; */
+    margin-right: 10%;
+    /* width: 100%; */
 }
 
 #logout {
     background-color: transparent;
     color: white;
     font-size: 16px;
+    width: 120px;
 }
 
 #sign-up {
@@ -50,17 +53,20 @@
     background-color: transparent;
     color: white;
     font-size: 16px;
+    /* width: 100%; */
 }
 
 #nav-username {
     color: white;
+    width: 160px;
 }
 
 .sessionlinks-container {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 30px;
+    /* gap: 30px; */
     font-family: arial;
     font-size: 16px;
+    /* margin-right: 100px; */
 }
