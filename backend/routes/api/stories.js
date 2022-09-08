@@ -33,8 +33,6 @@ router.get('/', restoreUser, asyncHandler(async(req, res) => {
             include: [
                 User,
                 Comment,
-                // Bookmark
-                // { model: Bookmark}
             ],
             order: [
                 ['createdAt', 'DESC'],
