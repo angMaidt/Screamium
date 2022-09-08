@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import csrfFetch from '../../../store/csrf';
 import { getAllStories } from '../../../store/story';
 
-function Bookmark({ story, singleStory }) {
+function Bookmark({ story, singleStory, setUnbookmarked }) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
 
@@ -87,6 +87,7 @@ function Bookmark({ story, singleStory }) {
         e.preventDefault()
 
         setBookmark(false)
+        setUnbookmarked(true)
 
         const payload = {
             userId

@@ -17,11 +17,14 @@ function MyStoriesView() {
     //spread all bookmarks.story into my stories into
 
     const [bookmarks, setBookmarks] = useState([])
-    console.log(bookmarks)
+    const [unbookmarked, setUnbookmarked] = useState(false)
+    // console.log(bookmarks)
 
+    //get all posted stories
     let myStories
     if (user) myStories = Object.values(stories).filter(story => story.authorId === user.id)
 
+    //get all bookmarked stories
     let bookmarkedStories = []
     for (let bookmark of bookmarks) {
         bookmarkedStories.push(bookmark.Story)
@@ -39,6 +42,7 @@ function MyStoriesView() {
     }, [dispatch])
 
     useEffect(() => {
+        setUnbookmarked(false)
         const fetchBookmarks = async() => {
             const res = await fetch(`/api/stories/${user.id}/bookmarked`)
             if (res.ok) {
@@ -47,7 +51,7 @@ function MyStoriesView() {
             }
         }
         fetchBookmarks().catch(console.error)
-    }, [])
+    }, [unbookmarked])
 
     return (
         user ?
@@ -59,7 +63,7 @@ function MyStoriesView() {
             </div>
             {stories &&
                 myStories.map(story => (
-                    <StoryCard key={story.id} story={story} />
+                    <StoryCard key={story.id} story={story} setUnbookmarked={setUnbookmarked}/>
                 ))
             }
         </div>

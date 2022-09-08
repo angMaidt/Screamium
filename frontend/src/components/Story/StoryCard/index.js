@@ -29,7 +29,7 @@ export const genreNameParser = (genreId) => {
     return [ genreName, genreColor ];
 }
 
-function StoryCard({ story }) {
+function StoryCard({ story, setUnbookmarked }) {
     const [bookmarks, setBookmarks] = useState([])
 
     // const sessionUser = useSelector(state => state.session.user);
@@ -77,7 +77,7 @@ function StoryCard({ story }) {
                                     <p>{genreName}</p>
                                 </div>
                             </div>
-                            <Bookmark story={story} bookmarks={bookmarks}/>
+                            <Bookmark story={story} bookmarks={bookmarks} setUnbookmarked={setUnbookmarked}/>
                             {/* <div className='bookmarks'>
                                 {!sessionUser && (
                                     <div>
