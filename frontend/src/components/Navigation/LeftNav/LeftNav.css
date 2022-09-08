@@ -32,7 +32,7 @@
 .nav-linebreak {
     height: 1px;
     width: 40px;
-    background-color: gray;
+    background-color: white;
 }
 
 .nav-publish {
@@ -56,7 +56,8 @@
 
 .fa-github:hover {
     text-decoration: none;
-    font-size: 75px;
+    scale: 1.2;
+    /* font-size: 75px; */
     color: rgb(128, 73, 167);
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
