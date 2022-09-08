@@ -19,6 +19,8 @@
 
 ### [Genres](https://github.com/angMaidt/Screamium/wiki/Features#4-genres)
 
+### [Bookmarks](https://github.com/angMaidt/Screamium/wiki/Features#5-bookmarks)
+
 ## Technologies Used
 
 * PostgresQL
