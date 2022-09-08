@@ -1,4 +1,4 @@
-import { useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllStories } from '../../store/story'
@@ -10,13 +10,29 @@ function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
+    // const [bookmarks, setBookmarks] = useState([])
+    // console.log(bookmarks)
+
     useEffect(() => {
         const fetchData = async() => {
             await dispatch(getAllStories())
 
         }
         fetchData().catch(console.error)
+
+        // const fetchBookmarks = async() => {
+        //     const res = await fetch('/api/stories/bookmarks')
+        //     if (res.ok) {
+        //         const data = await res.json()
+        //         // console.log(data)
+        //         setBookmarks(data)
+        //     }
+        // }
+        // fetchBookmarks().catch(console.error)
+
     }, [dispatch])
+
+
 
     return (
         <>

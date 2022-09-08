@@ -61,6 +61,7 @@ function CommentForm () {
                         className='comment-input'
                         placeholder='What are your thoughts?'
                         value={body}
+                        autoFocus
                         onChange={e => setBody(e.target.value)}
                     ></textarea>
                     <div id='comment-button-wrapper'>

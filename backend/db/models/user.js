@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Story, { foreignKey: 'authorId' })
     User.hasMany(models.Comment, { foreignKey: 'userId' })
+    User.belongsToMany(models.Story, {
+      through: 'Bookmark',
+      foreignKey: 'userId',
+      otherKey: 'storyId'
+    })
   };
   //returns ony non-sensitive info to jwt
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function

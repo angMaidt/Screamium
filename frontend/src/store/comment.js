@@ -72,7 +72,7 @@ export const createNewComment = (newComment) => async dispatch => {
 
     if (res.ok) {
         const newComment = await res.json()
-        console.log(newComment)
+        // console.log(newComment)
         dispatch(createComment(newComment))
         return res
     }

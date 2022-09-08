@@ -29,7 +29,7 @@ function EditStoryForm({ setShowEditForm }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validationErrors.length) return alert('Cannot Submit!')
+        if (validationErrors.length) return
 
         const editedStory = {
             id: storyId,
@@ -37,7 +37,6 @@ function EditStoryForm({ setShowEditForm }) {
             body,
             genreId: story.genreId
         }
-        console.log(editedStory)
         await dispatch(editAStory(editedStory))
         setHasSubmitted(true)
         setShowEditForm(false)

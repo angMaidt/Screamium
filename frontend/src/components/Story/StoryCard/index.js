@@ -1,34 +1,54 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+import Bookmark from '../Bookmark';
 import './StoryCard.css'
 
 export const genreNameParser = (genreId) => {
     let genreName, genreColor
 
     if (genreId === 1) {
-        genreColor= '#0347AD'
+        genreColor= 'var(--classic)'
         genreName = 'Classic Horror'
     } else if (genreId === 2) {
-        genreColor= '#11001f'
+        genreColor= 'var(--weird)'
         genreName = 'Weird Tales'
     } else if (genreId === 3) {
-        genreColor = '#032A85'
+        genreColor = 'var(--fantasy)'
         genreName = 'Dark Fantasy'
     } else if (genreId === 4) {
-        genreColor = '#030E6E'
+        genreColor = 'var(--sci-fi)'
         genreName = 'Sci-Fi Horror'
     } else if (genreId === 5) {
-        genreColor = '#071E7A'
+        genreColor = 'var(--psychological)'
         genreName = 'Psychological'
     } else if (genreId === 6) {
-        genreColor = '#000033'
+        genreColor = 'var(--supernatural)'
         genreName = 'Supernatural'
     }
     return [ genreName, genreColor ];
 }
 
 function StoryCard({ story }) {
+    const [bookmarks, setBookmarks] = useState([])
+
+    // const sessionUser = useSelector(state => state.session.user);
+
+    //finding genre
     const genre = genreNameParser(story?.genreId)
-    const [ genreName, genreColor ] = genre
+    const [genreName, genreColor] = genre
+
+    useEffect(() => {
+        const fetchBookmarks = async() => {
+            const res = await fetch('/api/stories/bookmarks')
+            if (res.ok) {
+                const data = await res.json()
+                // console.log(data)
+                setBookmarks(data)
+            }
+        }
+        fetchBookmarks().catch(console.error)
+    }, [])
 
     return (
         <div className="story-card-container">
@@ -45,16 +65,31 @@ function StoryCard({ story }) {
                             <p className='story-body preview'>{story.body}</p>
                         </div>
                         <div className='story-footer-elements-container'>
-                            <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>
-                            <div className='time-to-read-container'>
-                                {story.body && story.body.length <= 100 && <p className='time-to-read'> 1 min read</p>}
-                                {story.body && story.body.length >= 101 && story.body.length <= 999 && <p className='time-to-read'> 3 min read</p>}
-                                {story.body && story.body.length >= 1000 && story.body.length <= 2000 && <p className='time-to-read'> 5 min read</p>}
-                                {story.body && story.body.length >= 2001 && <p className='time-to-read'> 10+ min read</p>}
+                            <div>
+                                <p className='story-comments'>{story.Comments && story.Comments.length} comments</p>
+                                <div className='time-to-read-container'>
+                                    {story.body && story.body.length <= 100 && <p className='time-to-read'> 1 min read</p>}
+                                    {story.body && story.body.length >= 101 && story.body.length <= 999 && <p className='time-to-read'> 3 min read</p>}
+                                    {story.body && story.body.length >= 1000 && story.body.length <= 2000 && <p className='time-to-read'> 5 min read</p>}
+                                    {story.body && story.body.length >= 2001 && <p className='time-to-read'> 10+ min read</p>}
+                                </div>
+                                <div className='genre-container' style={{ backgroundColor: genreColor }} >
+                                    <p>{genreName}</p>
+                                </div>
                             </div>
-                            <div className='genre-container' style={{ backgroundColor: genreColor }} >
-                                <p>{genreName}</p>
-                            </div>
+                            <Bookmark story={story} bookmarks={bookmarks}/>
+                            {/* <div className='bookmarks'>
+                                {!sessionUser && (
+                                    <div>
+                                        <p>Login to bookmark this story!</p>
+                                        <i className='fa-regular fa-bookmark'
+                                            id='bookmark'
+                                            style={{ 'color': 'var(--blood-red)' }}
+                                            // style={{ 'color': 'var(--gold)' }}
+                                            ></i>
+                                    </div>
+                                )}
+                            </div> */}
                         </div>
                     </div>
                 </div>
