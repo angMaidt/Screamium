@@ -17,8 +17,11 @@ function Bookmark({ story, singleStory }) {
     const [hover, setHover] = useState(false)
 
     let storyBookmarks
+    // console.log(allBookmarks.length > 0)
     if (allBookmarks) {
-        storyBookmarks = allBookmarks.filter(bookmark => bookmark.storyId === story.id)
+        if (allBookmarks.length > 0) {
+            storyBookmarks = allBookmarks.filter(bookmark => bookmark.storyId === story.id)
+        }
     }
 
     useEffect(() => {
@@ -40,10 +43,12 @@ function Bookmark({ story, singleStory }) {
         }
 
         //if not owner, see if they've already liked it
-        if (!owner) {
-            for (let bookmark of storyBookmarks) {
-                if (bookmark.userId === userId) {
-                    setBookmark(true)
+        if (storyBookmarks) {
+            if (!owner) {
+                for (let bookmark of storyBookmarks) {
+                    if (bookmark.userId === userId) {
+                        setBookmark(true)
+                    }
                 }
             }
         }
@@ -108,7 +113,7 @@ function Bookmark({ story, singleStory }) {
         }
     }
 
-    // console.log(owner)
+    if (!storyBookmarks) return null
 
     if (sessionUser && owner) {
         return (
