@@ -15,6 +15,9 @@ function Bookmark({ story, singleStory, setUnbookmarked }) {
     const [allBookmarks, setAllBookmarks] = useState([])
     const [owner, setOwner] = useState(false)
     const [hover, setHover] = useState(false)
+    // if (!setUnbookmarked) {
+    //     const [unbookmark, setUnbookmarked] = useState(false)
+    // }
 
     let storyBookmarks
     // console.log(allBookmarks.length > 0)

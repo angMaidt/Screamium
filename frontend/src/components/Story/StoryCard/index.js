@@ -78,18 +78,6 @@ function StoryCard({ story, setUnbookmarked }) {
                                 </div>
                             </div>
                             <Bookmark story={story} bookmarks={bookmarks} setUnbookmarked={setUnbookmarked}/>
-                            {/* <div className='bookmarks'>
-                                {!sessionUser && (
-                                    <div>
-                                        <p>Login to bookmark this story!</p>
-                                        <i className='fa-regular fa-bookmark'
-                                            id='bookmark'
-                                            style={{ 'color': 'var(--blood-red)' }}
-                                            // style={{ 'color': 'var(--gold)' }}
-                                            ></i>
-                                    </div>
-                                )}
-                            </div> */}
                         </div>
                     </div>
                 </div>

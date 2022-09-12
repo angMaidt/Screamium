@@ -10,7 +10,7 @@ function AllStories() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
 
-    // const [bookmarks, setBookmarks] = useState([])
+    const [unbookmark, setUnbookmarked] = useState(false)
     // console.log(bookmarks)
 
     useEffect(() => {
@@ -19,16 +19,6 @@ function AllStories() {
 
         }
         fetchData().catch(console.error)
-
-        // const fetchBookmarks = async() => {
-        //     const res = await fetch('/api/stories/bookmarks')
-        //     if (res.ok) {
-        //         const data = await res.json()
-        //         // console.log(data)
-        //         setBookmarks(data)
-        //     }
-        // }
-        // fetchBookmarks().catch(console.error)
 
     }, [dispatch])
 
@@ -45,7 +35,7 @@ function AllStories() {
             {stories &&
                 Object.values(stories).map(story => (
                     <div key={story.id} className='story-card-container'>
-                        <StoryCard story={story} />
+                        <StoryCard story={story} setUnbookmarked={setUnbookmarked} />
                     </div>
                 ))
             }
