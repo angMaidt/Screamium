@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllStories } from '../../../store/story';
@@ -7,6 +7,7 @@ import StoryCard from '../../Story/StoryCard';
 function DarkFantasyView() {
     const dispatch = useDispatch();
     const stories = useSelector(state => state.story)
+    const [unbookmark, setUnbookmarked] = useState(false)
 
     const genreStories = Object.values(stories).filter(story => story.genreId === 3)
 
@@ -26,7 +27,7 @@ function DarkFantasyView() {
                     <div className='title-linebreak'></div>
                 </div>
             {genreStories.map(story => (
-                <StoryCard key={story.id} story={story} />
+                <StoryCard key={story.id} story={story} setUnbookmarked={setUnbookmarked} />
             ))}
             </div>
         )

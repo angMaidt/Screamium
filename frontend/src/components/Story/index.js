@@ -19,6 +19,7 @@ function Story() {
 
     const [viewComments, setViewComments] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
+    const [unbookmarked, setUnbookmarked] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -92,7 +93,7 @@ function Story() {
                     </div>
                     <p className='story-body story'>{story.body}</p>
                     <div className='story-action-buttons'>
-                        <Bookmark story={story} singleStory={true}/>
+                        <Bookmark story={story} singleStory={true} setUnbookmarked={setUnbookmarked} />
                         {editButton}
                         {deleteButton}
                     {comments &&
