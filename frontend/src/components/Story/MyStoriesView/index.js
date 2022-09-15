@@ -42,7 +42,7 @@ function MyStoriesView() {
         myStories = [...myStories, ...bookmarkedStories]
     }
 
-    console.log(myStories)
+    // console.log(myStories)
 
 
     useEffect(() => {
