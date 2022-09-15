@@ -15,7 +15,13 @@ function MyStoriesView() {
     let userId
     if (user) userId = user.id
 
-    //spread all bookmarks.story into my stories into
+    useEffect(() => {
+        const fetchData = async() => {
+            await dispatch(getAllStories())
+        }
+        fetchData().catch(console.error)
+
+    }, [dispatch])
 
     const [bookmarks, setBookmarks] = useState([])
     const [unbookmarked, setUnbookmarked] = useState(false)
@@ -36,13 +42,8 @@ function MyStoriesView() {
         myStories = [...myStories, ...bookmarkedStories]
     }
 
-    useEffect(() => {
-        const fetchData = async() => {
-            await dispatch(getAllStories())
-        }
-        fetchData().catch(console.error)
+    console.log(myStories)
 
-    }, [dispatch])
 
     useEffect(() => {
         setUnbookmarked(false)

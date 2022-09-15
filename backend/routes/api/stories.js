@@ -123,7 +123,12 @@ router.get('/:userId(\\d+)/bookmarked', restoreUser, asyncHandler(async(req, res
 
     try {
         const bookmarks = await Bookmark.findAll({
-            include: Story,
+            include: {
+                model: Story,
+                include: {
+                    model: Comment
+                }
+            },
             where: {
                 userId
             }
