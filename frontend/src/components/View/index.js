@@ -26,7 +26,7 @@ function View({ isLoaded }) {
                 width: '50vw'
             }}
             className='view-container'>
-            <div className="view-wrapper">
+            {/* <div className="view-wrapper"> */}
             {isLoaded && (
         <Switch>
           <Route exact path='/'>
@@ -74,7 +74,7 @@ function View({ isLoaded }) {
           </Route>
         </Switch>
       )}
-            </div>
+            {/* </div> */}
         </div>
     )
 }

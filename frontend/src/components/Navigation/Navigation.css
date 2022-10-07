@@ -34,7 +34,7 @@
 
 #login-and-about {
     display: flex;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     align-items: center;
     /* gap: 10px; */
     margin-right: 10%;
@@ -54,6 +54,7 @@
     background-color: transparent;
     color: white;
     font-size: 16px;
+    border: none;
     /* width: 100%; */
 }
 
@@ -65,7 +66,7 @@
 .sessionlinks-container {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     /* gap: 30px; */
     font-family: arial;
     font-size: 16px;
