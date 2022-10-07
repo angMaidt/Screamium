@@ -26,12 +26,12 @@ function NavBar({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
+      <div className='sessionlinks-container'>
         <LoginFormModal />
         <NavLink to="/signup" style={{ textDecoration: 'none'}}>
           <button id='sign-up'>Sign Up</button>
         </NavLink>
-      </>
+      </div>
     );
   }
 
