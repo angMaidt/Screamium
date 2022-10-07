@@ -27,11 +27,11 @@ function AllStories() {
     return (
         <>
             <div id='header-container'>
-                <div>
+                {/* <div> */}
                     {/* <img id='header-img' src='/images/header.jpg' /> */}
                     <img id='header-img' src='/images/header-animated.gif' />
                     <h1 id='header-text'>Welcome.</h1>
-                </div>
+                {/* </div> */}
             </div>
             {stories &&
                 Object.values(stories).map(story => (
