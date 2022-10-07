@@ -28,7 +28,8 @@ function AllStories() {
         <>
             <div id='header-container'>
                 <div>
-                    <img id='header-img' src='/images/header.jpg' />
+                    {/* <img id='header-img' src='/images/header.jpg' /> */}
+                    <img id='header-img' src='/images/header-animated.gif' />
                     <h1 id='header-text'>Welcome.</h1>
                 </div>
             </div>

@@ -25,7 +25,6 @@ function MyStoriesView() {
 
     const [bookmarks, setBookmarks] = useState([])
     const [unbookmarked, setUnbookmarked] = useState(false)
-    // console.log(bookmarks)
 
     //get all posted stories
     let myStories
@@ -41,9 +40,6 @@ function MyStoriesView() {
     if (myStories && bookmarkedStories) {
         myStories = [...myStories, ...bookmarkedStories]
     }
-
-    // console.log(myStories)
-
 
     useEffect(() => {
         setUnbookmarked(false)
