@@ -5,6 +5,7 @@ import { getAllStories } from '../../store/story'
 
 import StoryCard from './StoryCard';
 import './header.css'
+import BlurredImage from '../BlurredImage';
 
 function AllStories() {
     const dispatch = useDispatch();
@@ -27,7 +28,8 @@ function AllStories() {
     return (
         <>
             <div id='header-container'>
-                <img id='header-img' src='/images/header-animated.gif' />
+                <BlurredImage/>
+                {/* <img id='header-img' src='/images/header-animated.gif' /> */}
                 <h1 id='header-text'>Welcome.</h1>
             </div>
             {stories &&
