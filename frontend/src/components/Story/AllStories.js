@@ -27,9 +27,8 @@ function AllStories() {
     return (
         <>
             <div id='header-container'>
-                    {/* <img id='header-img' src='/images/header.jpg' /> */}
-                    <img id='header-img' src='/images/header-animated.gif' />
-                    <h1 id='header-text'>Welcome.</h1>
+                <img id='header-img' src='/images/header-animated.gif' />
+                <h1 id='header-text'>Welcome.</h1>
             </div>
             {stories &&
                 Object.values(stories).map(story => (
